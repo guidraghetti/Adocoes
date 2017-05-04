@@ -167,8 +167,16 @@ class InterLogic {
 						for(let i = 0; i < limit; i++)
 						{
 							if(Math.random() < def1.genderDistribution)
-								filtered.push(male.pop())
-							else filtered.push(female.pop())
+							{
+								if(Object.keys(male).length != 0)
+									filtered.push(male.pop())
+								else filtered.push(female.pop())
+							}
+							else {
+								if(Object.keys(female).length != 0)
+								    filtered.push(female.pop())
+								else filtered.push(male.pop())
+							}
 						}
 
 						res.json({ success: true, message: filtered })					    
