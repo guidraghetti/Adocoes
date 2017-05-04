@@ -24,9 +24,13 @@ export default app => {
     app.route('/interessados/:id_interessado')
 	.all(app.auth.authenticate())
     .get((req, res) => {
-    	if(req.user.type != 'Admin' && req.user.type != 'Funcionario'
-    	 && req.user.idRef != req.param('id_interessado'))
-            return res.sendStatus(401)
+    	if(req.user.type != 'Admin' && req.user.type != 'Funcionario')
+    	{
+    		if(req.user.type != 'Interessado') 
+    			return res.sendStatus(401)
+    		else if(req.user.idRef != req.param('id_interessado'))
+    			return res.sendStatus(400)
+    	}
 
     	Interessado.findById(req.param('id_interessado'))
 		.then(interessado => { 
@@ -60,8 +64,13 @@ export default app => {
     	}
     })
     .delete((req, res) => {
-    	if(req.user.type != 'Admin' && req.user.idRef != req.param('id_interessado'))
-            return res.sendStatus(401)
+    	if(req.user.type != 'Admin')
+    	{
+    		if(req.user.type != 'Interessado') 
+    			return res.sendStatus(401)
+    		else if(req.user.idRef != req.param('id_interessado'))
+    			return res.sendStatus(400)
+    	}
 
     	Interessado.remove({ _id: req.param('id_interessado') })
     	.then(connection => {
@@ -75,11 +84,16 @@ export default app => {
 
     app.route('/interessados/:id_interessado/ordenacao')
 	.all(app.auth.authenticate())
-    .get((req, res) => {
+    .post((req, res) => {
+    	if(req.user.type != 'Admin')
+    	{
+    		if(req.user.type != 'Interessado') 
+    			return res.sendStatus(401)
+    		else if(req.user.idRef != req.param('id_interessado'))
+    			return res.sendStatus(400)
+    	}
 
-    })
-    .put((req, res) => {
-
+    	InterLogic.getMenores(req, res)
     })
 
     app.route('/interessados/:id_interessado/visualizacoes')
@@ -103,7 +117,7 @@ export default app => {
 
     })
 
-    app.route('/interessados/:id_interessado/menores/')
+    app.route('/interessados/:id_interessado/menores/:id_menor')
 	.all(app.auth.authenticate())
     .delete((req, res) => {
 

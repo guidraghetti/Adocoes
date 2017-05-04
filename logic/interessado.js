@@ -1,7 +1,9 @@
 import JsonFilter from '../filters/jsonFilter'
 import Interessado from '../models/interessado'
+import Menor from '../models/menor'
 import User from '../models/usuario'
 import Joi from 'joi'
+import moment from 'moment'
 
 export default
 
@@ -118,5 +120,53 @@ class InterLogic {
         		res.json({ success: false, message: err.details })
         	}
         })
+    }
+
+    static getMenores(req, res) {
+    	var def1 = JsonFilter.filter(req);
+
+		if(def1 === 'notjson')
+			return res.sendStatus(400)
+
+		const joiSchema = Joi.object().keys({
+			age: Joi.number().integer().min(0).max(18).required(),
+			genderDistribution: Joi.number().min(20).max(80).required()
+	    }) 
+
+	    Joi.validate(def1, joiSchema, (err, value) => {
+	    	if(err === null)
+			{
+				const limit = 2
+				const age_diff = 2
+
+				var dateInit = moment().subtract({ years: def1.age + age_diff })
+				.month(0).date(1).utc().set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+
+				var dateEnd = moment().subtract({ years: def1.age - age_diff })
+				.month(11).date(31).utc().set({ hour: 23, minute: 59, second: 59, millisecond: 999 })
+
+				Menor.find({ "birthDate": { "$gte": dateInit, "$lte": dateEnd }})
+				.then(menores => {
+					if(menores.length == 0)
+						res.json({ success: false, message: "emptylist" })
+					else {
+						
+					}
+
+/*					Menor.findRandom({}, {}, {count: limit})
+						.then(menores_add => {
+
+						})
+						.catch(err => {
+
+						})*/
+				})
+				.catch(err => res.json({ success: false, message: err.details }))
+			}
+			else
+			{
+				res.json({ success: false, message: err.details })
+			}
+	    })
     }
 }

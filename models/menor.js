@@ -1,28 +1,31 @@
 import mongoose from 'mongoose'
 
 var menorSchema = mongoose.Schema({
-	nome: String,
-	data_nascimento: String,
-	sexo: String,
-	referencias_familiares: [
+	name: String,
+	gender: String,
+	birthDate: Date,
+	shelterGuide: String,
+	birthCertificate: String,
+	familyReferences: [
 		{
-			tipo: String,
-			nome: String 
+			type: String,
+			name: String 
 		},
 	],
-	nacionalidade: String,
-	naturalidade: {
+	nationality: String,
+	placeOfBirth: {
 		cidade: String,
 		uf: String
 	},
-	localizacao: {
+	location: {
 		cidade: String,
 		uf: String,
-		dongo: {
+		pais: {
 			id: Number,
 			nome: String
 		}
-	}
+	},
+	shelterRef: String
 })
 
 var Menor = module.exports = mongoose.model('menores', menorSchema)
