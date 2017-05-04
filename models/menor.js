@@ -14,15 +14,15 @@ var menorSchema = mongoose.Schema({
 	],
 	nationality: String,
 	placeOfBirth: {
-		cidade: String,
+		city: String,
 		uf: String
 	},
 	location: {
-		cidade: String,
+		city: String,
 		uf: String,
-		pais: {
+		country: {
 			id: Number,
-			nome: String
+			name: String
 		}
 	},
 	shelterRef: String
