@@ -1,0 +1,247 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Adoções",
+		"_postman_id": "6d9a07a3-3abb-3e66-6d64-eafd23d5cc2b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registro Usuário",
+			"request": {
+				"url": "http://localhost:3000/usuarios",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5MzgzNDM0MSwiZXhwIjoxNDkzODM2MTQxfQ.n86fmhhof9WybcGkgMH5D_y-9df0szgtvnt90fep-gs",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"banaana@nana.com\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth",
+			"request": {
+				"url": "http://localhost:3000/oauth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"marcocoimbra01@gmail.com\",\r\n\t\"password\": \"4g3s4d0c035\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Usuário",
+			"request": {
+				"url": "http://localhost:3000/usuarios",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDg4ZjUyN2EzNzI5MDZiMDkyOGMyNSIsImlhdCI6MTQ5MzczMzI3NiwiZXhwIjoxNDkzNzM0MTc2fQ.YBTym2fPnKNv0y_AtnWR4LLDr_ELwIhtbgMRRnHXfcQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Usuário pelo ID",
+			"request": {
+				"url": "http://localhost:3000/usuarios/59088f527a372906b0928c25",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDg4ZjUyN2EzNzI5MDZiMDkyOGMyNSIsImlhdCI6MTQ5MzczNDE5NSwiZXhwIjoxNDkzNzM1MDk1fQ.qJxeTvDmb9_qq77RWjH8VtLpqVNKusj5gzCunCXQMIM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Usuário pelo ID",
+			"request": {
+				"url": "http://localhost:3000/usuarios/59088f527a372906b0928c25",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDg4ZjUyN2EzNzI5MDZiMDkyOGMyNSIsImlhdCI6MTQ5MzczNDE5NSwiZXhwIjoxNDkzNzM1MDk1fQ.qJxeTvDmb9_qq77RWjH8VtLpqVNKusj5gzCunCXQMIM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Usuário pelo ID",
+			"request": {
+				"url": "http://localhost:3000/usuarios/59088f527a372906b0928c25",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5MzgzNDM0MSwiZXhwIjoxNDkzODM2MTQxfQ.n86fmhhof9WybcGkgMH5D_y-9df0szgtvnt90fep-gs",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"marcocoimbra01@gmail.com\",\r\n\t\"password\": \"4g3s4d0c035\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Interessados",
+			"request": {
+				"url": "http://localhost:3000/interessados",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5MzgyNDQyMSwiZXhwIjoxNDkzODI1MzIxfQ.b1-A-o5jRrrfmTNpa-Ua3P8z40A1uwXfkMKjC82P1as",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Interessados",
+			"request": {
+				"url": "http://localhost:3000/interessados",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5MzgzMDE3MSwiZXhwIjoxNDkzODMxMzcxfQ.droT3qYIpf4higO6R1CHuQe-Evq452St2JgVNN2moqQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\",\n\t\"password\": \"interessado123\",\n\t\"name\": \"Vitor Alves Pereira\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Interessados pelo ID copy",
+			"request": {
+				"url": "http://localhost:3000/interessados/590a1049f6ed5b28d42bf577",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5Mzg3MDI2NywiZXhwIjoxNDkzODcyMDY3fQ.DzyyLsXApd3xorUeeziF-zUKnil1vUNIr7J-1rnA-n0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Vitor Alves Santos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Interessados pelo ID",
+			"request": {
+				"url": "http://localhost:3000/interessados/590a1049f6ed5b28d42bf577",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5Mzg2NzkyMCwiZXhwIjoxNDkzODY5NzIwfQ.-eKY0iGUd3dLDkTxgnsTgb7oWWhvI9ULy9CRBjBZLbY",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Vitor Alves Santos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Interessados pelo ID",
+			"request": {
+				"url": "http://localhost:3000/interessados/590a1049f6ed5b28d42bf577",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5Mzg3NTY2OCwiZXhwIjoxNDkzODc3NDY4fQ.rIMP0ddnOQ3AamIu9fSpLk3NNn738Pq_k5IWXJGzNe8",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Vitor Alves Santos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
