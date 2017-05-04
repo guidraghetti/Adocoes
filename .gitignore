@@ -4,9 +4,6 @@ npm-debug.log
 # Build
 build/
 
-# Configuration
-config.js
-
 # Logs
 logs
 log.json
