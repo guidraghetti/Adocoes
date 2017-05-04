@@ -1,5 +1,4 @@
 import JsonFilter from '../filters/jsonFilter'
-import ModelFilter from '../filters/modelFilter'
 import bcrypt from 'bcryptjs'
 import User from '../models/usuario'
 import Joi from 'joi'

@@ -1,5 +1,4 @@
 import JsonFilter from '../filters/jsonFilter'
-import ModelFilter from '../filters/modelFilter'
 import Interessado from '../models/interessado'
 import User from '../models/usuario'
 import Joi from 'joi'
