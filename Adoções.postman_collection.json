@@ -242,6 +242,31 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Get Lista Ordenada de Menores",
+			"request": {
+				"url": "http://localhost:3000/interessados/590a1049f6ed5b28d42bf577/ordenacao",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDlmMjg4YjBmYjUyNTg2Y2IxNzg3MCIsImlhdCI6MTQ5MzkwNDc3MCwiZXhwIjoxNDkzOTA2NTcwfQ.ZuqhiuDZcOEuJ10su7zi3cB_TFUpd5Fw4swUo7EDyOg",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"age\": 5,\n\t\"genderDistribution\": 0.8\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

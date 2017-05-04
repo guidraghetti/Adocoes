@@ -8,22 +8,20 @@ var menorSchema = mongoose.Schema({
 	birthCertificate: String,
 	familyReferences: [
 		{
-			type: String,
+			refType: String,
 			name: String 
 		},
 	],
 	nationality: String,
 	placeOfBirth: {
 		city: String,
-		uf: String
+		uf: String,
+		country: String
 	},
 	location: {
 		city: String,
 		uf: String,
-		country: {
-			id: Number,
-			name: String
-		}
+		country: String
 	},
 	shelterRef: String
 })

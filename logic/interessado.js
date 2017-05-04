@@ -130,13 +130,13 @@ class InterLogic {
 
 		const joiSchema = Joi.object().keys({
 			age: Joi.number().integer().min(0).max(18).required(),
-			genderDistribution: Joi.number().min(20).max(80).required()
+			genderDistribution: Joi.number().min(0.2).max(0.8).required()
 	    }) 
 
 	    Joi.validate(def1, joiSchema, (err, value) => {
 	    	if(err === null)
 			{
-				const limit = 2
+				const limit = 20
 				const age_diff = 2
 
 				var dateInit = moment().subtract({ years: def1.age + age_diff })
@@ -149,19 +149,34 @@ class InterLogic {
 				.then(menores => {
 					if(menores.length == 0)
 						res.json({ success: false, message: "emptylist" })
+					else if(menores.length <= limit)
+						res.json({ success: true, message: menores })
 					else {
-						
+						var male = []
+						var female = []
+
+						var filtered = []
+
+						for(let i = 0; i < menores.length; i++)
+						{
+							if(menores[i].gender === 'M')
+								male.push(menores[i])
+							else female.push(menores[i])
+						}
+
+						for(let i = 0; i < limit; i++)
+						{
+							if(Math.random() < def1.genderDistribution)
+								filtered.push(male.pop())
+							else filtered.push(female.pop())
+						}
+
+						res.json({ success: true, message: filtered })					    
 					}
-
-/*					Menor.findRandom({}, {}, {count: limit})
-						.then(menores_add => {
-
-						})
-						.catch(err => {
-
-						})*/
 				})
-				.catch(err => res.json({ success: false, message: err.details }))
+				.catch(err => {
+					res.json({ success: false, message: "unknownerror" }) 
+				})
 			}
 			else
 			{
