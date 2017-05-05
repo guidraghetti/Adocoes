@@ -1,0 +1,21 @@
+{
+  "name": "adocoes",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.tools.ages.pucrs.br/projetos/Adocoes.git"
+  },
+  "author": "AGES-PUCRS",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "joi": "^10.4.1",
+    "mongoose": "^4.9.7",
+    "restify": "^4.3.0"
+  }
+}
