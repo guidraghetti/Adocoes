@@ -139,10 +139,18 @@ class InterLogic {
 				const limit = 20
 				const age_diff = 2
 
-				var dateInit = moment().subtract({ years: def1.age + age_diff })
+				var yearInit = def1.age + age_diff 
+				if(yearInit > 18)
+					yearInit = 18
+
+				var yearEnd = def1.age - age_diff
+				if(yearEnd < 0)
+					yearEnd = 0
+
+				var dateInit = moment().subtract({ years: yearInit })
 				.month(0).date(1).utc().set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
 
-				var dateEnd = moment().subtract({ years: def1.age - age_diff })
+				var dateEnd = moment().subtract({ years: yearEnd })
 				.month(11).date(31).utc().set({ hour: 23, minute: 59, second: 59, millisecond: 999 })
 
 				Menor.find({ "birthDate": { "$gte": dateInit, "$lte": dateEnd }})
