@@ -159,7 +159,7 @@ class InterLogic {
 
 						for(let i = 0; i < menores.length; i++)
 						{
-							if(menores[i].gender === 'M')
+							if(menores[i].gender === 'M') 
 								male.push(menores[i])
 							else female.push(menores[i])
 						}
@@ -168,14 +168,14 @@ class InterLogic {
 						{
 							if(Math.random() < def1.genderDistribution)
 							{
-								if(Object.keys(male).length != 0)
-									filtered.push(male.pop())
-								else filtered.push(female.pop())
+								if(male.length != 0) 
+									this.spliceAndDice(filtered, male)
+								else this.spliceAndDice(filtered, female)
 							}
 							else {
-								if(Object.keys(female).length != 0)
-								    filtered.push(female.pop())
-								else filtered.push(male.pop())
+								if(female.length != 0) 
+									this.spliceAndDice(filtered, female)
+								else this.spliceAndDice(filtered, male)
 							}
 						}
 
@@ -191,5 +191,12 @@ class InterLogic {
 				res.json({ success: false, message: err.details })
 			}
 	    })
+    }
+
+    static spliceAndDice(arr1, arr2) {
+    	let index = Math.floor(Math.random() * arr2.length)
+
+    	arr1.push(arr2[index])
+    	arr2.splice(index, 1)
     }
 }
