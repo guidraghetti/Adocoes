@@ -1,9 +1,9 @@
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Conteudo = mongoose.model('conteudo')
+		this.Conteudo = mongoose.model('conteudo') //OOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 	}
 
-	save(body) {
+	save(bodi) {
 		const conteudo = new Conteudo(body)
 		
 		return conteudo.save()
