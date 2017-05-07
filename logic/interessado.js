@@ -207,4 +207,29 @@ class InterLogic {
     	arr1.push(arr2[index])
     	arr2.splice(index, 1)
     }
+
+    static newVisualization(req, res) {
+    	var def1 = JsonFilter.filter(req);
+
+		if(def1 === 'notjson')
+			return res.sendStatus(400)
+
+		const joiSchema = Joi.object().keys({
+			idMenor: Joi.string().required().regex(/^[0-9a-fA-F]{24}$/),
+			timestamp: Joi.date().required()
+	    }) 
+
+	    Joi.validate(def1, joiSchema, (err, value) => {
+	    	if(err === null)
+	    	{
+
+	    	}
+	    	else
+	    	{
+	    		res.json(400, { success: false, message: err.details })
+	    	}
+
+	    	console.log(err)
+	    })
+    }
 }

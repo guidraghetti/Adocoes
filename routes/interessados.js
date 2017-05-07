@@ -1,4 +1,6 @@
 import Interessado from '../models/interessado'
+import Interesse from '../models/interesse'
+import Visualizacao from '../models/Visualizacao'
 import InterLogic from '../logic/interessado'
 
 export default app => {
@@ -43,7 +45,7 @@ export default app => {
 			else res.json({ success: false, message: "interessadonotfound" })
 		}).catch(err => res.json({ success: false, message: err }))
 	})
-    .put((req, res) => {
+    .patch((req, res) => {
     	if(req.user.type != 'Admin') {
     		if(req.user.type != 'Interessado') 
     			return res.sendStatus(401)
@@ -84,7 +86,7 @@ export default app => {
 
     app.route('/interessados/:id_interessado/ordenacao')
 	.all(app.auth.authenticate())
-    .post((req, res) => {
+    .put((req, res) => {
     	if(req.user.type != 'Admin')
     	{
     		if(req.user.type != 'Interessado') 
@@ -102,6 +104,15 @@ export default app => {
 
     })
     .post((req, res) => {
+        if(req.user.type != 'Admin')
+        {
+            if(req.user.type != 'Interessado') 
+                return res.sendStatus(401)
+            else if(req.user.idRef != req.param('id_interessado'))
+                return res.sendStatus(400)
+        }
+
+        InterLogic.newVisualization(req, res)
 
     })
     .put((req, res) => {
