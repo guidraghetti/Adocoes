@@ -54,6 +54,26 @@ server.del('/conteudos/:id/imagens/:imageId', (request, response, next) => {
     conteudoTranslator.delete(request, response)
 })
 
+server.post('/conteudos/:id_conteudo/videos', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.postVideo(request, response)
+})
+
+server.get('/conteudos/:id_conteudo/videos', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getAllVideos(request, response)
+})
+
+server.get('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getVideo(request, response)
+})
+
+server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.deleteVideo(request, response)
+})
+
 server.post('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.post(request, response)

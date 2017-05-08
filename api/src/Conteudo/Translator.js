@@ -38,6 +38,29 @@ export default class Translator {
 		interactor.update(body)
             .then(message => {
                 response.send(200, message)
+    	})
+    }
+
+    getAllVideos(request, response) {
+        const interactor = new this.Interactor()
+
+        interactor.find(body)
+            .then(message => {
+                console.log(message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
+
+	deleteVideo(request, response) {
+		const { body } = request
+
+        const interactor = new this.Interactor()
+
+        interactor.deleteVideo(body)
+            .then(message => {
+                console.log(message)
             })
             .catch(error => {
                 console.log(error)
@@ -88,5 +111,4 @@ export default class Translator {
                 console.log(error)
             })
 	}
-
 }
