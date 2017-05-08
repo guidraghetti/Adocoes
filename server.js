@@ -5,6 +5,11 @@ import ConteudoTranslator from './api/src/Conteudo/Translator'
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({
+  extended: true
+})); 
+
 server.get('/', function(req, res, next) {
     const moment = require('moment')
     let now = moment()
@@ -17,7 +22,6 @@ server.get('/', function(req, res, next) {
 })
 
 server.post('/conteudos', (request, response, next) => {
-	console.log(request)
 	conteudoTranslator = new ConteudoTranslator()
 	conteudoTranslator.post(request, reponse)
 })
