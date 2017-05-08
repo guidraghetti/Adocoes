@@ -55,4 +55,10 @@ export default class Entity {
 		
 		return adapter.deleteVideo(body.id)
 	}
+
+	createVideo(body) {
+		const adapter = new this.Adapter()
+
+		return adapter.addVideo(body)
+	}
 }

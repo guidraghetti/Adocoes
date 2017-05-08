@@ -18,6 +18,7 @@ export default class Interactor {
 			})
 	}
 
+<<<<<<< HEAD
 	update(body){
 
 		const entity = new this.Entity()
@@ -48,6 +49,7 @@ export default class Interactor {
 	}
 
 	deleteVideo(body) {
+
 		const entity = new this.Entity()
 
 		return entity.delete(body)
@@ -58,5 +60,11 @@ export default class Interactor {
 		const entity = new this.Entity()
 
 		return entity.addImage(body)
+	}
+
+	createVideo(body) {
+		const entity = new this.Entity()
+
+		return entity.createVideo(body)
 	}
 }

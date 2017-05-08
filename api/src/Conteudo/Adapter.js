@@ -40,4 +40,8 @@ export default class Adapter {
 		
 		return this.Conteudo.remove({_id: id})
 	}
+
+	addVideo(body) {
+		return this.Conteudo
+	}
 }
