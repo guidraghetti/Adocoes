@@ -1,6 +1,4 @@
-import mongoose from 'mongoose'
-
-const Schema = mongoose.schema
+import { mongoose, Schema } from 'mongoose'
 
 mongoose.model('Conteudo', {
 	new Schema({..}, {strict: false})
