@@ -22,7 +22,7 @@ server.get('/', function(req, res, next) {
 })
 
 server.post('/conteudos', (request, response, next) => {
-	conteudoTranslator = new ConteudoTranslator()
+	const conteudoTranslator = new ConteudoTranslator()
 	conteudoTranslator.post(request, reponse)
 })
 
