@@ -1,6 +1,7 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
+import database from './database.js'
 
 const server = restify.createServer()
 const port = process.env.PORT || 8888

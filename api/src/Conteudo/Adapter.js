@@ -1,6 +1,6 @@
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Conteudo = mongoose.model('conteudo')
+		this.Conteudo = mongoose.model('Conteudo')
 	}
 
 	save(body) {
