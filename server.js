@@ -1,7 +1,8 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
-import database from './database.js'
+
+require('./database.js')
 
 const server = restify.createServer()
 const port = process.env.PORT || 8888
@@ -23,8 +24,8 @@ server.get('/', function(req, res, next) {
 })
 
 server.post('/conteudos', (request, response, next) => {
-	const conteudoTranslator = new ConteudoTranslator()
-	conteudoTranslator.post(request, reponse)
+	let conteudoTranslator = new ConteudoTranslator()
+	conteudoTranslator.post(request, response)
 })
 
 server.listen(port, function() {

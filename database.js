@@ -1,12 +1,13 @@
 import mongoose from 'mongoose'
-import conteudoModel from './api/src/Model/Conteudo'
 
-const dbUri = 'mongodb://localhost:27017'
+require('./api/src/Model/Conteudo')
 
-mongoose.connect(dbUri)
+const db = 'mongodb://localhost:27017/test'
 
-mongoose.connection.on('connected', function () {  
-  console.log('Mongoose default connection open to ' + dbURI);
+mongoose.connect(db)
+
+mongoose.connection.on('connected', () => {  
+  console.log('Mongoose default connection open to ' + db);
 }); 
 
 mongoose.connection.on('error', (error) => {  

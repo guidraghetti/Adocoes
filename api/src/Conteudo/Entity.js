@@ -6,6 +6,6 @@ export default class Entity {
 	create(body) {
 		const adapter = new this.Adapter()
 		
-		return adapter.save(body2)
+		return adapter.save(body)
 	}
 }

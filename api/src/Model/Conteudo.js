@@ -1,5 +1,7 @@
-import { mongoose, Schema } from 'mongoose'
+import mongoose  from 'mongoose'
 
-mongoose.model('Conteudo', {
-	new Schema({..}, {strict: false})
-})
+const Schema = mongoose.Schema
+
+mongoose.model('Conteudo',
+	new Schema({}, {strict: false})
+)
