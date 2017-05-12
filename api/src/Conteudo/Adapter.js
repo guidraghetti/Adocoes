@@ -1,11 +1,13 @@
+import mongoose from 'mongoose'
+
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Conteudo = mongoose.model('conteudo')
+		this.Conteudo = mongoose.model('Conteudo')
 	}
 
 	save(body) {
-		const conteudo = new Conteudo(body)
-		
+		const conteudo = new this.Conteudo(body)
+
 		return conteudo.save()
 	}
 }

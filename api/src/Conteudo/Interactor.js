@@ -1,11 +1,11 @@
 export default class Interactor {
 	constructor(deps = {}) {
-		this.Entity = deps.Entity || require('./Interactor').default
+		this.Entity = deps.Entity || require('./Entity').default
 	}
 
-	createNewConteudo(body) {
+	create(body) {
 		const entity = new this.Entity()
-
+		
 		return entity.create(body)
 	}
 }

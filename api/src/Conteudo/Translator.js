@@ -10,7 +10,7 @@ export default class Translator {
 
         interactor.create(body)
             .then(message => {
-                console.log(message)
+                response.send(200, message)
             })
             .catch(error => {
                 console.log(error)
