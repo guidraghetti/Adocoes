@@ -13,7 +13,6 @@
   },
   "author": "AGES-PUCRS",
   "license": "ISC",
-<<<<<<< 18696c052ed46d110284da49067e6ee7a462d4d4
   "dependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.22.1",
@@ -24,16 +23,5 @@
     "mongoose": "^4.9.7",
     "nodemon": "^1.11.0",
     "restify": "^4.3.0"
-=======
-  "devDependencies": {
-    "es6-module-loader": "*",
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "chai": "^3.5.0",
-    "mocha": "^3.3.0",
-    "supertest": "^3.0.0"
->>>>>>> Update package.json
   }
 }
