@@ -19,4 +19,10 @@ export default class Entity {
 			resolve(body)
 		})
 	}
+
+	update(body) {
+		const adapter = new this.Adapter()
+		
+		return adapter.fetchAndUpdate(body)
+	}
 }

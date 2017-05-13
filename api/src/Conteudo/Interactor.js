@@ -16,8 +16,13 @@ export default class Interactor {
 			.then(body => {
 				entity.fetchAll()
 			})
-
-
 	}
 	
+	update(body){
+
+		const entity = new this.Entity()
+		
+		return entity.update(body)	
+
+	}
 }

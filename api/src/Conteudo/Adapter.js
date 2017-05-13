@@ -15,4 +15,10 @@ export default class Adapter {
 		return this.Conteudo.find({}, (err, doc) => 
 			{console.log(doc)})
 	}
+
+	fetchAndUpdate(body){
+		return this.Conteudo.findOneAndUpdate({_id: body.id },{new: true}, body, (err, doc) => {
+			return doc
+		})
+	}
 }
