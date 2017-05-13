@@ -2,6 +2,7 @@ import restify from 'restify'
 import bodyParser from 'body-parser'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
 import MenorTranslator from './api/src/Menor/Translator'
+import InteressadosTranslator from './api/src/Interessado/Translator'
 
 require('./database.js')
 
@@ -34,9 +35,20 @@ server.post('/menores', (request, response, next) => {
     menorTranslator.post(request, response)
 })
 
+server.post('/interessados', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.post(request, response)
+})
+
+
 server.get('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
+})
+
+server.get('/interessados', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.get(request, response)
 })
 
 server.listen(port, function() {

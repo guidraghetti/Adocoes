@@ -5,3 +5,5 @@ var interessadoSchema = new Schema({
 	idInteressado: String,
 	name: String
 })
+
+mongoose.model('interessado', interessadoSchema)
