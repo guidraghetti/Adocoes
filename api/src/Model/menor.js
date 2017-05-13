@@ -30,3 +30,5 @@ var menorSchema = mongoose.Schema({
 	location: locationSchema,
 	shelterRef: String
 })
+
+mongoose.model('Menor', menorSchema)
