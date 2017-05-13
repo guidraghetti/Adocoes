@@ -55,7 +55,6 @@ server.del('/conteudos/:id/imagens/:imageId', (request, response, next) => {
 })
 
 server.post('/conteudos/:id_conteudo/videos', (request, response, next) => {
-<<<<<<< HEAD
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.postVideo(request, response)
 })
@@ -83,31 +82,6 @@ server.post('/menores', (request, response, next) => {
 server.get('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
-=======
-    let id_conteudo = req.params.id_conteudo
-    let conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.post(request, reponse)
-})
-
-server.get('/conteudos/:id_conteudo/videos', (request, response, next) => {
-    let id_conteudo = req.params.id_conteudo
-    let conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.get(request, reponse)
-})
-
-server.get('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
-    let id_conteudo = req.params.id_conteudo
-    let id_video = req.params.id_video
-    let conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.get(request, reponse)
-})
-
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
-    let id_conteudo = req.params.id_conteudo
-    let id_video = req.params.id_video
-    let conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.delete(request, reponse)
->>>>>>> Subindo versao atualizada do conteudo #15
 })
 
 server.listen(port, function() {
