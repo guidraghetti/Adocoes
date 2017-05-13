@@ -25,4 +25,8 @@ export default class Adapter {
 	delete(id){
 		return this.Conteudo.remove({_id: id })
 	}
+
+	getImage(id){
+		return this.Conteudo.getImagem({_id: id })
+	}
 }

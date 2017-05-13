@@ -34,4 +34,11 @@ export default class Interactor {
 
 	}
 
+	getImage(body){
+
+		const entity = new this.Entity()
+		
+		return entity.getImagem(body)	
+
+	}
 }

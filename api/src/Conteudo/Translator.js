@@ -43,10 +43,6 @@ export default class Translator {
                 console.log(error)
             })
 	}
-<<<<<<< HEAD
-	
-	delete() {}
-=======
 
 	delete(request, response) {
 
@@ -63,5 +59,19 @@ export default class Translator {
             })
 
 	}
->>>>>>> created conteudo put and delete
+
+	getImage(request, response) {
+
+		let { body } = request
+		const interactor = new this.Interactor()
+		body.id = request.params.id
+
+		interactor.getImage(body)
+            .then(message => {
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
 }
