@@ -27,14 +27,29 @@ export default class Adapter {
 		return interessado.delete()
 	}
 	
-	//delete	
-	//addInterest
-	//fetchAllMenores
-	//putMenores
-	//insertView
-	//fetchAllViews
-	//insertInterest
-	//fetchAllInterest
-	//deleteInterest
+	addInsert() {		
+	}
+	
+	fetchAllMenores() {		
+	}
+	
+	putMenores() {		
+	}
+	
+	insertView() {	
+	}
+	
+	fetchAllViews(){
+	}
+	
+	insertInterest(){
+	}
+	
+	fetchAllInterest(){
+	}
+	
+	deleteInterest() {
+	}
+	
 	
 }
