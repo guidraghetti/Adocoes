@@ -1,22 +1,22 @@
-var mongoose 	= require('mongoose');
-var Schema 		= mongoose.Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 
 var locationSchema = new Schema({
 	city: String,
 	uf: String,
 	country: String
-});
+})
 
 var placeOfBirthSchema = new Schema({
 	city: String,
 	uf: String,
 	country: String
-});
+})
 
 var familyReferencesSchema = new Schema({
 	refType: String,
 	name: String
-});
+})
 
 var menorSchema = mongoose.Schema({
 	name: String,
@@ -30,5 +30,3 @@ var menorSchema = mongoose.Schema({
 	location: locationSchema,
 	shelterRef: String
 })
-
-module.exports = mongoose.model('Menor', menorSchema);

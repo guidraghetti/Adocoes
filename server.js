@@ -1,6 +1,7 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
+import MenorTranslator from './api/src/Menor/Translator'
 
 require('./database.js')
 
