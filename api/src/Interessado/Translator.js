@@ -48,12 +48,10 @@ export default class Translator {
 	
 	delete(request, response) {
 		const { body } = request
-
-        const interactor = new this.Interactor()
-
-		body.id = request.params.id
 		
-        interactor.delete(body)
+        const interactor = new this.Interactor()
+		
+        interactor.delete(request.params.id)
             .then(message => {
                 response.send(200, message)
             })

@@ -2,14 +2,15 @@ import mongoose from 'mongoose'
 
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Interessado = mongoose.model('Interessado')
+		this.Interessado = mongoose.model('interessado')
 	}
 
 	save(body) {
+		console.log(body)
 		const interessado = new this.Interessado(body)
 
 		return interessado.save()
-	}
+	}	
 
 	fetchAll() {
 		return this.Interessado.find((err, doc) => {
@@ -17,9 +18,9 @@ export default class Adapter {
 		})
 	}	
 	
-	delete(body){
-		console.log(body.id)
-		return this.Interessado.remove({_id: body.id })
+	delete(id){
+		console.log(id)
+		return this.Interessado.remove({_id: id})
 	}
 	
 	addInsert() {		
