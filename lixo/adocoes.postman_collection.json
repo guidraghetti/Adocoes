@@ -1,0 +1,1080 @@
+{
+	"variables": [],
+	"info": {
+		"name": "adocoes",
+		"_postman_id": "8f179e52-9989-70ed-546a-98e2f9f838cf",
+		"description": "Projeto Adoções da AGES/PUCRS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [{
+		"name": "/usuarios",
+		"description": "",
+		"item": [{
+			"name": "/usuarios",
+			"request": {
+				"url": "{{url}}/usuarios",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios",
+			"request": {
+				"url": "{{url}}/usuarios",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{id_usuario}",
+			"request": {
+				"url": "{{url}}/usuarios/{id_usuario}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{id_usuario}",
+			"request": {
+				"url": "{{url}}/usuarios/{id_usuario}",
+				"method": "PUT",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{id_usuario}",
+			"request": {
+				"url": "{{url}}/usuarios/{id_usuario}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}]
+	},
+	{
+		"name": "/menores",
+		"description": "",
+		"item": [{
+			"name": "/menores",
+			"request": {
+				"url": "{{url}}/menores",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores",
+			"request": {
+				"url": "{{url}}/menores",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores?inicio={ponto_inicio}",
+			"request": {
+				"url": "{{url}}/menores?inicio={ponto_inicio}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}",
+				"method": "PUT",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/interessados",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/interessados",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/interessados",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/interessados",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/interessados/{id_interessado}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/interessados/{id_interessado}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/imagens",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/imagens",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/imagens",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/imagens",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/imagens/{id_imagem}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/imagens/{id_imagem}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/imagens/{id_imagem}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/imagens/{id_imagem}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/videos",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/videos",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/videos",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/videos",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/videos/{id_video}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/videos/{id_video}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/menores/{id_menor}/videos/{id_video}",
+			"request": {
+				"url": "{{url}}/menores/{id_menor}/videos/{id_video}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}]
+	},
+	{
+		"name": "/interessados",
+		"description": "",
+		"item": [{
+			"name": "/interessados",
+			"request": {
+				"url": "{{url}}/interessados",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados",
+			"request": {
+				"url": "{{url}}/interessados",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}",
+				"method": "PUT",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}/menores",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}/menores",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}/menores",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}/menores",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}/menores/{id_menor}",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}/menores/{id_menor}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}/visualizacoes",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}/visualizacoes",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/interessados/{id_interessado}/visualizacoes",
+			"request": {
+				"url": "{{url}}/interessados/{id_interessado}/visualizacoes",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}]
+	},
+	{
+		"name": "/conteudos",
+		"description": "",
+		"item": [{
+			"name": "/conteudos",
+			"request": {
+				"url": "{{url}}/conteudos",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos",
+			"request": {
+				"url": "{{url}}/conteudos",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}",
+				"method": "PUT",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/imagens",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/imagens",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/imagens",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/imagens",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/imagens/{id_imagem}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/imagens/{id_imagem}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/videos",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/videos",
+				"method": "POST",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/videos",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/videos",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/videos/{id_video}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/videos/{id_video}",
+				"method": "GET",
+				"header": [{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/conteudos/{id_conteudo}/videos/{id_video}",
+			"request": {
+				"url": "{{url}}/conteudos/{id_conteudo}/videos/{id_video}",
+				"method": "DELETE",
+				"header": [{
+					"key": "Content-Type",
+					"value": "{{content-type}}",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": ""
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}]
+	},
+	{
+		"name": "/oauth/token",
+		"event": [{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": ["varjsonData=JSON.parse(responseBody);\r",
+				"postman.setEnvironmentVariable(\"token\",jsonData.access_token);"]
+			}
+		}],
+		"request": {
+			"auth": {
+				"type": "basic",
+				"basic": {
+					"username": "{{app-key}}",
+					"password": "{{app-password}}",
+					"saveHelperData": true,
+					"showPassword": false
+				}
+			},
+			"url": "{{url}}/oauth/token",
+			"method": "POST",
+			"header": [{
+				"key": "Authorization",
+				"value": "BasicZG9jLnNwYWNlLnNpZ25lcjo0MDdhNGQ4MGZjZTc5MTc1MWNkODNhYjFhZjNkOWIyNg==",
+				"description": ""
+			},
+			{
+				"key": "Content-Type",
+				"value": "{{content-type}}",
+				"description": ""
+			}],
+			"body": {
+				"mode": "raw",
+				"raw": "{\n\"grant_type\":\"password\",\n\"username\":\"eduardo.arruda@doc.space\",\n\"password\":\"dc483e80a7a0bd9ef71d8cf973673924\"\n}"
+			},
+			"description": ""
+		},
+		"response": []
+	}]
+}
