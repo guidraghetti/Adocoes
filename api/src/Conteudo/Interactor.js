@@ -25,4 +25,13 @@ export default class Interactor {
 		return entity.update(body)	
 
 	}
+
+	remove(body){
+
+		const entity = new this.Entity()
+		
+		return entity.remove(body)	
+
+	}
+
 }

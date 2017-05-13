@@ -21,4 +21,8 @@ export default class Adapter {
 			return doc
 		})
 	}
+
+	delete(id){
+		return this.Conteudo.remove({_id: id })
+	}
 }

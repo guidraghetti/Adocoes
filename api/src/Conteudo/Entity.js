@@ -25,4 +25,10 @@ export default class Entity {
 		
 		return adapter.fetchAndUpdate(body)
 	}
+
+	remove(body) {
+		const adapter = new this.Adapter()
+		
+		return adapter.delete(body.id)
+	}
 }

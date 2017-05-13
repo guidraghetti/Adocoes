@@ -39,6 +39,14 @@ server.put('/conteudos', (request, response, next) => {
     conteudoTranslator.put(request, response)
 })
 
+<<<<<<< HEAD
+=======
+server.del('/conteudos/:id', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.delete(request, response)
+})
+
+>>>>>>> created conteudo put and delete
 server.post('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.post(request, response)
