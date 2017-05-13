@@ -17,7 +17,20 @@ export default class Translator {
             })
 	}
 
-	get() {}
+	get(request, response) {
+		const { body } = request
+	
+		const interactor = new this.Interactor()
+
+		interactor.fetchAll(request.header.accessToken)
+			.then(message => {
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
+	
 	put() {}
 	delete() {}
 }

@@ -10,4 +10,9 @@ export default class Adapter {
 
 		return conteudo.save()
 	}
+
+	fetchAll() {
+		return this.Conteudo.find({}, (err, doc) => 
+			{console.log(doc)})
+	}
 }

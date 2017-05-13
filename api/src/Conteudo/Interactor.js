@@ -8,4 +8,16 @@ export default class Interactor {
 		
 		return entity.create(body)
 	}
+
+	fetchAll(body) {
+		const entity = new this.Entity()
+
+		return entity.validateToken(body)
+			.then(body => {
+				entity.fetchAll()
+			})
+
+
+	}
+	
 }
