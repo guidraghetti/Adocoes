@@ -20,9 +20,9 @@ export default class Entity {
 		})
 	}
 	
-	delete(body) {
+	delete(id) {
 		const adapter = new this.Adapter()
-		return adapter.delete(body)
+		return adapter.delete(id)
 	}
 	
 	put() {

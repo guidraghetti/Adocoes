@@ -18,13 +18,10 @@ export default class Interactor {
 			})
 	}
 	
-	delete(body) {
+	delete(id) {
 		const entity = new this.Entity()
 
-		return entity.validateToken(body)
-			.then(body => {
-				entity.delete(body)
-			})
+		return entity.delete(id)
 	}
 	
 	put(body) {
