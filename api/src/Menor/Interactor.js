@@ -5,8 +5,10 @@ export default class Interactor {
 
 	create(body) {
 		const entity = new this.Entity()
-		
-		return entity.create(body)
+		return entity.validateToken(body)
+			.then(body => {
+				entity.create(body)
+			})
 	}
 
 	fetchAll(body) {
@@ -16,7 +18,5 @@ export default class Interactor {
 			.then(body => {
 				entity.fetchAll()
 			})
-
-
 	}
 }
