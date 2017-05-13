@@ -23,7 +23,7 @@ export default class Interactor {
 
 		return entity.validateToken(body)
 			.then(body => {
-				entity.delete()
+				entity.delete(body)
 			})
 	}
 	

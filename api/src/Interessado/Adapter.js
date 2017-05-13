@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Interessado = mongoose.model('interessado')
+		this.Interessado = mongoose.model('Interessado')
 	}
 
 	save(body) {
@@ -15,16 +15,11 @@ export default class Adapter {
 		return this.Interessado.find((err, doc) => {
 			console.log(doc)
 		})
-	}
+	}	
 	
-	validateToken(body) {
-		return new Promise((resolve, reject) => {
-			resolve(body)
-		})
-	}
-	
-	delete(body) {
-		return interessado.delete()
+	delete(body){
+		console.log(body.id)
+		return this.Interessado.remove({_id: body.id })
 	}
 	
 	addInsert() {		

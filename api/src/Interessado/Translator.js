@@ -51,6 +51,8 @@ export default class Translator {
 
         const interactor = new this.Interactor()
 
+		body.id = request.params.id
+		
         interactor.delete(body)
             .then(message => {
                 response.send(200, message)
