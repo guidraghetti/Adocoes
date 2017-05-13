@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Interessado = mongoose.model('Interessado')
+		this.Interessado = mongoose.model('interessado')
 	}
 
 	save(body) {
@@ -12,7 +12,9 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-		return this.Interessado.find()
+		return this.Interessado.find((err, doc) => {
+			console.log(doc)
+		})
 	}
 	
 	validateToken(body) {
@@ -25,14 +27,14 @@ export default class Adapter {
 		return interessado.delete()
 	}
 	
-	delete	
-	addInterest
-	fetchAllMenores
-	putMenores
-	insertView
-	fetchAllViews
-	insertInterest
-	fetchAllInterest
-	deleteInterest
+	//delete	
+	//addInterest
+	//fetchAllMenores
+	//putMenores
+	//insertView
+	//fetchAllViews
+	//insertInterest
+	//fetchAllInterest
+	//deleteInterest
 	
 }

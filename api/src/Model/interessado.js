@@ -12,4 +12,4 @@ var interessadoSchema = new Schema({
 	// ...
 });
 
-var Interessado = mongoose.model('Interessado', interessadoSchema);
+mongoose.model('interessado', interessadoSchema)
