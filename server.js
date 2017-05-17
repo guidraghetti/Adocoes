@@ -5,6 +5,9 @@ import UsuarioTranslator from './api/src/Usuario/Translator'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
 import MenorTranslator from './api/src/Menor/Translator'
 
+import AuthManager from './api/src/Auth/authManager';
+import Oauth2Manager from './api/src/Auth/oauth2Manager';
+
 require('./database.js')
 
 const server = restify.createServer()
@@ -76,7 +79,7 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
     conteudoTranslator.deleteVideo(request, response)
 })
 
-server.post('/menores', (request, response, next) => {
+server.post('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.post(request, response)
 })
@@ -95,6 +98,8 @@ server.get('/usuarios', (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.get(request, response)
 })
+
+server.post('/oauth2/token', AuthManager.isClientAuthenticated, Oauth2Manager.token);
 
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
