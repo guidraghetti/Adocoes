@@ -1,5 +1,7 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
+
+import UsuarioTranslator from './api/src/Usuario/Translator'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
 import MenorTranslator from './api/src/Menor/Translator'
 
@@ -82,6 +84,16 @@ server.post('/menores', (request, response, next) => {
 server.get('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
+})
+
+server.post('/usuarios', (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.post(request, response)
+})
+
+server.get('/usuarios', (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.get(request, response)
 })
 
 server.listen(port, function() {

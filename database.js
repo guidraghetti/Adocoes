@@ -1,5 +1,10 @@
 import mongoose from 'mongoose'
 
+require('./api/src/Model/Auth/Client')
+require('./api/src/Model/Auth/Code')
+require('./api/src/Model/Auth/Token')
+
+require('./api/src/Model/user')
 require('./api/src/Model/Conteudo')
 require('./api/src/Model/Menor')
 require('./api/src/Model/Interessado')
