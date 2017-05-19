@@ -32,6 +32,7 @@ server.post('/conteudos', (request, response, next) => {
 server.get('/conteudos', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.get(request, response)
+})
 
 server.post('/conteudos/:id/imagens', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
@@ -66,4 +67,3 @@ server.get('/menores', (request, response, next) => {
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
 })
-
