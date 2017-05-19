@@ -12,8 +12,13 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-		return this.Conteudo.find({}, (err, doc) => 
-			{console.log(doc)})
+		return this.Conteudo.find()
+	}
+	
+	fetchAndAddImage(body) {
+		console.log('Adapter')
+		return this.Conteudo.findOneAndUpdate({_id: body.id}, 
+			{$pushAll: {'images': body.images}}, {upsert: true, new: true})
 	}
 
 	fetchAndUpdate(body){

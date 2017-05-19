@@ -68,10 +68,25 @@ export default class Translator {
 
 		interactor.getImage(body)
             .then(message => {
+			})
+			.catch(error => {
+				console.log(error)
+		})
+	}
+
+	postImages(request, response) {
+		let { body } = request
+		body.id = request.params.id
+
+		const interactor = new this.Interactor()
+		
+        interactor.addImage(body)
+            .then(message => {
                 response.send(200, message)
             })
             .catch(error => {
                 console.log(error)
             })
 	}
+
 }

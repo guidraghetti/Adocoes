@@ -37,4 +37,10 @@ export default class Entity {
 		
 		return adapter.getImagem(body.id)
 	}
+
+	addImage(body) {
+		const adapter = new this.Adapter()
+
+		return adapter.fetchAndAddImage(body)
+	}
 }
