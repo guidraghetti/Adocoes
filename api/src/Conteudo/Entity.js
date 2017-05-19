@@ -43,4 +43,22 @@ export default class Entity {
 
 		return adapter.fetchAndAddImage(body)
 	}
+
+	find(body) {
+		const adapter = new this.Adapter()
+		
+		return adapter.fetch(body.id)
+	}
+
+	deleteVideo(body) {
+		const adapter = new this.Adapter()
+		
+		return adapter.deleteVideo(body.id)
+	}
+
+	createVideo(body) {
+		const adapter = new this.Adapter()
+
+		return adapter.addVideo(body)
+	}
 }

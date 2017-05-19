@@ -17,9 +17,9 @@ export default class Translator {
             })
 	}
 
-	get(request, response) {
+	getAllVideos(request, response) {
 		const { body } = request
-	
+
 		const interactor = new this.Interactor()
 
 		interactor.fetchAll(request.header.accessToken)
@@ -38,6 +38,29 @@ export default class Translator {
 		interactor.update(body)
             .then(message => {
                 response.send(200, message)
+    	})
+    }
+
+    get(request, response) {
+        const interactor = new this.Interactor()
+        
+        interactor.find(body)
+            .then(message => {
+                console.log(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
+	
+	deleteVideo(request, response) {
+		const { body } = request
+
+        const interactor = new this.Interactor()
+
+        interactor.deleteVideo(body)
+            .then(message => {
+                console.log(200, message)
             })
             .catch(error => {
                 console.log(error)
@@ -89,4 +112,17 @@ export default class Translator {
             })
 	}
 
+	postVideo(request, response) {
+		let { body } = request
+
+		body.id = request.params.id
+		
+		const interactor = new this.Interactor()
+
+		interactor.createVideo(body).then(message => {
+			response.send(200, message)
+		}).catch(error => {
+			console.log(error)
+		})
+	}
 }

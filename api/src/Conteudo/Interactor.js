@@ -17,7 +17,8 @@ export default class Interactor {
 				entity.fetchAll()
 			})
 	}
-	
+
+<<<<<<< HEAD
 	update(body){
 
 		const entity = new this.Entity()
@@ -39,7 +40,19 @@ export default class Interactor {
 		const entity = new this.Entity()
 		
 		return entity.getImagem(body)	
+	}
 
+	findConteudo(body) {
+		const entity = new this.Entity()
+
+		return entity.find(body)
+	}
+
+	deleteVideo(body) {
+
+		const entity = new this.Entity()
+
+		return entity.delete(body)
 	}
 	
 	addImage(body) {
@@ -47,5 +60,11 @@ export default class Interactor {
 		const entity = new this.Entity()
 
 		return entity.addImage(body)
+	}
+
+	createVideo(body) {
+		const entity = new this.Entity()
+
+		return entity.createVideo(body)
 	}
 }

@@ -26,12 +26,22 @@ export default class Adapter {
 			return doc
 		})
 	}
-
-	delete(id){
-		return this.Conteudo.remove({_id: id })
+	
+	getImage(id){
+		return this.Conteudo.find({_id: id })
 	}
 
-	getImage(id){
-		return this.Conteudo.getImagem({_id: id })
+	fetch(id) {
+		
+		return this.Conteudo.find({_id: id})
+	}
+
+	delete(id) {
+		
+		return this.Conteudo.remove({_id: id})
+	}
+
+	addVideo(body) {
+		return this.Conteudo
 	}
 }
