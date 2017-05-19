@@ -15,4 +15,18 @@ export default class Adapter {
 		return this.Conteudo.find({}, (err, doc) => 
 			{console.log(doc)})
 	}
+
+	fetchAndUpdate(body){
+		return this.Conteudo.findOneAndUpdate({_id: body.id },{new: true}, body, (err, doc) => {
+			return doc
+		})
+	}
+
+	delete(id){
+		return this.Conteudo.remove({_id: id })
+	}
+
+	getImage(id){
+		return this.Conteudo.getImagem({_id: id })
+	}
 }

@@ -16,8 +16,29 @@ export default class Interactor {
 			.then(body => {
 				entity.fetchAll()
 			})
-
-
 	}
 	
+	update(body){
+
+		const entity = new this.Entity()
+		
+		return entity.update(body)	
+
+	}
+
+	remove(body){
+
+		const entity = new this.Entity()
+		
+		return entity.remove(body)	
+
+	}
+
+	getImage(body){
+
+		const entity = new this.Entity()
+		
+		return entity.getImagem(body)	
+
+	}
 }

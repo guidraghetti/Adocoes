@@ -34,6 +34,21 @@ server.get('/conteudos', (request, response, next) => {
     conteudoTranslator.get(request, response)
 })
 
+server.put('/conteudos', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.put(request, response)
+})
+
+server.del('/conteudos/:id', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.delete(request, response)
+})
+
+server.del('/conteudos/:id/imagens/:imageId', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.delete(request, response)
+})
+
 server.post('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.post(request, response)
@@ -43,8 +58,6 @@ server.get('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
 })
-
-
 
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
