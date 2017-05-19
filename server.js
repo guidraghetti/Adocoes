@@ -5,8 +5,11 @@ import UsuarioTranslator from './api/src/Usuario/Translator'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
 import MenorTranslator from './api/src/Menor/Translator'
 
-import AuthManager from './api/src/Auth/authManager';
-import Oauth2Manager from './api/src/Auth/oauth2Manager';
+import AuthManager from './api/src/Auth/authManager'
+import Oauth2Manager from './api/src/Auth/oauth2Manager'
+
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 require('./database.js')
 
@@ -84,19 +87,35 @@ server.post('/menores', AuthManager.isAuthenticated, (request, response, next) =
     menorTranslator.post(request, response)
 })
 
-server.get('/menores', (request, response, next) => {
+server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
 })
 
-server.post('/usuarios', (request, response, next) => {
+
+server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.post(request, response)
 })
 
-server.get('/usuarios', (request, response, next) => {
+server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.get(request, response)
+})
+
+server.get('/usuarios/:id_usuario',  (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.getById(request, response)
+})
+
+server.put('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.put(request, response)
+})
+
+server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.delete(request, response)
 })
 
 server.post('/oauth2/token', AuthManager.isClientAuthenticated, Oauth2Manager.token);

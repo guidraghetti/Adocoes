@@ -1,16 +1,25 @@
 export default class Entity {
 	constructor(deps = {}) {
-		this.Adapter = deps.Adapter || require('./Adapter').default
+		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
 	}
 
-	create(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.save(body)
+	salvar(usuario) {
+		return this.Adapter.salvar(usuario)
 	}
 
 	fetchAll() {
-		const adapter = new this.Adapter()
-		return adapter.fetchAll()
+		return this.Adapter.fetchAll()
+	}
+
+	findById(id) {
+		return this.Adapter.findById(id)
+	}
+
+	update(id, body) {
+		return this.Adapter.update(id, body)
+	}
+
+	delete(id) {
+		return this.Adapter.delete(id)
 	}
 }

@@ -10,7 +10,7 @@ require('./api/src/Model/Menor')
 require('./api/src/Model/Interessado')
 require('./api/src/Model/Interesse')
 
-const db = 'mongodb://localhost:27017/test'
+const db = 'mongodb://localhost:27017/Adocoes'
 
 mongoose.connect(db)
 
