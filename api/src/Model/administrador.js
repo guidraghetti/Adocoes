@@ -2,13 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
-var interessadoSchema = new Schema({
+var administradorSchema = new Schema({
 	_id : ObjectId,
-	nomeConjuge: String,
-	dataNascimento: Date,
-	renda: Number,
+	matricula: String,
 	ativo: Boolean,
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var Interessado = mongoose.model('Interessado', interessadoSchema);
+var Administrador = mongoose.model('Administrador', administradorSchema);
