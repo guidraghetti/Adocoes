@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId;
 
 var interessadoSchema = new Schema({
@@ -11,4 +11,5 @@ var interessadoSchema = new Schema({
 	//Relacionamentos com outros Schemas:
 	// ...
 });
+
 var Interessado = mongoose.model('Interessado', interessadoSchema);
