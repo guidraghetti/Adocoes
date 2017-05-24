@@ -1,8 +1,11 @@
 var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
 var interesseSchema = new Schema({
-	idInteressado: String,
-	idMenor: String,
-	timeStamp: Date
-})
+	_id: ObjectId, 
+	ativo: Boolean,
+	//necessário instanciar timesStamp:
+	timeStamp: 
+});
+var Interesse = mongoose.model('Interesse', interesseSchema);
