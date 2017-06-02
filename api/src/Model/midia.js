@@ -4,6 +4,7 @@ var ObjectId = Schema.Types.ObjectId;
 
 
 var MidiaSchema = new Schema({
+	
 	_id: ObjectId,
 	conteudo: BinData,
 	ativo: Boolean

@@ -7,5 +7,6 @@ var AdministradorSchema = new Schema({
 	_id: ObjectId,
 	matricula: String,
 	ativo: Boolean
+	
 })
 var Administrador = mongoose.model('Administrador', administradorSchema);
