@@ -4,6 +4,7 @@ var ObjectId = Schema.Types.ObjectId;
 
 
 var AdministradorSchema = new Schema({
+	_id: ObjectId,
 	matricula: String,
 	ativo: Boolean
 })
