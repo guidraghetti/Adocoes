@@ -7,7 +7,7 @@ var interessadoSchema = new Schema({
 	nomeConjuge: String,
 	dataNascimento: Date,
 	renda: Number,
-	ativo: Boolean,
+	ativo: Boolean
 	//Relacionamentos com outros Schemas:
 	// ...
 });
