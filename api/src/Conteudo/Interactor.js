@@ -18,7 +18,6 @@ export default class Interactor {
 			})
 	}
 
-<<<<<<< HEAD
 	update(body){
 
 		const entity = new this.Entity()
@@ -56,7 +55,6 @@ export default class Interactor {
 	}
 	
 	addImage(body) {
-		console.log('Interactor')
 		const entity = new this.Entity()
 
 		return entity.addImage(body)
