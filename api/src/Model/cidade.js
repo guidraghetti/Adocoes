@@ -1,9 +1,18 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var cidadeSchema = new Schema({
+const cidadeSchema = Schema({
 	_id: ObjectId,
+	nome: String,
+	refEstado: { type: Schema.ObjectId, ref: 'estados' }
+});
+
+mongoose.model('Cidade', cidadeSchema);
+
+const estadoSchema = Schema({
+	_id: ObjectId,
+	sigla: String,
 	nome: String
 });
-var Cidade = mongoose.model('Cidade', cidadeSchema);
+
+mongoose.model('Estado', estadoSchema);
