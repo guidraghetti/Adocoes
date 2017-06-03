@@ -1,16 +1,15 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var enderecoSchema = new Schema({
+export default const enderecoSchema = new Schema({
 	_id : ObjectId,
 	logradouro: String,
 	numero: String,
 	complemento: String,
 	bairro: String,
 	cep: String,
-	ativo: Boolean
-	//Relacionamentos com outros Schemas:
-	// ...
-});
-var Endereco = mongoose.model('Endereco', enderecoSchema);
+	refCidade: { type: ObjectId, ref: 'cidades' }
+})
+
+mongoose.model('Endereco', enderecoSchema);

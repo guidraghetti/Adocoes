@@ -1,11 +1,10 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-
-var RacaSchema = new Schema({
+const RacaSchema = new Schema({
 	_id: ObjectId,
 	nome: String
-	
 })
-var RacaSchema = mongoose.model('Raca', racaSchema);
+
+mongoose.model('Raca', racaSchema)

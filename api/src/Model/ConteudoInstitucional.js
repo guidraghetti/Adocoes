@@ -1,14 +1,16 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
+const Timestamp = Schema.Types.Timestamp
 
-var conteudoInstitucionalSchema = new Schema({
+const conteudoInstitucionalSchema = new Schema({
 	_id: ObjectId,
 	nome: String,
 	ativo: Boolean,
 	//necessário instanciar timesStamps:
-	timestampCriacao: 
-	timestampInicio: 
-	timestampFim: 
-});
-var ConteudoInstitucional = mongoose.model('ConteudoInstitucional', conteudoInstitucionalSchema);
+	timestampCriacao: timestampSchema,
+	timestampInicio: timestampSchema,
+	timestampFim: timestampSchema
+})
+
+mongoose.model('ConteudoInstitucional', conteudoInstitucionalSchema)

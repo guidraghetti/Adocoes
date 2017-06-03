@@ -1,12 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+var ObjectId = Schema.Types.ObjectId
 
-var estadoSchema = new Schema({
-	_id : ObjectId,
-	nome: String,
-	single: String
-	//Relacionamentos com outros Schemas:
-	// ...
-});
-var Estado = mongoose.model('Estado', estadoSchema);
+const estadoSchema = Schema({
+	_id: ObjectId,
+	sigla: String,
+	nome: String
+})
+
+mongoose.model('Estado', estadoSchema)

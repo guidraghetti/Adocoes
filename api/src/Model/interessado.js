@@ -1,20 +1,21 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var interessadoSchema = new Schema({
-<<<<<<< 031c645cd1a3651a5ea366c559994b65dbe29fd8
+const documentoSchema = require('./documento.js').default
+const enderecoSchema = require('./endereco.js').default
+const telefoneSchema = require('./telefone.js').default
+
+const interessadoSchema = new Schema({
 	_id : ObjectId,
+	name: String
 	nomeConjuge: String,
 	dataNascimento: Date,
 	renda: Number,
+	documentos: [ documentoSchema ],
+	enderecos: [ enderecoSchema ],
+	telefones: [ telefoneSchema ],
 	ativo: Boolean
-	//Relacionamentos com outros Schemas:
-	// ...
-});
-=======
-	name: String
 })
->>>>>>> update
 
 mongoose.model('interessado', interessadoSchema)

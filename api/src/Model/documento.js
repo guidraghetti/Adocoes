@@ -1,13 +1,16 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var documentoSchema = new Schema({
+const base64Schema = require('./base64.js').default
+
+export default const documentoSchema = new Schema({
 	_id: ObjectId,
 	dataEmissao: Date,
 	ativo: Boolean,
 	orgaoEmissor: String,
-	//Relacionamentos com outros Schemas:
-	// ...
-});
-var Documento = mongoose.model('Documento', documentoSchema);
+	imagem: base64Schema,
+	refTipoDocument: { type: ObjectId, ref: 'tiposDocumentos' }
+})
+
+mongoose.model('Documento', documentoSchema)

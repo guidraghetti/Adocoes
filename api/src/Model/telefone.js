@@ -1,11 +1,12 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var telefoneSchema = new Schema({
+export default const telefoneSchema = new Schema({
 	_id: ObjectId,	
 	ddd: Number,
 	numero: Number,
 	ativo: Boolean
-});
-var Telefone = mongoose.model('Telefone', telefoneSchema);
+})
+
+mongoose.model('Telefone', telefoneSchema)

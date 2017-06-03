@@ -1,12 +1,13 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var abrigoSchema = new Schema({
+const abrigoSchema = new Schema({
 	_id : ObjectId,
 	nome: String,
 	ativo: Boolean,
-	//Relacionamentos com outros Schemas:
-	// ...
-});
-var Abrigo = mongoose.model('Abrigo', abrigoSchema);
+	refEndereco: Endereco,
+	refRede: { type: Schema.ObjectId, ref: 'redes' }
+})
+
+mongoose.model('Abrigo', abrigoSchema);

@@ -1,12 +1,11 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-
-var FamiliarSchema = new Schema({
+const familiarSchema = new Schema({
 	_id: ObjectId,
-	name: String,
-	ativo: Boolean
-	
+	nome: String,
+	refParentesco: { type: ObjectId, ref: 'parentes' }
 })
-var Familiar = mongoose.model('Familiar', familiarSchema);
+
+mongoose.model('Familiar', familiarSchema)
