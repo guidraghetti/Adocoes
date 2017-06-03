@@ -12,6 +12,13 @@ export default class Adapter {
 		return interessado.save()
 	}	
 
+	fetchOne(id) {
+		console.log(id)
+        return this.Interessado.findById(id, (err, result) => {
+        	console.log(result)
+        })
+	}
+
 	fetchAll() {
 		return this.Interessado.find((err, doc) => {
 			console.log(doc)
@@ -19,10 +26,14 @@ export default class Adapter {
 	}	
 	
 	delete(id){
-		console.log(id)
 		return this.Interessado.remove({_id: id})
 	}
 	
+	fetchOneAndUpdate(body) {
+
+		return this.Interessado.findOneAndUpdate({_id: body.id }, {upsert: true, new: true}, body)
+	}
+
 	addInsert() {		
 	}
 	

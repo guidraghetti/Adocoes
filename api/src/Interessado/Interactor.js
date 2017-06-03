@@ -7,9 +7,15 @@ export default class Interactor {
 		const entity = new this.Entity()
 		
 		return entity.validate(body).then(body => {
-			create(body) }
+			entity.create(body) 
+		})
 	}
 	
+	findOneInteressado(body) {
+		const entity = new this.Entity()
+
+		return entity.fetchOne(body.id)
+	}
 
 	fetchAll(body) {
 		const entity = new this.Entity()
@@ -26,13 +32,10 @@ export default class Interactor {
 		return entity.delete(id)
 	}
 	
-	put(body) {
+	update(body) {
 		const entity = new this.Entity()
 
-		return entity.validateToken(body)
-			.then(body => {
-				entity.update()
-			})
+		return entity.update(body)
 	}	
 	
 	addInterest(body) {

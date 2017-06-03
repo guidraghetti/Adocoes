@@ -1,12 +1,12 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var organizacaoSchema = new Schema({
+const organizacaoSchema = new Schema({
 	_id : ObjectId,
 	nome: String,
 	ativo: Boolean,
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var Organizacao = mongoose.model('Organizacao', organizacaoSchema);
+const Organizacao = mongoose.model('Organizacao', organizacaoSchema);

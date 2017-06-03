@@ -135,6 +135,16 @@ server.del('/interessados/:id', (request, response, next) => {
 	interessadosTranslator.delete(request, response)
 })
 
+server.get('/interessados/:id', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.getInteressado(request, response)
+})
+
+server.put('/interessados/:id', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.put(request, response)
+})
+
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
 })

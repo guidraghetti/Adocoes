@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var cartaSchema = new Schema({
+const cartaSchema = new Schema({
 	_id : ObjectId
 });
-var Carta = mongoose.model('Carta', cartaSchema);
+const Carta = mongoose.model('Carta', cartaSchema);

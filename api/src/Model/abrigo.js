@@ -6,7 +6,7 @@ const abrigoSchema = new Schema({
 	_id : ObjectId,
 	nome: String,
 	ativo: Boolean,
-	refEndereco: Endereco,
+	refEndereco: { type: Schema.ObjectId, ref: 'enderecos' },
 	refRede: { type: Schema.ObjectId, ref: 'redes' }
 })
 

@@ -8,7 +8,8 @@ export default class Interactor {
 		const entity = new this.Entity()
 		
 		return entity.validate(body).then(body => {
-			create(body) }
+			entity.create(body) 
+		})
 	}
 
 	fetchAll(body) {
@@ -20,7 +21,6 @@ export default class Interactor {
 			})
 	}
 
-<<<<<<< HEAD
 	update(body){
 
 		const entity = new this.Entity()

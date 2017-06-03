@@ -31,9 +31,31 @@ export default class Translator {
             })
 	}
 
-	put(request, response) {
-		const { body } = request
+	getInteressado(request, response) {
+		const body = {
+			id: request.params.id,
+			...request.body
+		}
 
+		const interactor = new this.Interactor()
+
+		interactor.findOneInteressado(body)
+			.then(message => {
+				response.json(200, message)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+	}
+
+	put(request, response) {
+		const body = {
+			id: request.params.id,
+			...request.body
+		}
+
+		delete body._id
+		
         const interactor = new this.Interactor()
 
         interactor.update(body)

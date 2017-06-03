@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-nodejs');
 
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
@@ -22,7 +22,7 @@ userSchema.methods.verifyPassword = function (password, callback) {
 
 // execute before each user.save() call
 userSchema.pre('save', function (callback) {
-  var user = this;
+  const user = this
 
   if (!user.isModified('password')) return callback();
 
@@ -33,7 +33,7 @@ userSchema.pre('save', function (callback) {
     bcrypt.hash(user.password, salt, null, function (err, hash) {
       if (err) return callback(err);
 
-      user.password = hash;
+      user.password = hash
       callback();
     });
   });

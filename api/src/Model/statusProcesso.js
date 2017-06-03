@@ -1,11 +1,11 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
-var StatusProcessoSchema = new Schema({
+const statusProcessoSchema = new Schema({
 	_id: ObjectId,
 	nome: String
 	
 })
-var StatusProcessoSchema = mongoose.model('StatusProcesso', statusProcessoSchema);
+const StatusProcessoSchema = mongoose.model('StatusProcesso', statusProcessoSchema);
