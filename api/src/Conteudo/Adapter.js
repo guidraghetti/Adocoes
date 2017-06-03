@@ -12,12 +12,13 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-		return this.Conteudo.find()
+		return new Promise((resolve, reject) => {
+            resolve(123)
+        })
 	}
 	
-	
 	fetchAndAddImage(body) {
-		console.log('Adapter')
+
 		return this.Conteudo.findOneAndUpdate({_id: body.id}, 
 			{$pushAll: {'images': body.images}}, {upsert: true, new: true})
 	}

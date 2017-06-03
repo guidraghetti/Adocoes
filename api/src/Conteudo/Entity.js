@@ -3,14 +3,11 @@ export default class Entity {
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || require('./Adapter').default
 	}
-
 	
 	create(body) {
-		const entity = new this.Adapter()
-		
-		return entity.validate(body).then(body => {
-			entity.create(body) 
-		})
+		const adapter = new this.Adapter()
+
+		return adapter.save(body)
 	}
 
 	fetchAll() {
@@ -25,7 +22,7 @@ export default class Entity {
 	}
 
 	validate(body) {
-
+		console.log(body)
 		const schema = Joi.object({
 			_id: Joi.string().required(),
 			nome: Joi.string().required(),
@@ -36,7 +33,7 @@ export default class Entity {
 		})
 
 		const {error, value} = Joi.validate(body, schema)
-		
+
 		return new Promise((resolve, reject) => {
             
             if(error) {
@@ -45,6 +42,7 @@ export default class Entity {
                     status: 400,
                     messages
                 })
+
             } else if(value) {
                 resolve(value)
             }
@@ -95,6 +93,7 @@ export default class Entity {
 
 	fetchAll() {
 		const adapter = new this.Adapter()
+		
 		return adapter.fetchAll()
 	}
 

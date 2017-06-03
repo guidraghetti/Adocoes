@@ -34,7 +34,7 @@ export default class Interactor {
 	
 	update(body) {
 		const entity = new this.Entity()
-
+		
 		return entity.update(body)
 	}	
 	

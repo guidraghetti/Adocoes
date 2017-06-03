@@ -45,9 +45,10 @@ export default class Translator {
     get(request, response) {
         const interactor = new this.Interactor()
         
-        interactor.find(body)
+        interactor.fetchAll()
             .then(message => {
-                console.log(200, message)
+            	console.log(message)
+                response.json(200, message)
             })
             .catch(error => {
                 console.log(error)

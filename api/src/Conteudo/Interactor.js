@@ -3,22 +3,22 @@ export default class Interactor {
 		this.Entity = deps.Entity || require('./Entity').default
 	}
 
-
 	create(body) {
 		const entity = new this.Entity()
-		
+
 		return entity.validate(body).then(body => {
 			entity.create(body) 
 		})
 	}
 
-	fetchAll(body) {
-		const entity = new this.Entity()
+	fetchAll() {
+		// const entity = new this.Entity()
 
-		return entity.validateToken(body)
-			.then(body => {
-				entity.fetchAll()
-			})
+		// return entity.fetchAll()
+
+		return new Promise((resolve, reject) => {
+			resolve(123)
+		})
 	}
 
 	update(body){
