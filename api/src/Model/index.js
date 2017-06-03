@@ -2,7 +2,7 @@ import Abrigo from './abrigo'
 import Administrador from './administrador'
 import Carta from './carta'
 import Cidade from './cidade'
-import ConteudoInstitucional from './ConteudoInstitucional'
+import Conteudo from './Conteudo'
 import Documento from './documento'
 import Endereco from './endereco'
 import Estado from './estado'
@@ -32,15 +32,17 @@ import User from './user'
 import Usuario from './usuario'
 import Video from './video'
 import Vinculo from './vinculo'
+import Base64 from './base64'
 import Visualizacao from './visualizacao'
 
 
 export {
 	Abrigo,
 	Administrador,
+	Base64,
 	Carta,
 	Cidade,
-	ConteudoInstitucional,
+	Conteudo,
 	Documento,
 	Endereco,
 	Estado,
