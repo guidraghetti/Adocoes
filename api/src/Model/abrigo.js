@@ -9,7 +9,7 @@ const abrigoSchema = new Schema({
 		required: true
 	},
 	refRede: {
-		type: ObjectId,
+		type:  mongoose.Schema.Types.ObjectId,
 		ref: 'redes'
 	},
 	endereco: {

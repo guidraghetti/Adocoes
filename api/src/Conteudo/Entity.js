@@ -10,11 +10,6 @@ export default class Entity {
 		return adapter.save(body)
 	}
 
-	fetchAll() {
-		const adapter = new this.Adapter()
-		return adapter.fetchAll()
-	}
-
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
 			resolve(body)
@@ -22,7 +17,6 @@ export default class Entity {
 	}
 
 	validate(body) {
-		console.log(body)
 		const schema = Joi.object({
 			_id: Joi.string().required(),
 			nome: Joi.string().required(),
@@ -92,10 +86,10 @@ export default class Entity {
 	}
 
 	fetchAll() {
-		const adapter = new this.Adapter()
-		
-		return adapter.fetchAll()
-	}
+        let adapter = new this.Adapter()
+
+        return adapter.fetchAll()
+    }
 
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
@@ -143,5 +137,11 @@ export default class Entity {
 		const adapter = new this.Adapter()
 
 		return adapter.addVideo(body)
+	}
+
+	fetchAllVideos(id) {
+		const adapter = new this.Adapter()
+
+		return adapter.fetchAllVideos(id)
 	}
 }

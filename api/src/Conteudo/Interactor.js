@@ -4,22 +4,19 @@ export default class Interactor {
 	}
 
 	create(body) {
-		const entity = new this.Entity()
+		let entity = new this.Entity()
 
 		return entity.validate(body).then(body => {
-			entity.create(body) 
+			return entity.create(body) 
 		})
 	}
 
-	fetchAll() {
-		// const entity = new this.Entity()
+	fetchAll() {     
 
-		// return entity.fetchAll()
+        let entity = new this.Entity()
 
-		return new Promise((resolve, reject) => {
-			resolve(123)
-		})
-	}
+        return entity.fetchAll()
+    }
 
 	update(body){
 
@@ -70,15 +67,6 @@ export default class Interactor {
 		return entity.createVideo(body)
 	}
 
-	fetchAll(body) {
-		const entity = new this.Entity()
-
-		return entity.validateToken(body)
-			.then(body => {
-				entity.fetchAll()
-			})
-	}
-
 	update(body){
 
 		const entity = new this.Entity()
@@ -125,5 +113,11 @@ export default class Interactor {
 		const entity = new this.Entity()
 
 		return entity.createVideo(body)
+	}
+
+	fetchAllVideos(id) {
+		const entity = new this.Entity()
+
+		return entity.fetchAllVideos(id)
 	}
 }

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const base64Schema = require('./base64')
+
 const documentoSchema = new Schema({
 	numero: {
 		type: String,

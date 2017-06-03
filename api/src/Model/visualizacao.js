@@ -3,12 +3,12 @@ const Schema = mongoose.Schema
 
 const visualizacaoSchema = new Schema({
 	refInteressado: {
-		type: ObjectId,
-		ref: 'interessados'
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'interessados',
 		required: true
 	},
 	refMenor: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'menores',
 		required: true
 	},

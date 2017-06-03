@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const vinculoSchema = new Schema({
 	refMenor: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'menores',
 		required: true
 	},

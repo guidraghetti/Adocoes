@@ -36,6 +36,13 @@ server.get('/', function (req, res, next) {
         unix_now: now.unix()
     })
 })
+// RFC06: GET     /conteudos/{id_conteudo}/imagens
+// RFC07: GET     /conteudos/{id_conteudo}/imagens/{id_imagem}
+
+server.get('/conteudos/:id/imagens', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.fetchImages(request, response)
+})
 
 //
 // Resource: oauth
