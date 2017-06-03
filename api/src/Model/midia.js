@@ -1,13 +1,13 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
-var midiaSchema = new Schema({
+const midiaSchema = new Schema({
 	
 	_id: ObjectId,
 	// conteudo: BinData,
 	ativo: Boolean
 	
 })
-var MidiaSchema = mongoose.model('Midia', midiaSchema);
+const MidiaSchema = mongoose.model('Midia', midiaSchema);

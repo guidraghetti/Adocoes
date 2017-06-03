@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var tipoParentescoSchema = new Schema({
+const tipoParentescoSchema = new Schema({
 	_id : ObjectId,
 	nome: String,
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var TipoParentesco = mongoose.model('TipoParentesco', tipoParentescoSchema);
+const TipoParentesco = mongoose.model('TipoParentesco', tipoParentescoSchema);

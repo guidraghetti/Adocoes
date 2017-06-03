@@ -1,12 +1,12 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
-var administradorSchema = new Schema({
+const administradorSchema = new Schema({
 	_id: ObjectId,
 	matricula: String,
 	ativo: Boolean
 	
 })
-var Administrador = mongoose.model('Administrador', administradorSchema);
+const Administrador = mongoose.model('Administrador', administradorSchema);

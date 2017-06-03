@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var imagemSchema = new Schema({
+const imagemSchema = new Schema({
 	_id : ObjectId
 });
-var Imagem = mongoose.model('Imagem', imagemSchema);
+const Imagem = mongoose.model('Imagem', imagemSchema);

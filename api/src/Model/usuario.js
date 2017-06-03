@@ -1,9 +1,9 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
-var usuarioSchema = mongoose.Schema({
+const usuarioSchema = mongoose.Schema({
 	_id: ObjectId,
 	nome: String,
 	email: String, 
@@ -11,4 +11,4 @@ var usuarioSchema = mongoose.Schema({
 	ativo: Boolean
 })
 
-var Usuario = mongoose.model('Usuario', usuarioSchema);
+const Usuario = mongoose.model('Usuario', usuarioSchema);

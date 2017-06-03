@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 
-var visualizacaoSchema = new Schema({
+const visualizacaoSchema = new Schema({
 	_id : ObjectId,
 	//necessário instanciar timesStamps:
 	// timestampInicio: 
@@ -11,4 +11,4 @@ var visualizacaoSchema = new Schema({
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var Visualizacao = mongoose.model('Visualizacao', visualizacaoSchema);
+const Visualizacao = mongoose.model('Visualizacao', visualizacaoSchema);

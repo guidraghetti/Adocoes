@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
-const parentescoSchema = new Schema({
+const base64Schema = new Schema({
 	_id: ObjectId,
-	parentesco: String
+	conteudo: String
 })
 
-mongoose.model('Parentesco', parentescoSchema)
+mongoose.model('Base64', base64Schema)

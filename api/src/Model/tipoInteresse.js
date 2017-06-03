@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var tipoInteresseSchema = new Schema({
+const tipoInteresseSchema = new Schema({
 	_id : ObjectId,
 	nome: String
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var tipoInteresse = mongoose.model('tipoInteresse', tipoInteresseSchema);
+const tipoInteresse = mongoose.model('tipoInteresse', tipoInteresseSchema);
