@@ -13,13 +13,6 @@ const interessadoSchema = new Schema({
 		type: String
 	},
 	cpf: {
-		numero: {
-			type: String,
-			required: true
-		},
-		imagem: {
-			type: base64Schema
-		},
 		required: true
 	}
 	nomeConjuge: {
@@ -33,33 +26,14 @@ const interessadoSchema = new Schema({
 		required: true
 	},
 	renda: {
-		valor: {
-			type: Number,
-			required: true
-		},
-		comprovantes: [{
-			type: base64Schema
-		}]
+		type: Number,
+		required: true
 	},
+	comprovantesRenda: [{
+		type: base64Schema
+	}],
 	outrosDocumentos: [{
-		numero: {
-			type: String,
-			required: true
-		},
-		dataEmissao: {
-			type: Date
-		},
-		orgaoEmissor: {
-			type: String
-		},
-		tipoDocumento: {
-			type: String,
-			enum: [ 'rg', 'carteira de motorista' ],
-			required: true
-		},
-		imagem: {
-			type: base64Schema
-		}
+		type: documentoSchema
 	}],
 	enderecos: [{
 		type: enderecoSchema
@@ -82,4 +56,4 @@ const interessadoSchema = new Schema({
 	}
 })
 
-mongoose.model('interessado', interessadoSchema)
+mongoose.model('Interessado', interessadoSchema)
