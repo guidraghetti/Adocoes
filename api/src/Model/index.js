@@ -32,12 +32,14 @@ import User from './user'
 import Usuario from './usuario'
 import Video from './video'
 import Vinculo from './vinculo'
+import Base64 from './base64'
 import Visualizacao from './visualizacao'
 
 
 export {
 	Abrigo,
 	Administrador,
+	Base64,
 	Carta,
 	Cidade,
 	Conteudo,
