@@ -19,6 +19,7 @@ export default class Entity {
 			resolve(body)
 		})
 	}
+	
 	validate(body, schema) {
 
 

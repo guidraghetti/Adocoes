@@ -10,7 +10,6 @@ export default class Interactor {
 			create(body) }
 	}
 
-
 	fetchAll(body) {
 		const entity = new this.Entity()
 

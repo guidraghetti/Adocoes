@@ -3,6 +3,7 @@ export default class Entity {
 		this.Adapter = deps.Adapter || require('./Adapter').default
 	}
 
+	
 	create(body) {
 		const entity = new this.Entity()
 		

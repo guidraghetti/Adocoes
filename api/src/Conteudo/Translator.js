@@ -3,6 +3,7 @@ export default class Translator {
 		this.Interactor = deps.Interactor || require('./Interactor').default
 	}
 
+
 	post(request, response) {
 		const { body } = request
 

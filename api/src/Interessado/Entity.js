@@ -8,6 +8,7 @@ export default class Entity {
 		
 		return adapter.save(body)
 	}
+	
 
 	fetchAll() {
 		const adapter = new this.Adapter()
