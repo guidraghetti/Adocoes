@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 const Timestamp = Schema.Types.Timestamp
 
 const conteudoSchema = new Schema({
-	_id: ObjectId,
+	_id: String,
 	nome: String,
 	ativo: Boolean,
 	//necessário instanciar timesStamps:

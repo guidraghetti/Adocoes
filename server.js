@@ -41,6 +41,10 @@ server.post('/conteudos', (request, response, next) => {
 server.get('/conteudos', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.get(request, response)
+
+    // mongoose.model('Conteudo').find({}, (err, result) => {
+    //     response.send(200, result)
+    // })
 })
 
 server.post('/conteudos/:id/imagens', (request, response, next) => {
