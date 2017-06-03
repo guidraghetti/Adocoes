@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
-
-var cidadeSchema = new Schema({
-	_id: ObjectId,
-	nome: String
-});
-var Cidade = mongoose.model('Cidade', cidadeSchema);
-=======
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -27,4 +16,3 @@ const estadoSchema = Schema({
 });
 
 mongoose.model('Estado', estadoSchema);
->>>>>>> Adiciona models menor e cidade e atualiza astah
