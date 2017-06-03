@@ -140,6 +140,11 @@ server.get('/interessados/:id', (request, response, next) => {
     interessadosTranslator.getInteressado(request, response)
 })
 
+server.put('/interessados/:id', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.put(request, response)
+})
+
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
 })

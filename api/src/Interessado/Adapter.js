@@ -13,11 +13,9 @@ export default class Adapter {
 	}	
 
 	fetchOne(id) {
-		return new Promise((resolve, reject) => {
-            this.Interessado.findById(id, (err, result) => {
-                if (err) return reject(err)
-                resolve(result)
-            })
+		console.log(id)
+        return this.Interessado.findById(id, (err, result) => {
+        	console.log(result)
         })
 	}
 
@@ -28,10 +26,14 @@ export default class Adapter {
 	}	
 	
 	delete(id){
-		console.log(id)
 		return this.Interessado.remove({_id: id})
 	}
 	
+	fetchOneAndUpdate(body) {
+
+		return this.Interessado.findOneAndUpdate({_id: body.id }, {upsert: true, new: true}, body)
+	}
+
 	addInsert() {		
 	}
 	

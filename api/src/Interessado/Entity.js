@@ -1,3 +1,4 @@
+import Joi from 'Joi'
 export default class Entity {
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || require('./Adapter').default
@@ -25,21 +26,23 @@ export default class Entity {
 		})
 	}
 
-	validate(body, schema) {
+	validate(body) {
 
 		const schema = Joi.object({
-			idObject = Joi.string().required()
-			nome = Joi.string().required()
-			email = Joi.string().required().email()
-			senha = Joi.string().required()
-			ativo = Joi.string().required()
-			nomeConjuge = Joi.string().required()
-			dataNascimento = Joi.date().required()
-			renda = Joi.number().precision(2)
+			_id: Joi.string().required(),
+			nome: Joi.string().required(),
+			email: Joi.string().required().email(),
+			senha: Joi.string().required(),
+			ativo: Joi.string().required(),
+			nomeConjuge: Joi.string().required(),
+			dataNascimento: Joi.date().required(),
+			renda: Joi.number().precision(2)
 		})
-
+		
+		const {error, value} = Joi.validate(body, schema)
+		
 		return new Promise((resolve, reject) => {
-            const {error, value} = Joi.validate(body, schema)
+            
             if(error) {
                 let messages = error.details.map(e => e.message)
                 reject({
@@ -58,9 +61,10 @@ export default class Entity {
 		return adapter.delete(id)
 	}
 	
-	put() {
-		const adpater = new this.Adpter()
-		return adapter.put();
+	update(body) {
+		const adapter = new this.Adapter()
+
+		return adapter.fetchOneAndUpdate(body)
 	}
 	
 	

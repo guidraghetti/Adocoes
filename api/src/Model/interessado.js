@@ -7,9 +7,10 @@ const enderecoSchema = require('./endereco.js')
 const telefoneSchema = require('./telefone.js')
 
 const interessadoSchema = new Schema({
-	_id : ObjectId,
+	_id : String,
 	name: String,
 	nomeConjuge: String,
+	email: String, 
 	dataNascimento: Date,
 	renda: Number,
 	documentos: [ documentoSchema ],

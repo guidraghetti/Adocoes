@@ -33,7 +33,7 @@ export default class Translator {
 
 	getInteressado(request, response) {
 		const body = {
-			_id: request.params.id,
+			id: request.params.id,
 			...request.body
 		}
 
@@ -41,7 +41,7 @@ export default class Translator {
 
 		interactor.findOneInteressado(body)
 			.then(message => {
-				res.json(200, message)
+				response.json(200, message)
 			})
 			.catch(error => {
 				console.log(error)
@@ -49,8 +49,13 @@ export default class Translator {
 	}
 
 	put(request, response) {
-		const { body } = request
+		const body = {
+			id: request.params.id,
+			...request.body
+		}
 
+		delete body._id
+		
         const interactor = new this.Interactor()
 
         interactor.update(body)
