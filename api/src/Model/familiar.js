@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 const familiarSchema = new Schema({
-	_id: ObjectId,
-	nome: String,
-	refParentesco: { type: ObjectId, ref: 'parentes' }
+	nome: {
+		type: String,
+		required: true
+	},
+	parentesco: {
+		type: String,
+		enum: [ 'pai', 'mãe', 'irmão', 'irmã', 'tio', 'tia', 'primo', 'prima', 'avô', 'avó', 'tio-avô', 'tia-avó', 'bisavô', 'bisavó', 'filho', 'filha' ],
+		required: true
+	}
 })
 
 mongoose.model('Familiar', familiarSchema)

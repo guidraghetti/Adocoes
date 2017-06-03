@@ -1,76 +1,41 @@
-import Abrigo from './abrigo'
-import Administrador from './administrador'
-import Carta from './carta'
-import Cidade from './cidade'
-import Conteudo from './Conteudo'
-import Documento from './documento'
-import Endereco from './endereco'
-import Estado from './estado'
-import Familiar from './familiar'
-import Imagem from './imagem'
-import Index from './index'
-import Interessado from './interessado'
-import Interesse from './interesse'
-import Menor from './menor'
-import Midia from './midia'
-import Organizacao from './organizacao'
-import Pagina from './pagina'
-import Pais from './pais'
-import Parentesco from './parentesco'
-import Perfil from './perfil'
-import ProcessoPoderFamiliar from './processoPoderFamiliar'
-import Raca from './raca'
-import Rede from './rede'
-import StatusProcesso from './statusProcesso'
-import Telefone from './telefone'
-import TipoDocumento from './tipoDocumento'
-import TipoInteresse from './tipoInteresse'
-import TipoParentesco from './tipoParentesco'
-import TipoRede from './tipoRede'
-import TipoVinculo from './tipoVinculo'
-import User from './user'
-import Usuario from './usuario'
-import Video from './video'
-import Vinculo from './vinculo'
-import Base64 from './base64'
-import Visualizacao from './visualizacao'
-
+import Abrigo from './abrigo.js'
+import Administrador from './administrador.js'
+import Base64 from './base64.js'
+import Cidade from './cidade.js'
+import Conteudo from './conteudo.js'
+import Endereco from './endereco.js'
+import Estado from './estado.js'
+import Etnia from './etnia.js'
+import Familiar from './familiar.js'
+import Interessado from './interessado.js'
+import Interesse from './interesse.js'
+import Menor from './menor.js'
+import Processo from './processo.js'
+import Rede from './rede.js'
+import Telefone from './telefone.js'
+import TipoRede from './tipoRede.js'
+import Usuario from './usuario.js'
+import Vinculo from './vinculo.js'
+import Visualizacao from './visualizacao.js'
 
 export {
 	Abrigo,
 	Administrador,
 	Base64,
-	Carta,
 	Cidade,
 	Conteudo,
-	Documento,
 	Endereco,
 	Estado,
+	Etnia,
 	Familiar,
-	Imagem,
-	Index,
 	Interessado,
 	Interesse,
 	Menor,
-	Midia,
-	Organizacao,
-	Pagina,
-	Pais,
-	Parentesco,
-	Perfil,
-	ProcessoPoderFamiliar,
-	Raca,
+	Processo,
 	Rede,
-	StatusProcesso,
 	Telefone,
-	TipoDocumento,
-	TipoInteresse,
-	TipoParentesco,
 	TipoRede,
-	TipoVinculo,
-	User,
 	Usuario,
-	Video,
 	Vinculo,
 	Visualizacao
 }

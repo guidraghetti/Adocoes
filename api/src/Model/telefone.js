@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 export const telefoneSchema = new Schema({
-	_id: ObjectId,	
-	ddd: Number,
-	numero: Number,
-	ativo: Boolean
+	ddd: {
+		type: Number,
+		required: true
+	},
+	numero: {
+		type: Number,
+		required: true
+	}
 })
 
 mongoose.model('Telefone', telefoneSchema)

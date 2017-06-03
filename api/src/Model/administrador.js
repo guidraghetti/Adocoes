@@ -1,12 +1,21 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
-
 
 const administradorSchema = new Schema({
-	_id: ObjectId,
-	matricula: String,
-	ativo: Boolean
-	
+	matricula: {
+		type: String,
+		required: true
+	},
+	organizacao: {
+		type: String,
+		enum: [ 'poder judiciário', 'ministério público' ],
+		required: true
+	},
+	ativo: {
+		type: Boolean,
+		required: true,
+		default: true
+	}
 })
-const Administrador = mongoose.model('Administrador', administradorSchema);
+
+mongoose.model('Administrador', administradorSchema)

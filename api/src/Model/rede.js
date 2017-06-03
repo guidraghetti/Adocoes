@@ -1,12 +1,21 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 const redeSchema = new Schema({
-	_id : ObjectId,
-	nome: String,
-	refTipoRede: { type: ObjectId, ref: 'tiposRedes' },
-	ativo: Boolean,
+	nome: {
+		type: String,
+		required: true,
+		unique: true
+	},
+	refTipoRede: {
+		type: ObjectId,
+		ref: 'tiposRedes'
+	},
+	ativo: {
+		type: Boolean,
+		required: true,
+		default: true
+	}
 })
 
-mongoose.model('Rede', redeSchema);
+mongoose.model('Rede', redeSchema)

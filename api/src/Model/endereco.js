@@ -1,15 +1,29 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 export const enderecoSchema = new Schema({
-	_id : ObjectId,
-	logradouro: String,
-	numero: String,
-	complemento: String,
-	bairro: String,
-	cep: String,
-	refCidade: { type: ObjectId, ref: 'cidades' }
+	logradouro: {
+		type: String,
+		required: true
+	},
+	numero: {
+		type: String,
+		required: true
+	},
+	complemento: {
+		type: String
+	},
+	bairro: {
+		type: String
+	},
+	cep: {
+		type: String
+	},
+	refCidade: {
+		type: ObjectId,
+		ref: 'cidades',
+		required: true
+	}
 })
 
-mongoose.model('Endereco', enderecoSchema);
+mongoose.model('Endereco', enderecoSchema)

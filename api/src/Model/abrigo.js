@@ -1,13 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
+
+const enderecoSchema = require('./endereco.js')
 
 const abrigoSchema = new Schema({
-	_id : ObjectId,
-	nome: String,
-	ativo: Boolean,
-	refEndereco: { type: Schema.ObjectId, ref: 'enderecos' },
-	refRede: { type: Schema.ObjectId, ref: 'redes' }
+	nome: {
+		type: String,
+		required: true
+	},
+	refRede: {
+		type: ObjectId,
+		ref: 'redes'
+	},
+	endereco: {
+		type: enderecoSchema,
+		required: true
+	},
+	ativo: {
+		type: Boolean,
+		required: true,
+		default: true
+	}
 })
 
-mongoose.model('Abrigo', abrigoSchema);
+mongoose.model('Abrigo', abrigoSchema)

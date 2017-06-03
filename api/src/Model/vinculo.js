@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 const vinculoSchema = new Schema({
-	_id: ObjectId,
-	refMenor: { type: ObjectId, ref: 'menores' },
-	refTipoVinculo: { type: ObjectId, ref: 'tiposVinculo' },
-	adocaoConjunta: Boolean,
-	ativo: Boolean
+	refMenor: {
+		type: ObjectId,
+		ref: 'menores',
+		required: true
+	},
+	tipoVinculo: {
+		type: String,
+		enum: [ 'irmão', 'irmã', 'primo', 'prima' ],
+		required: true
+	}
 })
 
 mongoose.model('Vinculo', vinculoSchema)
