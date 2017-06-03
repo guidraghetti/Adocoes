@@ -29,7 +29,6 @@ export default class Entity {
 	validate(body) {
 
 		const schema = Joi.object({
-			_id: Joi.string().required(),
 			nome: Joi.string().required(),
 			email: Joi.string().required().email(),
 			senha: Joi.string().required(),
@@ -83,9 +82,9 @@ export default class Entity {
 		return adapter.putMenores()
 	}
 	
-	insertView() {
+	addVisualizacao(body) {
 		const adapter = new this.Adapter()
-		return adapter.insertView()
+		return adapter.fetchAndAddVisualizacao(body)
 	}
 	
 	fetchAllViews() {

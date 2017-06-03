@@ -10,7 +10,7 @@ export default class Translator {
 
         interactor.create(body)
             .then(message => {
-                response.send(200, message)
+                response.send(201, message)
             })
             .catch(error => {
                 console.log(error)
@@ -75,7 +75,7 @@ export default class Translator {
 		
         interactor.delete(request.params.id)
             .then(message => {
-                response.send(200, message)
+                response.send(204, message)
             })
             .catch(error => {
                 console.log(error)
@@ -124,13 +124,36 @@ export default class Translator {
             })	
 	}
 	
-	putView(request, response) {
-		const { body } = request
+    //
+    // Visualizacoes
+    //
+
+    // RFI09: POST /interessados/{id_interessado}/visualizacoes
+	postVisualizacao(request, response) {
+		const body = { 
+            id: request.params.id,
+            ...request.body
+        }
 
         const interactor = new this.Interactor()
 
-        interactor.insertView(body)
+        interactor.addVisualizacao(body)
             .then(message => {
+                response.send(201, message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
+
+	// RFI10: GET /interessados/{id_interessado}/visualizacoes
+    getVisualizacao(request, response) {
+		const { body } = request
+	
+		const interactor = new this.Interactor()
+
+		interactor.fetchAllViews(request.header.accessToken)
+			.then(message => {
                 response.send(200, message)
             })
             .catch(error => {
@@ -138,13 +161,14 @@ export default class Translator {
             })
 	}
 	
-	getViews(request, response) {
+    // RFI11: PUT /interessados/{id_interessado}/visualizacoes
+	putVisualizacao(request, response) {
 		const { body } = request
-	
-		const interactor = new this.Interactor()
 
-		interactor.fetchAllViews(request.header.accessToken)
-			.then(message => {
+        const interactor = new this.Interactor()
+
+        interactor.insertView(body)
+            .then(message => {
                 response.send(200, message)
             })
             .catch(error => {

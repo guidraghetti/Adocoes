@@ -17,14 +17,12 @@ require('./database.js')
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
+// @eduardo.arruda: sanitizar rotas
+
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
     extended: true
 }));
-
-server.listen(port, function () {
-    console.log('Adoções API running! Port: ' + port)
-})
 
 server.get('/', function (req, res, next) {
     const moment = require('moment')
@@ -35,13 +33,6 @@ server.get('/', function (req, res, next) {
         now: now.toString(),
         unix_now: now.unix()
     })
-})
-// RFC06: GET     /conteudos/{id_conteudo}/imagens
-// RFC07: GET     /conteudos/{id_conteudo}/imagens/{id_imagem}
-
-server.get('/conteudos/:id/imagens', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.fetchImages(request, response)
 })
 
 //
@@ -56,7 +47,7 @@ server.post('/oauth2/token', AuthManager.isClientAuthenticated, Oauth2Manager.to
 //
 
 // RFU01: POST /usuarios
-server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
+server.post('/usuarios', (request, response, next) => { //AuthManager.isAuthenticated, 
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.post(request, response)
 })
@@ -176,9 +167,17 @@ server.del('/interessados/:id', (request, response, next) => {
 
 // RFI07: GET /interessados/{id_interessado}/ordenacao
 // RFI08: PUT /interessados/{id_interessado}/ordenacao
+
 // RFI09: POST /interessados/{id_interessado}/visualizacoes
+server.post('/interessados/:id/visualizacoes', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.post(request, response)
+})
+
 // RFI10: GET /interessados/{id_interessado}/visualizacoes
+
 // RFI11: PUT /interessados/{id_interessado}/visualizacoes
+
 // RFI13: POST /interessados/{id_interessado}/menores
 // RFI14: GET /interessados/{id_interessado}/menores
 // RFI15: DELETE /interessados/{id_interessado}/menores/{id_menor}
@@ -222,6 +221,11 @@ server.post('/conteudos/:id/imagens', (request, response, next) => {
 })
 
 // RFC06: GET /conteudos/{id_conteudo}/imagens
+server.get('/conteudos/:id/imagens', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.fetchImages(request, response)
+})
+
 // RFC07: GET /conteudos/{id_conteudo}/imagens/{id_imagem}
 
 // RFC08: DELETE /conteudos/{id_conteudo}/imagens/{id_imagem}
@@ -295,3 +299,7 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 // RFO06 (2017-2): GET /processos/{id_processo}/movimentos
 // RFO07 (2017-2): PUT /processos/{id_processo}/movimentos/{id_movimento}
 // RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}// Resource: conteudo
+
+server.listen(port, function () {
+    console.log('Adoções API running! Port: ' + port)
+})

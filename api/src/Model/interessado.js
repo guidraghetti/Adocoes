@@ -23,7 +23,7 @@ const interessadoSchema = new Schema({
 	},
 	email: {
 		type: String
-	}, 
+	},
 	dataNascimento: {
 		type: Date,
 		required: true

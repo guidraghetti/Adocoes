@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 export default class Adapter {
 	constructor(deps = {}) {
-		this.Interessado = mongoose.model('interessado')
+		this.Interessado = mongoose.model('Interessado')
 	}
 
 	save(body) {
@@ -30,7 +30,6 @@ export default class Adapter {
 	}
 	
 	fetchOneAndUpdate(body) {
-
 		return this.Interessado.findOneAndUpdate({_id: body.id }, {upsert: true, new: true}, body)
 	}
 
@@ -43,7 +42,14 @@ export default class Adapter {
 	putMenores() {		
 	}
 	
-	insertView() {	
+	//
+	// Visualizacoes
+	//
+
+	// RFI09: POST /interessados/{id_interessado}/visualizacoes
+	fetchAndAddVisualizacao(body) {
+		return this.Interessado.findOneAndUpdate({_id: body.id}, 
+			{$pushAll: {'visualizacoes': body.visualizacoes}}, {upsert: true, new: true})
 	}
 	
 	fetchAllViews(){

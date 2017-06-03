@@ -21,7 +21,6 @@ export default class Adapter {
     }
 	
 	fetchAndAddImage(body) {
-
 		return this.Conteudo.findOneAndUpdate({_id: body.id}, 
 			{$pushAll: {'images': body.images}}, {upsert: true, new: true})
 	}

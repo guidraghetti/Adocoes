@@ -47,9 +47,9 @@ usuarioSchema.methods.verifyPassword = function (password, callback) {
 // Executar antes de cada chamada a user.save()
 usuarioSchema.pre('save', function (callback) {
 
-	const user = this
+	const usuario = this
 
-	if (!user.isModified('password')) return callback()
+	if (!usuario.isModified('password')) return callback()
 
 	bcrypt.genSalt(5, function (err, salt) {
 		if (err) return callback(err)
@@ -57,7 +57,7 @@ usuarioSchema.pre('save', function (callback) {
 		bcrypt.hash(user.password, salt, null, function (err, hash) {
 			if (err) return callback(err)
 
-			user.password = hash
+			usuario.password = hash
 			callback()
 		})
 	})
