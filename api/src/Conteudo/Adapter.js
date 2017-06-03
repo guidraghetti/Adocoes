@@ -8,14 +8,17 @@ export default class Adapter {
 	save(body) {
 		const conteudo = new this.Conteudo(body)
 
-		return conteudo.save()
+		return new Promise((resolve, reject) => {
+            conteudo.save((err, result) => {
+                if (err) return reject(err)
+                return resolve(result)
+            })
+        })
 	}
 
 	fetchAll() {
-		return new Promise((resolve, reject) => {
-            resolve(123)
-        })
-	}
+        return this.Conteudo.find({})
+    }
 	
 	fetchAndAddImage(body) {
 
@@ -30,6 +33,7 @@ export default class Adapter {
 	}
 	
 	getImage(id){
+
 		return this.Conteudo.find({_id: id })
 	}
 
@@ -45,5 +49,10 @@ export default class Adapter {
 
 	addVideo(body) {
 		return this.Conteudo
+	}
+
+	fetchAllVideos(id) {
+		
+		return this.Conteudo.find({_id:id}).select('nome')
 	}
 }

@@ -3,7 +3,6 @@ export default class Translator {
 		this.Interactor = deps.Interactor || require('./Interactor').default
 	}
 
-
 	post(request, response) {
 		const { body } = request
 
@@ -19,11 +18,11 @@ export default class Translator {
 	}
 
 	getAllVideos(request, response) {
-		const { body } = request
+		const { id } = request.params
 
 		const interactor = new this.Interactor()
 
-		interactor.fetchAll(request.header.accessToken)
+		interactor.fetchAllVideos(id)
 			.then(message => {
 				response.send(200, message)
             })
@@ -43,17 +42,18 @@ export default class Translator {
     }
 
     get(request, response) {
-        const interactor = new this.Interactor()
+
+        let interactor = new this.Interactor()
         
-        interactor.fetchAll()
-            .then(message => {
-            	console.log(message)
-                response.json(200, message)
+        return interactor.fetchAll()
+            .then(result => {
+                response.json(200, result)
             })
             .catch(error => {
-                console.log(error)
+                let status = error.status || 500
+                response.json(status, error)
             })
-	}
+    }
 	
 	deleteVideo(request, response) {
 		const { body } = request
@@ -126,5 +126,9 @@ export default class Translator {
 		}).catch(error => {
 			console.log(error)
 		})
+	}
+
+	fetchAllImages(request, response) {
+
 	}
 }
