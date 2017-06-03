@@ -8,7 +8,7 @@ const redeSchema = new Schema({
 		unique: true
 	},
 	refTipoRede: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'tiposRedes'
 	},
 	ativo: {

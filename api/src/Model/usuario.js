@@ -19,13 +19,13 @@ const usuarioSchema = new Schema({
 		type: String,
 		enum: [ 'usuario', 'master', 'administrador', 'interessado'  ],
 		required: true
-	},
+	}],
 	refPerfilAdministrador: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'administradores'
 	},
 	refPerfilInteressado: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interessados'
 	},
 	ativo: {
@@ -36,7 +36,7 @@ const usuarioSchema = new Schema({
 })
 
 // @eduardo.arruda: NÃO SERÁ NECESSÁRIO EM FUNÇÃO DO OAUTH2
-userSchema.methods.verifyPassword = function (password, callback) {
+usuarioSchema.methods.verifyPassword = function (password, callback) {
 	bcrypt.compare(password, this.password, function (err, isMatch) {
 		if (err) return cb(err)
 			callback(null, isMatch)
@@ -45,7 +45,7 @@ userSchema.methods.verifyPassword = function (password, callback) {
 
 // @eduardo.arruda: É NECESSÁRIO???
 // Executar antes de cada chamada a user.save()
-userSchema.pre('save', function (callback) {
+usuarioSchema.pre('save', function (callback) {
 
 	const user = this
 

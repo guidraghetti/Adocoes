@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const familiarSchema = require('./familiar.js')
 const vinculoSchema = require('./vinculo.js')
-const processoPoderFamiliarSchema = require('./processoPoderFamiliar.js')
+const processoSchema = require('./processo.js')
 
 const menorSchema = new Schema({
 	nome: {
@@ -12,7 +12,7 @@ const menorSchema = new Schema({
 	},
 	sexo: {
 		type: String,
-		enum[ 'Feminino', 'Masculino' ],
+		enum: [ 'Feminino', 'Masculino' ],
 		required: true
 	},
 	certidaoNascimento: {
@@ -23,17 +23,17 @@ const menorSchema = new Schema({
 		required: true
 	},
 	refEtnia: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'etnias'
 	},
-	familiares: [{
-		type: familiarSchema
-	}],
-	menoresVinculados: [{
-		type: vinculoSchema
-	}],
+	familiares: [
+		familiarSchema
+	],
+	menoresVinculados: [
+		vinculoSchema
+	],
 	adocoesConjuntas: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'menores'
 	}],
 	saudavel: {
@@ -56,22 +56,22 @@ const menorSchema = new Schema({
 		type: String
 	},
 	refCidade: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'cidades'
 	},
 	refAbrigo: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'abrigos'
 	},
 	processoPoderFamiliar: {
-		type: Schema.processoPoderFamiliarSchema
+		type: processoSchema
 	},
 	interesses: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interesses'
 	}],
 	visualizacoes: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'visualizacoes'
 	}],
 	ativo: {

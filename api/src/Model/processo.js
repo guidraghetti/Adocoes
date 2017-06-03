@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const processo = new Schema({
+const processoSchema = new Schema({
 	numero: {
 		type: String,
 		required: true
