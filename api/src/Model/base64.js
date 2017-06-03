@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const base64Schema = new Schema({
+export const base64Schema = new Schema({
 	conteudo: {
 		type: String,
 		required: true

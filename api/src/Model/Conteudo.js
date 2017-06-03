@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const base64Schema = require('./base64.js').default
+const base64Schema = require('./base64.js')
 
 const conteudoSchema = new Schema({
 	nome: {
@@ -9,12 +9,12 @@ const conteudoSchema = new Schema({
 		required: true
 	},
 	pagina: {
-		type: base64schema,
+		type: base64Schema,
 		required: true
 	},
-	midia: [{
-		type: base64Schema
-	]},
+	midia: [
+		base64Schema
+	],
 	timestampCriacao: {
 		type: Date,
 		required: true

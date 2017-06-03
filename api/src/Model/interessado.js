@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const enderecoSchema = require('./endereco.js')
 const telefoneSchema = require('./telefone.js')
+const base64Schema = require('./base64.js')
 
 const interessadoSchema = new Schema({
 	refUsuario: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'usuarios'
 	},
 	name: {
@@ -14,7 +15,7 @@ const interessadoSchema = new Schema({
 	},
 	cpf: {
 		required: true
-	}
+	},
 	nomeConjuge: {
 		type: String
 	},
@@ -42,11 +43,11 @@ const interessadoSchema = new Schema({
 		type: telefoneSchema
 	}],
 	interesses: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interesses'
 	}],
 	visualizacoes: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'visualizacoes'
 	}],
 	ativo: {

@@ -8,7 +8,7 @@ const cidadeSchema = Schema({
 		unique: true
 	},
 	refEstado: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'estados'
 	}
 })
