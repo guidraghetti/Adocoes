@@ -20,7 +20,7 @@ export const enderecoSchema = new Schema({
 		type: String
 	},
 	refCidade: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'cidades',
 		required: true
 	}

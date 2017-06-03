@@ -32,6 +32,13 @@ server.get('/', function(req, res, next) {
         unix_now: now.unix()
     })
 })
+// RFC06: GET     /conteudos/{id_conteudo}/imagens
+// RFC07: GET     /conteudos/{id_conteudo}/imagens/{id_imagem}
+
+server.get('/conteudos/:id/imagens', (request, response, next) => {
+    let conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.fetchImages(request, response)
+})
 
 server.post('/conteudos', (request, response, next) => {
 	let conteudoTranslator = new ConteudoTranslator()
@@ -39,12 +46,9 @@ server.post('/conteudos', (request, response, next) => {
 })
 
 server.get('/conteudos', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
+    console.log(8888)
+    let conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.get(request, response)
-
-    // mongoose.model('Conteudo').find({}, (err, result) => {
-    //     response.send(200, result)
-    // })
 })
 
 server.post('/conteudos/:id/imagens', (request, response, next) => {
@@ -67,17 +71,17 @@ server.del('/conteudos/:id/imagens/:imageId', (request, response, next) => {
     conteudoTranslator.delete(request, response)
 })
 
-server.post('/conteudos/:id_conteudo/videos', (request, response, next) => {
+server.post('/conteudos/:id/videos', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.postVideo(request, response)
 })
 
-server.get('/conteudos/:id_conteudo/videos', (request, response, next) => {
+server.get('/conteudos/:id/videos', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.getAllVideos(request, response)
 })
 
-server.get('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+server.get('/conteudos/:id/videos/:idVideo', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.getVideo(request, response)
 })

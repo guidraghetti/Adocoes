@@ -1,20 +1,23 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const enderecoSchema = require('./endereco.js')
-const telefoneSchema = require('./telefone.js')
+const enderecoSchema = require('./endereco')
+const telefoneSchema = require('./telefone')
+const base64Schema = require('./base64')
+const documentoSchema = require('./documento')
 
 const interessadoSchema = new Schema({
 	refUsuario: {
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'usuarios'
 	},
 	name: {
 		type: String
 	},
 	cpf: {
+		type: documentoSchema,
 		required: true
-	}
+	},
 	nomeConjuge: {
 		type: String
 	},
@@ -29,24 +32,24 @@ const interessadoSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	comprovantesRenda: [{
-		type: base64Schema
-	}],
-	outrosDocumentos: [{
-		type: documentoSchema
-	}],
-	enderecos: [{
-		type: enderecoSchema
-	}],
-	telefones: [{
-		type: telefoneSchema
-	}],
+	comprovantesRenda: [
+		base64Schema
+	],
+	outrosDocumentos: [
+		documentoSchema
+	],
+	enderecos: [
+		enderecoSchema
+	],
+	telefones: [
+		telefoneSchema
+	],
 	interesses: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interesses'
 	}],
 	visualizacoes: [{
-		type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'visualizacoes'
 	}],
 	ativo: {
