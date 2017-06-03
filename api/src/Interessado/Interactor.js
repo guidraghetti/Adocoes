@@ -9,6 +9,7 @@ export default class Interactor {
 		return entity.validate(body).then(body => {
 			create(body) }
 	}
+	
 
 	fetchAll(body) {
 		const entity = new this.Entity()

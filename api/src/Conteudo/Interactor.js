@@ -3,6 +3,7 @@ export default class Interactor {
 		this.Entity = deps.Entity || require('./Entity').default
 	}
 
+
 	create(body) {
 		const entity = new this.Entity()
 		
