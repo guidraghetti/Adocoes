@@ -1,43 +1,76 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var ProcessoPoderFamiliarEstadoSchema = mongoose.Schema({
+const menorSchema = Schema({
+	_id: ObjectId,
+	nome: String,
+	sexo: String,
+	certidaoNascimento: String,
+	dataNascimento: Date,
+	familiares: [ FamiliarSchema ],
+	menoresVinculados: [ VinculoSchema ],
+	refRaca: { type: Schema.ObjectId, ref: 'racas' },
+	saudavel: Boolean,
+	descricaoSaude: String,
+	curavel: Boolean,
+	deficienciaFisica: Boolean,
+	deficienciaMental: Boolean,
+	guiaAcolhimento: String,
+	refCidade: { type: Schema.ObjectId, ref: 'cidades' },
+	refAbrigo: { type: Schema.ObjectId, ref: 'abrigos' },
+	processoPoderFamiliar: ProcessoPoderFamiliarSchema,
+	interessados: [{ type: Schema.ObjectId, ref: 'interessados' }],
+	ativo: Boolean
+});
+
+mongoose.model('Menor', menorSchema);
+
+const familiarSchema = Schema({
+	_id: ObjectId,
+	nome: String,
+	refParentesco: { type: Schema.ObjectId, ref: 'parentes' }
+});
+
+mongoose.model('Familiar', familiarSchema);
+
+const ParentescoSchema = Schema({
+	_id: ObjectId,
+	parentesco: String
+});
+
+mongoose.model('Parentesco', parentescoSchema);
+
+const vinculoSchema = Schema({
+	_id: ObjectId,
+	refMenor: { type: Schema.ObjectId, ref: 'menores' },
+	refTipoVinculo: { type: Schema.ObjectId, ref: 'tiposVinculo' },
+	adocaoConjunta: Boolean,
+	ativo: Boolean
+});
+
+mongoose.model('Vinculo', vinculoSchema);
+
+const tipoVinculoSchema = Schema({
+	_id: ObjectId,
+	tipoVinculo: String
+});
+
+mongoose.model('TipoVinculo', tipoVinculoSchema);
+
+const RacaSchema = Schema({
 	_id: ObjectId,
 	nome: String
-})
+});
 
-var ProcessoPoderFamiliarSchema = mongoose.Schema({
+mongoose.model('Raca', racaSchema);
+
+const ProcessoPoderFamiliarSchema = Schema({
 	_id: ObjectId,
 	numero: String,
 	refEstado: ObjectId,
 	descricaoEstado: String,
 	timestampEstado: Timestamp,
 	ativo: Boolean
-})
+});
 
-var RacaSchema = mongoose.Schema({
-	_id: ObjectId,
-	nome: String
-})
-
-var MenorSchema = mongoose.Schema({
-	_id: ObjectId,
-	nome: String,
-	sexo: String,
-	dataNascimento: Date,
-	refRaca: { type: Schema.ObjectId, ref: 'racas' },
-	guiaAcolhimento: String,
-	certidaoNascimento: String,
-	saudavel: Boolean,
-	descricaoSaude: String,
-	curavel: Boolean,
-	deficienciaFisica: Boolean,
-	deficienciaMental: Boolean,
-	adocaoConjunta: Boolean,
-	processoPoderFamiliar: ProcessoPoderFamiliarSchema,
-	parentescos: [ParentescoSchema],
-	interessados: [{ type: Schema.ObjectId, ref: 'interessados' }],
-	ativo: Boolean
-})
-
-mongoose.model('Menor', menorSchema)
+mongoose.model('ProcessoPoderFamiliar', processoPoderFamiliarSchema);
