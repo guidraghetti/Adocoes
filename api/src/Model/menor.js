@@ -1,31 +1,84 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 const familiarSchema = require('./familiar.js')
 const vinculoSchema = require('./vinculo.js')
 const processoPoderFamiliarSchema = require('./processoPoderFamiliar.js')
 
 const menorSchema = new Schema({
-	_id: ObjectId,
-	nome: String,
-	sexo: String,
-	certidaoNascimento: String,
-	dataNascimento: Date,
-	familiares: [ familiarSchema ],
-	menoresVinculados: [ vinculoSchema ],
-	refRaca: { type: ObjectId, ref: 'racas' },
-	saudavel: Boolean,
-	descricaoSaude: String,
-	curavel: Boolean,
-	deficienciaFisica: Boolean,
-	deficienciaMental: Boolean,
-	guiaAcolhimento: String,
-	refCidade: { type: ObjectId, ref: 'cidades' },
-	refAbrigo: { type: ObjectId, ref: 'abrigos' },
-	processoPoderFamiliar: processoPoderFamiliarSchema,
-	interessados: [{ type: ObjectId, ref: 'interessados' }],
-	ativo: Boolean
+	nome: {
+		type: String,
+		required: true
+	},
+	sexo: {
+		type: String,
+		enum[ 'Feminino', 'Masculino' ],
+		required: true
+	},
+	certidaoNascimento: {
+		type: String
+	},
+	dataNascimento: {
+		type: Date,
+		required: true
+	},
+	refEtnia: {
+		type: ObjectId,
+		ref: 'etnias'
+	},
+	familiares: [{
+		type: familiarSchema
+	}],
+	menoresVinculados: [{
+		type: vinculoSchema
+	}],
+	adocoesConjuntas: [{
+		type: ObjectId,
+		ref: 'menores'
+	}],
+	saudavel: {
+		type: Boolean,
+		required: true
+	},
+	descricaoSaude: {
+		type: String
+	},
+	curavel: {
+		type: Boolean
+	},
+	deficienciaFisica: {
+		type: Boolean
+	},
+	deficienciaMental: {
+		type: Boolean
+	},
+	guiaAcolhimento: {
+		type: String
+	},
+	refCidade: {
+		type: ObjectId,
+		ref: 'cidades'
+	},
+	refAbrigo: {
+		type: ObjectId,
+		ref: 'abrigos'
+	},
+	processoPoderFamiliar: {
+		type: Schema.processoPoderFamiliarSchema
+	},
+	interesses: [{
+		type: ObjectId,
+		ref: 'interesses'
+	}],
+	visualizacoes: [{
+		type: ObjectId,
+		ref: 'visualizacoes'
+	}],
+	ativo: {
+		type: Boolean,
+		required: true,
+		default: true
+	}
 })
 
 mongoose.model('Menor', menorSchema)

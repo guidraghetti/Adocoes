@@ -1,13 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
-
 
 const interesseSchema = new Schema({
-	
-	idInteressado: String,
-	idMenor: String,
-	timeStamp: Date
-	
+	refInteressado: {
+		type: ObjectId,
+		ref: 'interessados'
+		required: true
+	},
+	refMenor: {
+		type: ObjectId,
+		ref: 'menores',
+		required: true
+	},
+	tipoInteresse: {
+		type: String,
+		enum: [ 'favoritar', 'apadrinhar', 'adotar'],
+		required: true
+	},
+	timeStamp: {
+		type: Date,
+		required: true
+	}
 })
-const interesse = mongoose.model('interesse', interesseSchema);
+
+const interesse = mongoose.model('interesse', interesseSchema)

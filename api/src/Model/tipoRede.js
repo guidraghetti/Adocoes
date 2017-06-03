@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
 
 const tipoRedeSchema = new Schema({
-	_id : ObjectId,
-	nome: String
+	nome: {
+		type: String,
+		required: true,
+		unique: true
+	}
 })
 
 mongoose.model('TipoRede', tipoRedeSchema)
