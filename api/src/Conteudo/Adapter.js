@@ -15,6 +15,7 @@ export default class Adapter {
 		return this.Conteudo.find()
 	}
 	
+	
 	fetchAndAddImage(body) {
 		console.log('Adapter')
 		return this.Conteudo.findOneAndUpdate({_id: body.id}, 
