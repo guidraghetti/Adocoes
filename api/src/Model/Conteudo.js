@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 const Timestamp = Schema.Types.Timestamp
 
-const conteudoInstitucionalSchema = new Schema({
+const conteudoSchema = new Schema({
 	_id: ObjectId,
 	nome: String,
 	ativo: Boolean,
@@ -13,4 +13,4 @@ const conteudoInstitucionalSchema = new Schema({
 	// timestampFim: Timestamp
 })
 
-mongoose.model('ConteudoInstitucional', conteudoInstitucionalSchema)
+mongoose.model('Conteudo', conteudoSchema)

@@ -2,7 +2,7 @@ import Abrigo from './abrigo'
 import Administrador from './administrador'
 import Carta from './carta'
 import Cidade from './cidade'
-import ConteudoInstitucional from './ConteudoInstitucional'
+import Conteudo from './Conteudo'
 import Documento from './documento'
 import Endereco from './endereco'
 import Estado from './estado'
@@ -40,7 +40,7 @@ export {
 	Administrador,
 	Carta,
 	Cidade,
-	ConteudoInstitucional,
+	Conteudo,
 	Documento,
 	Endereco,
 	Estado,
