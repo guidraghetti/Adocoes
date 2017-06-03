@@ -7,9 +7,15 @@ export default class Interactor {
 		const entity = new this.Entity()
 		
 		return entity.validate(body).then(body => {
-			create(body) }
+			create(body) 
+		})
 	}
 	
+	findOneInteressado(body) {
+		const entity = new this.Entity()
+		
+		return entity.fetchOne(body.id)
+	}
 
 	fetchAll(body) {
 		const entity = new this.Entity()

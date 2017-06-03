@@ -9,6 +9,10 @@ export default class Entity {
 		return adapter.save(body)
 	}
 	
+	fetchOne(id) {
+		const adapter = new this.Adapter()
+		return adapter.fetchOne(id)
+	}
 
 	fetchAll() {
 		const adapter = new this.Adapter()
@@ -21,9 +25,9 @@ export default class Entity {
 		})
 	}
 
-validate(body, schema) {
+	validate(body, schema) {
 
-			const schema = Joi.object(){
+		const schema = Joi.object({
 			idObject = Joi.string().required()
 			nome = Joi.string().required()
 			email = Joi.string().required().email()
@@ -32,14 +36,20 @@ validate(body, schema) {
 			nomeConjuge = Joi.string().required()
 			dataNascimento = Joi.date().required()
 			renda = Joi.number().precision(2)
-		}
-		// let {error, value} = joi.validate(body, schema)
-		return new Promise ((resolve, reject) => {
-
-			if (error) reject(error)
-
-			if (value) resolve(value)
 		})
+
+		return new Promise((resolve, reject) => {
+            const {error, value} = Joi.validate(body, schema)
+            if(error) {
+                let messages = error.details.map(e => e.message)
+                reject({
+                    status: 400,
+                    messages
+                })
+            } else if(value) {
+                resolve(value)
+            }
+        })
 	}
 
 

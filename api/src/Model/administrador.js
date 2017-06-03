@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId;
 
 
-var AdministradorSchema = new Schema({
+var administradorSchema = new Schema({
 	_id: ObjectId,
 	matricula: String,
 	ativo: Boolean

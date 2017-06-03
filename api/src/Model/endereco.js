@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
-export default const enderecoSchema = new Schema({
+export const enderecoSchema = new Schema({
 	_id : ObjectId,
 	logradouro: String,
 	numero: String,

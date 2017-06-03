@@ -12,6 +12,15 @@ export default class Adapter {
 		return interessado.save()
 	}	
 
+	fetchOne(id) {
+		return new Promise((resolve, reject) => {
+            this.Interessado.findById(id, (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
+	}
+
 	fetchAll() {
 		return this.Interessado.find((err, doc) => {
 			console.log(doc)

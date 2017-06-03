@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId;
 
 
-var StatusProcessoSchema = new Schema({
+var statusProcessoSchema = new Schema({
 	_id: ObjectId,
 	nome: String
 	

@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
-const documentoSchema = require('./documento.js').default
-const enderecoSchema = require('./endereco.js').default
-const telefoneSchema = require('./telefone.js').default
+const documentoSchema = require('./documento.js')
+const enderecoSchema = require('./endereco.js')
+const telefoneSchema = require('./telefone.js')
 
 const interessadoSchema = new Schema({
 	_id : ObjectId,
-	name: String
+	name: String,
 	nomeConjuge: String,
 	dataNascimento: Date,
 	renda: Number,

@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId
 
-const ParentescoSchema = new Schema({
+const parentescoSchema = new Schema({
 	_id: ObjectId,
 	parentesco: String
 })

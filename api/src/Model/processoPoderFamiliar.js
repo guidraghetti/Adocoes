@@ -2,12 +2,12 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId
 
-const ProcessoPoderFamiliarSchema = new Schema({
+const processoPoderFamiliarSchema = new Schema({
 	_id: ObjectId,
 	numero: String,
 	refEstado: ObjectId,
 	descricaoEstado: String,
-	timestampEstado: Timestamp,
+	// timestampEstado: Timestamp,
 	ativo: Boolean
 })
 

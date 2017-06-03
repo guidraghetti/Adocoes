@@ -3,10 +3,10 @@ var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId;
 
 
-var MidiaSchema = new Schema({
+var midiaSchema = new Schema({
 	
 	_id: ObjectId,
-	conteudo: BinData,
+	// conteudo: BinData,
 	ativo: Boolean
 	
 })

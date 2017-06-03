@@ -6,8 +6,8 @@ var ObjectId = Schema.Types.ObjectId;
 var visualizacaoSchema = new Schema({
 	_id : ObjectId,
 	//necessário instanciar timesStamps:
-	timestampInicio: 
-	timestampFim:
+	// timestampInicio: 
+	// timestampFim:
 	//Relacionamentos com outros Schemas:
 	// ...
 });
