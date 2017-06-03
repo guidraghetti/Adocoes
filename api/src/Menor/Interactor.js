@@ -6,8 +6,10 @@ export default class Interactor {
 	create(body) {
 		const entity = new this.Entity()
 		
-		return entity.create(body)
+		return entity.validate(body).then(body => {
+			create(body) }
 	}
+
 
 	fetchAll(body) {
 		const entity = new this.Entity()

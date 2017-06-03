@@ -20,6 +20,28 @@ export default class Entity {
 		})
 	}
 	
+validate(body, schema) {
+
+			const schema = Joi.object(){
+			idObject = Joi.string().required()
+			nome = Joi.string().required()
+			email = Joi.string().required().email()
+			senha = Joi.string().required()
+			ativo = Joi.string().required()
+			nomeConjuge = Joi.string().required()
+			dataNascimento = Joi.date().required()
+			renda = Joi.number().precision(2)
+		}
+		// let {error, value} = joi.validate(body, schema)
+		return new Promise ((resolve, reject) => {
+
+			if (error) reject(error)
+
+			if (value) resolve(value)
+		})
+	}
+
+
 	delete(id) {
 		const adapter = new this.Adapter()
 		return adapter.delete(id)
