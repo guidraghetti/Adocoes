@@ -2,13 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
-var interessadoSchema = new Schema({
+var enderecoSchema = new Schema({
 	_id : ObjectId,
-	nomeConjuge: String,
-	dataNascimento: Date,
-	renda: Number,
+	logradouro: String,
+	numero: String,
+	complemento: String,
+	bairro: String,
+	cep: String,
 	ativo: Boolean
 	//Relacionamentos com outros Schemas:
 	// ...
 });
-var Interessado = mongoose.model('Interessado', interessadoSchema);
+var Endereco = mongoose.model('Endereco', enderecoSchema);
