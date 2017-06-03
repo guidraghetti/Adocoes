@@ -3,6 +3,7 @@ var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId;
 
 var interessadoSchema = new Schema({
+<<<<<<< 031c645cd1a3651a5ea366c559994b65dbe29fd8
 	_id : ObjectId,
 	nomeConjuge: String,
 	dataNascimento: Date,
@@ -11,5 +12,9 @@ var interessadoSchema = new Schema({
 	//Relacionamentos com outros Schemas:
 	// ...
 });
+=======
+	name: String
+})
+>>>>>>> update
 
-var Interessado = mongoose.model('Interessado', interessadoSchema);
+mongoose.model('interessado', interessadoSchema)

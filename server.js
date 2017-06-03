@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import UsuarioTranslator from './api/src/Usuario/Translator'
 import ConteudoTranslator from './api/src/Conteudo/Translator'
 import MenorTranslator from './api/src/Menor/Translator'
+import InteressadosTranslator from './api/src/Interessado/Translator'
 
 import AuthManager from './api/src/Auth/authManager'
 import Oauth2Manager from './api/src/Auth/oauth2Manager'
@@ -87,11 +88,15 @@ server.post('/menores', AuthManager.isAuthenticated, (request, response, next) =
     menorTranslator.post(request, response)
 })
 
+server.post('/interessados', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.post(request, response)
+})
+
 server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
 })
-
 
 server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
@@ -119,6 +124,16 @@ server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, respo
 })
 
 server.post('/oauth2/token', AuthManager.isClientAuthenticated, Oauth2Manager.token);
+
+server.get('/interessados', (request, response, next) => {
+    const interessadosTranslator = new InteressadosTranslator()
+    interessadosTranslator.get(request, response)
+})
+
+server.del('/interessados/:id', (request, response, next) => {
+	let interessadosTranslator = new InteressadosTranslator()
+	interessadosTranslator.delete(request, response)
+})
 
 server.listen(port, function() {
     console.log('Adoções API running! Port: ' + port)
