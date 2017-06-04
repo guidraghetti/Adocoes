@@ -1,0 +1,15 @@
+{refUsuario: '{{objectId()}}',
+name: '{{firstName()}} {{surname()}}',
+cpf: '{{guid()}}',
+nomeConjuge: '{{firstName()}} {{surname()}}',
+email: '{{email()}}',
+dataNascimento: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+renda: '{{floating(1000, 4000, 2, "$0,0.00")}}',
+comprovantesRenda: '{{objectId()}}',
+outrosDocumentos: '{{}}',
+enderecos: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+telefones: '{{phone()}}',
+interesses:  '{{objectId()}}',
+visualizacoes:  '{{objectId()}}',
+ativo: '{{bool()}}'
+}

@@ -1,0 +1,22 @@
+{
+    id: '{{objectId()}}',
+    nome: '{{firstName()}} {{surname()}}',
+    sexo: '{{random("Feminino", "Masculino")}}',
+    certidaoNascimento: '{{objectId()}}',
+    dataNascimento: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    familiares: '',
+    menoresVinculados: '',
+    refRaca: '',
+    saudavel: '{{bool()}}',
+    descricaoSaude: '',
+    curavel: '{{bool()}}',
+    deficienciaFisica: '{{bool()}}',
+    deficienciaMental: '{{bool()}}',
+    guiaAcolhimento: '{{objectId()}}',
+    refCidade: '',
+    refAbrigo: '',
+    processoPoderFamiliar: '',
+    interesses: [ '{{repeat(3)}}', { id: '{{index()}}' }],
+    visualizacoes: [ '{{repeat(3)}}', { id: '{{index()}}' }],
+    ativo: '{{bool()}}'
+}

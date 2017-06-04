@@ -1,0 +1,6 @@
+{
+	refInteressado: '{{objectId()}}',
+	refMenor: '{{objectId()}}',
+	tipoInteresse: '{{objectId()}}',
+	timeStamp: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+}
