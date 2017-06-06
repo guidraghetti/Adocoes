@@ -36,18 +36,18 @@ server.get('/', function (req, res, next) {
 })
 
 //
-// Resource: oauth
+// Resource: token
 //
 
 //RFS01: POST /oauth
-server.post('/oauth2/token', AuthManager.isClientAuthenticated, Oauth2Manager.token);
+server.post('/oauth', AuthManager.isClientAuthenticated, Oauth2Manager.token);
 
 //
 // Resource: usuario
 //
 
 // RFU01: POST /usuarios
-server.post('/usuarios', (request, response, next) => { //AuthManager.isAuthenticated, 
+server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => { 
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.post(request, response)
 })
@@ -59,7 +59,7 @@ server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) =
 })
 
 // RFU03: GET /usuarios/{id_usuario}
-server.get('/usuarios/:id_usuario', (request, response, next) => {
+server.get('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getById(request, response)
 })

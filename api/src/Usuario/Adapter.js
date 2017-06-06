@@ -21,11 +21,26 @@ export default class Adapter {
 	update(id, body) {
 		return this.Usuario.findById(id)
 			.then(usuario => {
-				if (body.username)
-					usuario.username = body.username
+				if (body.email)
+					usuario.email = body.email;
 
-				if (body.password)
-					usuario.password = body.password
+				if (body.senha)
+					usuario.senha = body.senha;
+
+				if (body.nome)
+					usuario.nome = body.nome;
+
+				if (body.perfis)
+					usuario.perfis = body.perfis;
+
+				if (body.refPerfilAdministrador)
+					usuario.refPerfilAdministrador = body.refPerfilAdministrador;
+
+				if (body.refPerfilInteressado)
+					usuario.refPerfilInteressado = body.refPerfilInteressado;
+
+				if (body.ativo)
+					usuario.ativo = body.ativo;
 
 				return usuario.save(); 
 			})

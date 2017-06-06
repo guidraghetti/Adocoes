@@ -35,7 +35,6 @@ const usuarioSchema = new Schema({
 	}
 })
 
-// @eduardo.arruda: NÃO SERÁ NECESSÁRIO EM FUNÇÃO DO OAUTH2
 usuarioSchema.methods.verifyPassword = function (password, callback) {
 	bcrypt.compare(password, this.password, function (err, isMatch) {
 		if (err) return cb(err)
@@ -43,8 +42,6 @@ usuarioSchema.methods.verifyPassword = function (password, callback) {
 	})
 }
 
-// @eduardo.arruda: É NECESSÁRIO???
-// Executar antes de cada chamada a user.save()
 usuarioSchema.pre('save', function (callback) {
 
 	const usuario = this

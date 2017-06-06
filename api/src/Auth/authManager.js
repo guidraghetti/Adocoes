@@ -4,58 +4,30 @@ var mongoose = require('mongoose');
 var BasicStrategy = require('passport-http').BasicStrategy;
 var BearerStrategy = require('passport-http-bearer').Strategy
 
-// basic strategy para usuários
-passport.use(new BasicStrategy(function (username, password, callback) {
-    var User = mongoose.model('User');
-
-    User.findOne({ username: username }, function (err, user) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (!user) {
-            return callback(null, false);
-        }
-
-        user.verifyPassword(password, function (err, isMatch) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!isMatch) {
-                return callback(null, false);
-            }
-
-            // success
-            return callback(null, user);
-        });
-    });
-}));
-
-// basic strategy para clientes oauth2
+// estratégia para clientes oauth2
 passport.use('client-basic', new BasicStrategy(    
-    function (username, password, callback) {
-        var Client = mongoose.model('Client');
+    function (nome, secret, callback) {
+        var Cliente = mongoose.model('Cliente');
 
-        Client.findOne({ clientId: username }, function (err, client) {
+        Cliente.findOne({ nome: nome }, function (err, cliente) {
             if (err) {
                 return callback(err);
             }
 
-            if (!client || client.secret !== password) {
+            if (!cliente || cliente.secret !== secret) {
                 return callback(null, false);
             }
 
-            return callback(null, client);
+            return callback(null, cliente);
         });
     }
 ));
 
-// bearer strategy para tokens oauth2
+// estratégia para tokens oauth2
 passport.use(new BearerStrategy(
     function (accessToken, callback) {
         var Token = mongoose.model('Token');
-        var User = mongoose.model('User');
+        var Usuario = mongoose.model('Usuario');
 
         Token.findOne({ value: accessToken }, function (err, token) {
             if (err) { 
@@ -66,21 +38,22 @@ passport.use(new BearerStrategy(
                 return callback(null, false); 
             }
 
-            User.findOne({ _id: token.userId }, function (err, user) {
+            Usuario.findOne({ _id: token.userId }, function (err, usuario) {
                 if (err) { 
                     return callback(err); 
                 }
 
-                if (!user) { 
+                if (!usuario) { 
                     return callback(null, false); 
                 }
-
-                callback(null, user, { scope: '*' });
+                
+                // TODO - permite a definição de escopo de acordo com o perfil do usuario
+                callback(null, usuario, { scope: '*' });
             });
         });
     }
 ));
 
-exports.isAuthenticated = passport.authenticate(['basic', 'bearer'], { session: false });
+exports.isAuthenticated = passport.authenticate(['bearer'], { session: false });
 exports.isClientAuthenticated = passport.authenticate('client-basic', { session: false });
 
