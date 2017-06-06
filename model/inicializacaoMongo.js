@@ -20,5 +20,5 @@ db.usuarios.save({
 
 db.clientes.save({
     nome: "adocoes.app",
-    secret: "407a4d80fce791751cd83ab1af3d9b26" // TODO - hash
+    secret: "$2a$05$M1COhDus0bY6rqkD2REl8.ZccrFgzFXH0a7sOEYU/FWYHTHJ.a8ZC" // 123
 });
