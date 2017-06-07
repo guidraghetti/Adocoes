@@ -62,4 +62,8 @@ export default class Entity {
             }
         })
 	}
+
+	getPerfilByUsuarioId(id) {
+		return this.Adapter.getPerfilByUsuarioId(id)
+	}
 }

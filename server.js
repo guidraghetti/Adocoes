@@ -77,6 +77,11 @@ server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, respo
 })
 
 // RFU06: GET /usuarios/{id_usuario}/perfis
+server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.getPerfilByUsuarioId(request, response)
+})
+
 // RFU07: POST /usuarios/{id_usuario}/perfis
 // RFU08: DELETE /usuarios/{id_usuario}/perfis/{id_perfil}
 

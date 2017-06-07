@@ -70,4 +70,18 @@ export default class Translator {
                 response.send(500, "Ocorreu um erro ao deletar o usuário")
             })
     }
+
+    getPerfilByUsuarioId(request, response) {
+        this.Interactor.getPerfilByUsuarioId(request.params.id_usuario)
+            .then(message => {
+                if (!message)
+                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+                response.send(500, "Ocorreu um erro ao obter o perfil do usuário")
+            })
+    }
 }
