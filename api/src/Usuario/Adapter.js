@@ -61,4 +61,13 @@ export default class Adapter {
 
 		return this.Usuario.findById(id, projection);
 	}
+
+	updatePerfilUsuario(id, perfis) {
+		return this.Usuario.findById(id)
+			.then(usuario => {
+				usuario.perfis = perfis;
+
+				return usuario.save();
+			})
+	}
 }

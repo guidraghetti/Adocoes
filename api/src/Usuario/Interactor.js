@@ -31,4 +31,8 @@ export default class Interactor {
 	getPerfilByUsuarioId(id) {
 		return this.Entity.getPerfilByUsuarioId(id)
 	}
+
+	updatePerfilUsuario(id, perfis) {
+		return this.Entity.updatePerfilUsuario(id, perfis)
+	}
 }

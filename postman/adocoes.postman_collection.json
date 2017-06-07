@@ -79,10 +79,12 @@
 				"c805d166-d258-a674-d4b6-0237cd0937b5",
 				"c4374479-c5fd-3337-e132-8516dd8a93d6",
 				"052a3634-0d1d-8531-652a-8c0d2c71806f",
+				"77f1612a-d2a3-073e-87b5-af568348418e",
 				"4d43533a-2264-c2b7-8dc6-fe7462d27632",
 				"c63ab4f7-b978-6967-e6c0-d2a8997dbdc9"
 			],
-			"owner": "1034757"
+			"owner": "1034757",
+			"collectionId": "24a5ab5d-a2b2-28f2-7b15-86995ecbebcd"
 		}
 	],
 	"timestamp": 0,
@@ -413,7 +415,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{url-localhost}}/usuarios/5936f7861e91ef01240521be",
+			"url": "{{url-localhost}}/usuarios/5938802c8979d13c9c533a9c",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -424,13 +426,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1496774749537,
+			"time": 1496876626954,
 			"name": "/usuarios/{id_usuario}",
 			"description": "",
 			"collectionId": "24a5ab5d-a2b2-28f2-7b15-86995ecbebcd",
 			"responses": [],
-			"rawModeData": "{  \r\n   \"email\":\"modificado@usuario.com\",\r\n   \"ativo\": true\r\n}",
-			"folder": "fdaaa240-b313-7181-69d9-100d8bb8f9af"
+			"rawModeData": "{  \r\n   \"email\":\"modificado@usuario.com\",\r\n   \"ativo\": true\r\n}"
 		},
 		{
 			"id": "4e4c92a8-4fa5-e7ea-d81d-1078c9fff9f7",
@@ -716,6 +717,41 @@
 			"folder": "2adc2b83-8eee-c7aa-afd4-15e587631711",
 			"preRequestScript": "",
 			"tests": ""
+		},
+		{
+			"id": "77f1612a-d2a3-073e-87b5-af568348418e",
+			"headers": "Authorization: Bearer {{access-token}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access-token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url-localhost}}/usuarios/5938802c8979d13c9c533a9c/perfis",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1496876629091,
+			"name": "/usuarios/{id_usuario}/perfis",
+			"description": "",
+			"collectionId": "24a5ab5d-a2b2-28f2-7b15-86995ecbebcd",
+			"responses": [],
+			"rawModeData": "{  \r\n   \"perfis\":[ \"interessado\"]\r\n}"
 		},
 		{
 			"id": "78be0fa4-ddaa-d545-9781-20176000eafc",

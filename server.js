@@ -76,13 +76,21 @@ server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, respo
     usuarioTranslator.delete(request, response)
 })
 
-// RFU06: GET /usuarios/{id_usuario}/perfis
+// @rafael.companhoni: recursos abaixo são apenas referentes a propriedade 'perfis' do usuário?
+
+// RFU06: GET /usuarios/{id_usuario}/perfis 
 server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getPerfilByUsuarioId(request, response)
 })
 
 // RFU07: POST /usuarios/{id_usuario}/perfis
+server.post('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.updatePerfilUsuario(request, response)
+})
+
+// @rafael.companhoni: remove da lista de perfis todos os perfis informados?
 // RFU08: DELETE /usuarios/{id_usuario}/perfis/{id_perfil}
 
 //
