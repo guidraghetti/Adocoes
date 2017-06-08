@@ -3,8 +3,8 @@ export default class Interactor {
 		this.Entity = deps.Entity || new (require('./Entity').default)()
 	}
 
-	criar(usuario) {
-		return this.Entity.salvar(usuario)
+	save(usuario) {
+		return this.Entity.save(usuario)
 	}
 
 	fetchAll(body) {

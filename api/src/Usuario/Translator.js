@@ -1,25 +1,12 @@
 export default class Translator {
     constructor(deps = {}) {
-        this.Interactor = deps.Interactor || new (require('./Interactor').default)()
+        this.Interactor = deps.Interactor ? new deps.Interactor() : new (require('./Interactor').default)()
     }
 
-    post(request, response) {
-        const { body } = request
-
-        this.Interactor.criar(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao criar o usuário")
-            })
-    }
-
-    get(request, response) {
+    fetchAll(request, response) {
         this.Interactor.fetchAll()
-            .then(message => {
-                response.send(200, message)
+            .then(result => {
+                response.send(200, result)
             })
             .catch(error => {
                 console.log(error)
@@ -38,6 +25,19 @@ export default class Translator {
             .catch(error => {
                 console.log(error)
                 response.send(500, "Ocorreu um erro ao obter o usuário")
+            })
+    }
+
+    post(request, response) {
+        const { body } = request
+
+        this.Interactor.save(body)
+            .then(message => {
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+                response.send(500, "Ocorreu um erro ao criar o usuário")
             })
     }
 

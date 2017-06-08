@@ -3,8 +3,8 @@ export default class Entity {
 		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
 	}
 
-	salvar(usuario) {
-		return this.Adapter.salvar(usuario)
+	save(usuario) {
+		return this.Adapter.save(usuario)
 	}
 
 	fetchAll() {

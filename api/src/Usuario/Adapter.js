@@ -5,7 +5,7 @@ export default class Adapter {
 		this.Usuario = mongoose.model('Usuario')
 	}
 
-	salvar(usuario) {
+	save(usuario) {
 		const usr = new this.Usuario(usuario)
 		return usr.save()
 	}
