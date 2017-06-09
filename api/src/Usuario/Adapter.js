@@ -5,10 +5,12 @@ export default class Adapter {
 		this.Usuario = mongoose.model('Usuario')
 	}
 
-	salvar(usuario) {
-		const usr = new this.Usuario(usuario)
-		return usr.save()
-	}
+	save(body) {
+		console.log(body)
+		const usuario = new this.usuario(body)
+
+		return usuario.save()
+	}	
 
 	fetchAll() {
 		return this.Usuario.find()

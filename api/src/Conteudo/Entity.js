@@ -18,8 +18,10 @@ export default class Entity {
 
 	validate(body) {
 		const schema = Joi.object({
-			_id: Joi.string().required(),
+			
 			nome: Joi.string().required(),
+			pagina: Joi.object().required(),
+			midia: Joi.object().required(),
 			ativo: Joi.boolean().required(),
 			timeStampCriacao: Joi.date().default().required(),
 			timeStampInicio: Joi.date().default().required(),
