@@ -2,46 +2,45 @@ var mongoose = require('mongoose');
 var oauth2orize = require('oauth2orize');
 var bcrypt = require('bcrypt-nodejs');
 
-// OAUTH 2 SERVER CONFIG
+// CONFIGURAÇÃO PARA O SERVIDOR DE AUTORIZAÇÃO OAUTH 2 (OAUTH2ORIZE)
 // ----------------------------------------------------
 var server = oauth2orize.createServer();
 
-server.serializeClient(function (client, callback) {
-    return callback(null, client._id);
+server.serializeClient(function (cliente, callback) {
+    return callback(null, cliente._id);
 });
 
 server.deserializeClient(function (id, callback) {
-    var Client = mongoose.model('Client');
+    var Cliente = mongoose.model('Cliente');
 
-    Client.findOne({ _id: id }, function (err, client) {
+    Cliente.findOne({ _id: id }, function (err, cliente) {
         if (err) { return callback(err); }
-        return callback(null, client);
+        return callback(null, cliente);
     });
 });
 
-// GRANT TYPE: RESOURCE OWNER PASSWORD CREDENTIALS
+// GRANT TYPE: RESOURCE OWNER PASSWORD CREDENTIALS -- o servidor de autorização verifica se o resource owner informado existe e se a senha está correta
 // ----------------------------------------------------
 
-server.exchange(oauth2orize.exchange.password(function (client, username, password, scope, done) {
-    var User = mongoose.model('User');
+server.exchange(oauth2orize.exchange.password(function (cliente, email, senha, scope, done) {
+    var Usuario = mongoose.model('Usuario');
 
-    User.findOne({username: username}, function (err, user) {
+    Usuario.findOne({email: email}, function (err, usuario) {
         if (err) return done(err)
 
-        if (!user) return done(null, false)
+        if (!usuario) return done(null, false)
 
-        bcrypt.compare(password, user.password, function (err, res) {
+        bcrypt.compare(senha, usuario.senha, function (err, res) {
             if (!res) return done(null, false)
 
             var Token = mongoose.model('Token');
 
             var token = new Token({
                 value: uid(256),
-                clientId: client.clientId,
-                userId: user._id
+                clientId: cliente._id,
+                userId: usuario._id
             });
             
-           // save the access token and check for errors
             token.save(function (err) {
                 if (err) {
                     return callback(err);
@@ -53,35 +52,8 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
     })
 }))
 
-// client authorization endpoint
-exports.authorization = [
-    server.authorization(function (clientId, redirectUri, callback) {
-        var Client = mongoose.model('Client');
-
-        Client.findOne({ clientId: clientId }, function (err, client) {
-            if (err) {
-                return callback(err);
-            }
-
-            return callback(null, client, redirectUri);
-        });
-    }),
-    function (req, res) {
-        res.render('dialog', { 
-            transactionID: req.oauth2.transactionID, 
-            user: req.user, 
-            client: req.oauth2.client 
-        });
-    }
-]
-
-// user decision endpoint -- handles the data submitted by the post and will call the server.grant() created earlier
-exports.decision = [
-    server.decision()
-]
-
-// application client token exchange endpoint -- handle the request made by the application client after they have been granted an authorization code by the user. 
-// the server.token() function will initiate a call to the server.exchange() function we created earlier
+// o oauth2orize vai direcionar para o tratador adequado de acordo com o parâmetro 'grant-type' presente no corpo da requisição
+// neste caso, apenas a estratégia RESOURCE OWNER PASSWORD CREDENTIALS é utilizada, ou seja, "grant-type":"password" 
 exports.token = [
     server.token(),
     server.errorHandler()

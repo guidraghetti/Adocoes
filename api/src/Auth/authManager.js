@@ -1,86 +1,72 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
 var BasicStrategy = require('passport-http').BasicStrategy;
 var BearerStrategy = require('passport-http-bearer').Strategy
 
-// basic strategy para usuários
-passport.use(new BasicStrategy(function (username, password, callback) {
-    var User = mongoose.model('User');
+// estratégia para clientes oauth2
+passport.use('client-basic', new BasicStrategy(
+    function (nome, secret, callback) {
+        var Cliente = mongoose.model('Cliente');
 
-    User.findOne({ username: username }, function (err, user) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (!user) {
-            return callback(null, false);
-        }
-
-        user.verifyPassword(password, function (err, isMatch) {
+        Cliente.findOne({ nome: nome }, function (err, cliente) {
             if (err) {
                 return callback(err);
             }
 
-            if (!isMatch) {
+            // cliente oauth não cadastrado
+            if (!cliente) {
                 return callback(null, false);
             }
 
-            // success
-            return callback(null, user);
-        });
-    });
-}));
-
-// basic strategy para clientes oauth2
-passport.use('client-basic', new BasicStrategy(    
-    function (username, password, callback) {
-        var Client = mongoose.model('Client');
-
-        Client.findOne({ clientId: username }, function (err, client) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!client || client.secret !== password) {
-                return callback(null, false);
-            }
-
-            return callback(null, client);
-        });
-    }
-));
-
-// bearer strategy para tokens oauth2
-passport.use(new BearerStrategy(
-    function (accessToken, callback) {
-        var Token = mongoose.model('Token');
-        var User = mongoose.model('User');
-
-        Token.findOne({ value: accessToken }, function (err, token) {
-            if (err) { 
-                return callback(err); 
-            }
-
-            if (!token) { 
-                return callback(null, false); 
-            }
-
-            User.findOne({ _id: token.userId }, function (err, user) {
-                if (err) { 
-                    return callback(err); 
+            // verifica chave do cliente
+            cliente.verifySecret(secret, function (err, isMatch) {
+                if (err) {
+                    return callback(err);
                 }
 
-                if (!user) { 
-                    return callback(null, false); 
+                if (!isMatch) {
+                    return callback(null, false);
                 }
 
-                callback(null, user, { scope: '*' });
+                return callback(null, cliente);
             });
         });
     }
 ));
 
-exports.isAuthenticated = passport.authenticate(['basic', 'bearer'], { session: false });
+// estratégia para tokens oauth2
+passport.use(new BearerStrategy(
+    function (accessToken, callback) {
+        var Token = mongoose.model('Token');
+        var Usuario = mongoose.model('Usuario');
+
+        Token.findOne({ value: accessToken }, function (err, token) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!token) {
+                return callback(null, false);
+            }
+
+            Usuario.findOne({ _id: token.userId }, function (err, usuario) {
+                if (err) {
+                    return callback(err);
+                }
+
+                if (!usuario) {
+                    return callback(null, false);
+                }
+
+                // TODO - permite a definição de escopo de acordo com o perfil do usuario
+                callback(null, usuario, { scope: '*' });
+            });
+        });
+    }
+));
+
+exports.isAuthenticated = passport.authenticate(['bearer'], { session: false });
 exports.isClientAuthenticated = passport.authenticate('client-basic', { session: false });
 

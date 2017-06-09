@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt');
+
 const Schema = mongoose.Schema
 
 const usuarioSchema = new Schema({
@@ -6,7 +8,7 @@ const usuarioSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true
-	}, 
+	},
 	senha: {
 		type: String,
 		required: true
@@ -17,7 +19,7 @@ const usuarioSchema = new Schema({
 	},
 	perfis: [{
 		type: String,
-		enum: [ 'usuario', 'master', 'administrador', 'interessado'  ],
+		enum: ['usuario', 'master', 'administrador', 'interessado'],
 		required: true
 	}],
 	refPerfilAdministrador: {
@@ -35,31 +37,27 @@ const usuarioSchema = new Schema({
 	}
 })
 
-// @eduardo.arruda: NÃO SERÁ NECESSÁRIO EM FUNÇÃO DO OAUTH2
-usuarioSchema.methods.verifyPassword = function (password, callback) {
-	bcrypt.compare(password, this.password, function (err, isMatch) {
+usuarioSchema.methods.verifyPassword = function (senha, callback) {
+	bcrypt.compare(senha, this.senha, function (err, isMatch) {
 		if (err) return cb(err)
-			callback(null, isMatch)
+		callback(null, isMatch)
 	})
 }
 
-// @eduardo.arruda: É NECESSÁRIO???
-// Executar antes de cada chamada a user.save()
 usuarioSchema.pre('save', function (callback) {
+	const usuario = this;
 
-	const usuario = this
-
-	if (!usuario.isModified('password')) return callback()
+	if (!usuario.isModified('senha')) return callback();
 
 	bcrypt.genSalt(5, function (err, salt) {
 		if (err) return callback(err)
 
-		bcrypt.hash(user.password, salt, null, function (err, hash) {
-			if (err) return callback(err)
+		bcrypt.hash(usuario.senha, salt, function (err, hash) {
+			if (err) return callback(err);
 
-			usuario.password = hash
-			callback()
-		})
+			usuario.senha = hash;
+			callback();
+		});
 	})
 })
 
