@@ -59,7 +59,7 @@ server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) =
 })
 
 // RFU03: GET /usuarios/{id_usuario}
-server.get('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
+server.get('/usuarios/:id_usuario', (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getById(request, response)
 })
@@ -303,3 +303,5 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 server.listen(port, function () {
     console.log('Adoções API running! Port: ' + port)
 })
+
+module.exports = server;
