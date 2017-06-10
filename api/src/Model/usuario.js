@@ -61,4 +61,4 @@ usuarioSchema.pre('save', function (callback) {
 	})
 })
 
-mongoose.model('Usuario', usuarioSchema)
+mongoose.model('Usuario', usuarioSchema);

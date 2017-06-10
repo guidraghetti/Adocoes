@@ -12,15 +12,14 @@ import Oauth2Manager from './api/src/Auth/oauth2Manager'
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-process.env.ENV_DB_NAME = 'Adocoes';
-
 require('./database.js')
+
+console.log("Inicializando o servidor...")
 
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
-// @eduardo.arruda: sanitizar rotas
-
+server.pre(restify.pre.sanitizePath());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
     extended: true
