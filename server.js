@@ -76,8 +76,6 @@ server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, respo
     usuarioTranslator.delete(request, response)
 })
 
-// @rafael.companhoni: recursos abaixo são apenas referentes a propriedade 'perfis' do usuário?
-
 // RFU06: GET /usuarios/{id_usuario}/perfis 
 server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
