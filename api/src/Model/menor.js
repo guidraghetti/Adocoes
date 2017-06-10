@@ -70,6 +70,10 @@ const menorSchema = new Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interesses'
 	}],
+	midias: [{
+		type: mongoose.Schema.Types.ObjectId,
+		conteudo: base64Schema
+	}]
 	visualizacoes: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'visualizacoes'

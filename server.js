@@ -119,11 +119,11 @@ server.get('/menores', AuthManager.isAuthenticated, (request, response, next) =>
 // RFM03: GET /menores/{id_menor}
 // RFM04: PUT /menores/{id_menor}
 // RFM05: DELETE /menores/{id_menor}
-// RFM06: GET /menores/ordenacao
+// RFM06: GET /menores?ordenacao={idade=-1~+1, sexo=-1~+1}
 // RFM07: POST /menores/{id_menor}/interessados
 // RFM08: GET /menores/{id_menor}/interessados
 // RFM09: DELETE /menores/{id_menor}/interessados/{id_interessado}
-// RFM10: POST /menores/{id_menor}/imagens
+// RFM10: POST /menores/{id_menor}/midias
 // RFM11: GET /menores/{id_menor}/imagens
 // RFM12: GET /menores/{id_menor}/imagens/{id_imagem}
 // RFM13: DELETE /menores/{id_menor}/imagens/{id_imagem}

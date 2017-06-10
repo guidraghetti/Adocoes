@@ -16,7 +16,7 @@ const documentoSchema = new Schema({
 	},
 	tipoDocumento: {
 		type: String,
-		enum: [ 'rg', 'carteira de motorista' ],
+		enum: [ 'rg', 'cnh' ],
 		required: true
 	},
 	imagem: {
