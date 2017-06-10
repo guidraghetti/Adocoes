@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const base64Schema = require('./base64')
+const midiaSchema = require('./midia')
 
 const documentoSchema = new Schema({
 	numero: {
@@ -20,7 +20,7 @@ const documentoSchema = new Schema({
 		required: true
 	},
 	imagem: {
-		type: base64Schema
+		type: midiaSchema
 	}
 })
 

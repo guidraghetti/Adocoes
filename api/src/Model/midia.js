@@ -1,17 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-export const base64Schema = new Schema({
+export const midiaSchema = new Schema({
 	type: {
-		
-	}		type: String,
-		enum: [ 'rg', 'carteira de motorista' ],
+		type: String,
+    enum: [ 'foto', 'video', 'carta', 'html' ],
 		required: true
-
+	},
 	conteudo: {
 		type: String,
 		required: true
 	}
 })
 
-mongoose.model('Base64', base64Schema)
+mongoose.model('Midia', midiaSchema)
