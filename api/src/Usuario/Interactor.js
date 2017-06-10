@@ -22,4 +22,12 @@ export default class Interactor {
 	delete(id) {
 		return this.Entity.delete(id)
 	}
+
+	getPerfilByUsuarioId(id) {
+		return this.Entity.getPerfilByUsuarioId(id)
+	}
+
+	updatePerfilUsuario(id, perfis) {
+		return this.Entity.updatePerfilUsuario(id, perfis)
+	}
 }

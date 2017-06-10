@@ -24,6 +24,7 @@
     "expect": "^1.20.2",
     "joi": "^10.4.1",
     "mocha": "^3.4.2",
+    "mockgoose": "^7.3.3",
     "mongoose": "^4.9.7",
     "nodemon": "^1.11.0",
     "oauth2orize": "^1.8.0",

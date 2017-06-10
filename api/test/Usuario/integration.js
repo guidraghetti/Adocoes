@@ -1,22 +1,25 @@
 // Test promises with Mocha - https://wietse.loves.engineering/testing-promises-with-mocha-90df8b7d2e35
 // Mockgoose - https://www.npmjs.com/package/mockgoose
 
-import supertest from 'supertest';
-import server from '../../../server';
+import Supertest from 'supertest';
+import Mockgoose from 'mockgoose';
+import Server from '../../../server';
 
 describe('GET /usuarios/:id_usuario', () => {
     var request;
 
     before(() => {
+        // TODO - banco de testes
+        process.env.ENV_DB_NAME = 'AdocoesTest';
+        
         // TODO - configurar cabeçalho 'Bearer' (Obs: autenticação removida temporariamente de 'GET /usuarios/:id_usuario')
-        // TODO - mock banco
     })
 
     beforeEach(() => {
         // TODO - utilizar dados pré-configurados
-        const userId = "5939c9a3f0c2764ae0d39a53";
+        const userId = "593b2e5d80538c0709efb73c";
 
-        request = supertest(server)
+        request = Supertest(Server)
             .get(`/usuarios/${userId}`)
             .set("Content-Type", "application/json");
     });

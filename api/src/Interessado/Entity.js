@@ -29,13 +29,22 @@ export default class Entity {
 	validate(body) {
 
 		const schema = Joi.object({
-			nome: Joi.string().required(),
+			refUsuario: Joi.object().required(),
+			name: Joi.string().required(),
+			cpf: Joi.number().required(),
 			email: Joi.string().required().email(),
 			senha: Joi.string().required(),
 			ativo: Joi.string().required(),
 			nomeConjuge: Joi.string().required(),
 			dataNascimento: Joi.date().required(),
-			renda: Joi.number().precision(2)
+			renda: Joi.number().precision(2),
+			comprovantesRenda: Joi.object().required(),
+			outrosDocumentos: Joi.object().required(),
+			enderecos: Joi.object().required(),
+			telefones: Joi.object().required(),
+			interesses: Joi.object().required(),
+			visualizacoes: Joi.object().required()
+
 		})
 		
 		const {error, value} = Joi.validate(body, schema)

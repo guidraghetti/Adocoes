@@ -12,6 +12,8 @@ import Oauth2Manager from './api/src/Auth/oauth2Manager'
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+process.env.ENV_DB_NAME = 'Adocoes';
+
 require('./database.js')
 
 const server = restify.createServer()
@@ -76,9 +78,17 @@ server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, respo
     usuarioTranslator.delete(request, response)
 })
 
-// RFU06: GET /usuarios/{id_usuario}/perfis
-// RFU07: POST /usuarios/{id_usuario}/perfis
-// RFU08: DELETE /usuarios/{id_usuario}/perfis/{id_perfil}
+// RFU06: GET /usuarios/{id_usuario}/perfis 
+server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.getPerfilByUsuarioId(request, response)
+})
+
+// RFU07: PUT /usuarios/{id_usuario}/perfis
+server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
+    const usuarioTranslator = new UsuarioTranslator()
+    usuarioTranslator.updatePerfilUsuario(request, response)
+})
 
 //
 // Resource: perfil

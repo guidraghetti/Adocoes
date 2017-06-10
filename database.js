@@ -5,7 +5,7 @@ import * as models from './api/src/Model';
 import Cliente from './api/src/Model/Auth/cliente';
 import Token from './api/src/Model/Auth/token';
 
-const db = 'mongodb://localhost:27017/Adocoes'
+const db = `mongodb://localhost:27017/${process.env.ENV_DB_NAME}`
 
 mongoose.connect(db)
 

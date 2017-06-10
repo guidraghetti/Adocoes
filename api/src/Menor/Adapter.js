@@ -14,4 +14,65 @@ export default class Adapter {
 	fetchAll() {
 		return this.Menor.find()
 	}
+
+		
+	fetchAndUpdate() {
+		return this.Menor.findOneAndUpdate({_id: body.id },{new: true}, body, (err, menor) => {
+			return menor
+		})
+	}	
+	
+	fetchOrdination() {		
+	}
+	
+	addIntersting() {
+		return this.Menor.findOneAndUpdate({_id: body.id}, () )
+	}
+	
+	fetchAllIntersting() {
+		
+	}
+	
+	removeIntersting() {
+		
+	}
+	
+	createImage() {
+		
+	}
+	
+	fetchAllImage() {
+		
+	}
+		
+	fetchImage() {
+		
+	}
+	
+	removeImage() {
+		
+	}
+	
+	createImage() {
+		
+	}
+	
+	createVideo() {
+		
+	}
+	
+	fetchAllVideo() {
+		
+	}
+
+	fetchVideo() {
+		
+	}
+	
+	removeVideo() {
+		
+	}
+	
+	
+	
 }
