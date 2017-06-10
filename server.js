@@ -17,8 +17,7 @@ require('./database.js')
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
-// @eduardo.arruda: sanitizar rotas
-
+server.pre(restify.pre.sanitizePath());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
     extended: true
