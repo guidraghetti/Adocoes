@@ -81,7 +81,7 @@ server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
     usuarioTranslator.getPerfilByUsuarioId(request, response)
 })
 
-// RFU07: PUT /usuarios/{id_usuario}/perfis
+// RFU09: PUT /usuarios/{id_usuario}/perfis
 server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.updatePerfilUsuario(request, response)
