@@ -120,25 +120,44 @@ export default class Entity {
 	
 	validate(body, schema) {
 
+		const schema = Joi.object({
+			nome: Joi.string().require(),
+			sexo: Joi.string().require().regex(/M|F/),
+	        dataNascimento: Joi.date().require().max('now').min('now'), //somar data atual + 18 anos
+	        
+	        refEtnia: Joi.object().required(),
+	        certidaoNascimento: Joi.string().require(),
+	        familyReferences: Joi.object(),
+	        menoresVinculados: Joi.object().required(),
+	        adocoesConjuntas: Joi.object().required(),
+	        saudavel: Joi.boolean(),required(),
+	        descricaoSaude: Joi.string().required(),
+	        curavel: Joi.boolean().required(),
+	        deficienciaFisica: Joi.boolean().required(),
+	        deficienciaMental: Joi.boolean().required(),
+	        guiaAcolhimento: Joi.string().required(),
+	        refCidade: Joi.string().required(),
+	        refAbrigo: Joi.string().required(),
+	        processoPoderFamiliar: Joi.string().require(),
+	        interesses: Joi.string().required(),
+	        visualizacoes: Joi.string().required(),
+	        ativo: Joi.boolean().required()
+	    })
+		
+		const {error, value} = Joi.validate(body, schema)
 
-		const schema = Joi.object(){
-		name = Joi.string().require()
-		gender = Joi.string().require().regex(/M|F/)
-        birthDay = Joi.date().require().max('now').min('now') //somar data atual + 18 anos
-        shelterGuide = Joi.string().require()
-        birthCertificate = Joi.string().require()
-        familyReferences = Joi.object()
-        nationality = Joi.string().require()
-        placeOfBirth = Joi.strin().require()
-        location = Joi.string().require()
-	    shelterRef = Joi.number().require()
-
-			// let {error, value} = joi.validate(body, schema)
-			return new Promise ((resolve, reject) => {
-
-			if (error) reject(error)
-
-			if (value) resolve(value)
+		return new Promise((resolve, reject) => {
+          
+            if(error) {
+                let messages = error.details.map(e => e.message)
+                reject({
+                    status: 400,
+                    messages
+                })
+            } else if(value) {
+                resolve(value)
+            }
+        })
 		})
 	}
 }
