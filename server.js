@@ -14,8 +14,6 @@ mongoose.Promise = global.Promise;
 
 require('./database.js')
 
-console.log("Inicializando o servidor...")
-
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
@@ -60,7 +58,7 @@ server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) =
 })
 
 // RFU03: GET /usuarios/{id_usuario}
-server.get('/usuarios/:id_usuario', (request, response, next) => {
+server.get('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getById(request, response)
 })
