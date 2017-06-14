@@ -1,92 +1,91 @@
-// Test promises with Mocha - https://wietse.loves.engineering/testing-promises-with-mocha-90df8b7d2e35
-// Mockgoose - https://www.npmjs.com/package/mockgoose
-// https://stackoverflow.com/questions/31030732/testing-admin-user-on-mocha
-
 import supertest from 'supertest';
 import mongoose from 'mongoose';
+import { expect } from 'chai';
+import server from '../../server';
 
-// import { Mongoose } from 'mongoose';
-// import { Mockgoose } from 'mockgoose';
+const Usuario = mongoose.model('Usuario');
+const Cliente = mongoose.model('Cliente');
+const Token = mongoose.model('Token');
 
-// import Cliente from '../../../api/src/Model/Auth/cliente';
-// import Token from '../../../api/src/Model/Auth/token';
-// import Usuario from '../../../api/src/Model/usuario';
-
-// const mongoose = new Mongoose();
-// const mockgoose = new Mockgoose(mongoose);
-
-// import Server from '../../../server';
-
-describe('GET /usuarios/:id_usuario', () => {    
-    let server;
+describe('GET /usuarios/:id_usuario', () => {
     let request;
-    let Usuario;
-    let Cliente;
-    let Token;
-
     const clienteId = mongoose.Types.ObjectId();
+    const tokenValue = "m4m8rF7B8aYsFX2cq0qqg2xzL5jMtxkRu6gSA9sdUGUuganR9rWMQTHGeUSc0rgYaQVom1Z67NW7WXbTkKZfF5W7tBzJ0qsYfmzwrclDjUUtwmcuSBhdkMG1iPPoo4VdryCRxNMhmwRMF2n3aZBWOI1X5kqSoYr0XlgpL7rPMfyDQfZD6g0sN2PvPAq2i6djiwgI72zwQ7yaYEg13esYEXzalhqCTQlIw7MlyiFNI7p8HpZLf8eM1CflQi4APOA8";
+    const usuarioTeste = {
+        _id: mongoose.Types.ObjectId(),
+        ativo: true,
+        email: "usuarioteste@teste.com",
+        nome: "Usuario Teste",
+        senha: "123",
+        perfis: ["administrador"]
+    }
 
+    // restaura banco de dados -- apaga tokens, clientes, usuarios e cria novos
     before(done => {
-        server = require('../../server');
-        
-        Usuario = mongoose.model('Usuario');
-        Cliente = mongoose.model('Cliente');
-        Token = mongoose.model('Token');
+        Token
+            .remove({})
+            .then(() => Cliente.remove({}))
+            .then(() => Usuario.remove({}))
+            .then(() => {
+                var cliente = new Cliente();
+                cliente._id = clienteId;
+                cliente.nome = "Cliente OAuht 2.0 Para Testes";
+                cliente.secret = "$2a$05$M1COhDus0bY6rqkD2REl8.ZccrFgzFXH0a7sOEYU/FWYHTHJ.a8ZC";
 
-        Cliente.remove({}, ()=> {
-            var cliente = new Cliente(); 
-            cliente._id =  clienteId;
-            cliente.nome = "Cliente OAuht 2.0 Para Testes";
-            cliente.secret = "$2a$05$M1COhDus0bY6rqkD2REl8.ZccrFgzFXH0a7sOEYU/FWYHTHJ.a8ZC";
+                return cliente.save()
+            })
+            .then(() => {
+                var usuario = new Usuario(usuarioTeste);
+                return usuario.save();
+            })
+            .then(() => {
+                var token = new Token();
+                token.value = tokenValue;
+                token.clientId = clienteId;
+                token.userId = usuarioTeste._id;
 
-            cliente
-                .save()
-                .then(() => done());
-        });
+                return token.save();
+            })
+            .then(() => done());
     });
 
     context('O usuário informado existe', () => {
-        const usuarioId = mongoose.Types.ObjectId();
-        const tokenValue = "m4m8rF7B8aYsFX2cq0qqg2xzL5jMtxkRu6gSA9sdUGUuganR9rWMQTHGeUSc0rgYaQVom1Z67NW7WXbTkKZfF5W7tBzJ0qsYfmzwrclDjUUtwmcuSBhdkMG1iPPoo4VdryCRxNMhmwRMF2n3aZBWOI1X5kqSoYr0XlgpL7rPMfyDQfZD6g0sN2PvPAq2i6djiwgI72zwQ7yaYEg13esYEXzalhqCTQlIw7MlyiFNI7p8HpZLf8eM1CflQi4APOA8";
-
-        before(done => {
-            Usuario.remove({}, ()=> {
-                var usuario = new Usuario();     
-                usuario._id = usuarioId; 
-                usuario.email = "usuarioteste@teste.com";
-                usuario.nome = "Usuario Teste";
-                usuario.senha = "123",
-                usuario.perfis = "administrador";
-
-                usuario
-                    .save(() => {
-                        var token = new Token();
-                        token.value = tokenValue,
-                        token.clientId = clienteId;
-                        token.userId = usuarioId
-
-                        token
-                            .save()
-                            .then(() => done());
-                    });
-            });
-        });
-
         it('responde com dados do usuário e status HTTP 200', done => {
-             request = supertest(server)
-                .get(`/usuarios/${usuarioId}`)
+            request = supertest(server)
+                .get(`/usuarios/${usuarioTeste._id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
-                .expect(200)
-                .then(() => done())
+                .end((err, res) => {
+                    expect(res.status).to.equal(200);
+                    expect(res.body._id).to.equal(usuarioTeste._id.toString());
+                    expect(res.body.ativo).to.equal(usuarioTeste.ativo);
+                    expect(res.body.email).to.equal(usuarioTeste.email);
+                    expect(res.body.nome).to.equal(usuarioTeste.nome);
+                    expect(res.body.perfis).to.have.same.members(usuarioTeste.perfis);
+                    done();
+                });
         });
     });
 
     context('O usuário informado não existe', () => {
-        it('responde com status HTTP 404');
+        const nonExistingId = mongoose.Types.ObjectId();
+
+        it('responde com status HTTP 404', done => {
+            request = supertest(server)
+                .get(`/usuarios/${nonExistingId}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .end((err, res) => {
+                    expect(res.status).to.equal(404);
+                    done();
+                });
+        });
     });
 
     context('Ocorreu um erro com alguma das camadas IATE', () => {
-        it('responde com status HTTP 500');
+        it('ocorreu um erro com o Translator');
+        it('ocorreu um erro com o Interactor');
+        it('ocorreu um erro com o Entity');
+        it('ocorreu um erro com o Adapter');
     });
 });

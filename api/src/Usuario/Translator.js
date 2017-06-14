@@ -18,7 +18,7 @@ export default class Translator {
         this.Interactor.findById(request.params.id_usuario)
             .then(message => {
                 if (!message)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(404, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, message)
             })

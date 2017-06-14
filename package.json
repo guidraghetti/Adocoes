@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./server.js",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register"
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --timeout 120000 "
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "bcrypt": "^1.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "chai": "^4.0.2",
     "cross-env": "^5.0.1",
     "expect": "^1.20.2",
     "joi": "^10.4.1",
