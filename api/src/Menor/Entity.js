@@ -118,7 +118,7 @@ export default class Entity {
 		})
 	}	
 	
-	validate(body, schema) {
+	validate(body) {
 
 		const schema = Joi.object({
 			nome: Joi.string().require(),
