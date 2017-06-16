@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const familiarSchema = require('./familiar.js')
 const vinculoSchema = require('./vinculo.js')
 const processoSchema = require('./processo.js')
+const midiaSchema = require('./midia.js')
 
 const menorSchema = new Schema({
 	nome: {
