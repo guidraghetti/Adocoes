@@ -111,7 +111,7 @@ server.post('/menores', AuthManager.isAuthenticated, (request, response, next) =
 })
 
 // RFM02: GET /menores
-server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
+server.get('/menores', (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.get(request, response)
 })
