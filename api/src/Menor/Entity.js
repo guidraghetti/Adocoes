@@ -118,7 +118,7 @@ export default class Entity {
 		})
 	}	
 	
-	validate(body, schema) {
+	validate(body) {
 
 		const schema = Joi.object({
 			nome: Joi.string().require(),
@@ -130,7 +130,7 @@ export default class Entity {
 	        familyReferences: Joi.object(),
 	        menoresVinculados: Joi.object().required(),
 	        adocoesConjuntas: Joi.object().required(),
-	        saudavel: Joi.boolean(),required(),
+	        saudavel: Joi.boolean().required(),
 	        descricaoSaude: Joi.string().required(),
 	        curavel: Joi.boolean().required(),
 	        deficienciaFisica: Joi.boolean().required(),
@@ -158,6 +158,6 @@ export default class Entity {
                 resolve(value)
             }
         })
-		})
+		
 	}
 }

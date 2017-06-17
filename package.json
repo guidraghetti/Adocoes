@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec babel-node ./api/src/server.js",
+    "build-server": "babel api/src/ -d build",
+    "production": "npm run build-server && node ./build/server.js"
   },
   "repository": {
     "type": "git",

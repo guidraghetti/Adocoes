@@ -1,13 +1,13 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
 
-import UsuarioTranslator from './api/src/Usuario/Translator'
-import ConteudoTranslator from './api/src/Conteudo/Translator'
-import MenorTranslator from './api/src/Menor/Translator'
-import InteressadosTranslator from './api/src/Interessado/Translator'
+import UsuarioTranslator from './Usuario/Translator'
+import ConteudoTranslator from './Conteudo/Translator'
+import MenorTranslator from './Menor/Translator'
+import InteressadosTranslator from './Interessado/Translator'
 
-import AuthManager from './api/src/Auth/authManager'
-import Oauth2Manager from './api/src/Auth/oauth2Manager'
+import AuthManager from './Auth/authManager'
+import Oauth2Manager from './Auth/oauth2Manager'
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;

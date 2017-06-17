@@ -26,7 +26,7 @@ export default class Adapter {
 	}
 	
 	addIntersting() {
-		return this.Menor.findOneAndUpdate({_id: body.id}, () )
+		return this.Menor.findOneAndUpdate({_id: body.id})
 	}
 	
 	fetchAllIntersting() {

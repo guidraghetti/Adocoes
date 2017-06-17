@@ -2,10 +2,10 @@ import mongoose from 'mongoose'
 
 import { config } from './config'
 
-import * as models from './api/src/Model';
+import * as models from './Model';
 
-import Cliente from './api/src/Model/Auth/cliente';
-import Token from './api/src/Model/Auth/token';
+import Cliente from './Model/Auth/cliente';
+import Token from './Model/Auth/token';
 
 const enviroment = process.env.NODE_ENV || 'development'
 
