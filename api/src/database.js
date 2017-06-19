@@ -1,11 +1,15 @@
 import mongoose from 'mongoose'
 
-import * as models from './api/src/Model';
+import { config } from './config'
 
-import Cliente from './api/src/Model/Auth/cliente';
-import Token from './api/src/Model/Auth/token';
+import * as models from './Model';
 
-const db = 'mongodb://localhost:27017/Adocoes'
+import Cliente from './Model/Auth/cliente';
+import Token from './Model/Auth/token';
+
+const enviroment = process.env.NODE_ENV || 'development'
+
+const db = config[enviroment].databaseUri
 
 mongoose.connect(db)
 

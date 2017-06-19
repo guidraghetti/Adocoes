@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const enderecoSchema = require('./endereco')
 const telefoneSchema = require('./telefone')
-const base64Schema = require('./base64')
+const midiaSchema = require('./midia')
 const documentoSchema = require('./documento')
 
 const interessadoSchema = new Schema({
@@ -33,7 +33,7 @@ const interessadoSchema = new Schema({
 		required: true
 	},
 	comprovantesRenda: [
-		base64Schema
+		midiaSchema
 	],
 	outrosDocumentos: [
 		documentoSchema

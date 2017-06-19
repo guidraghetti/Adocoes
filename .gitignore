@@ -4,3 +4,5 @@ npm-debug.log
 /api/.DS_Store
 /api/src/.DS_Store
 Thumbs.db
+.asta.lock
+build/

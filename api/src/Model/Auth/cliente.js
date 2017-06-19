@@ -3,7 +3,7 @@
 // TODO: hash the secret
 
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 const clientSchema = new mongoose.Schema({
     nome: { type: String, unique: true, required: true },

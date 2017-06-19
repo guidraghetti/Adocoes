@@ -1,13 +1,13 @@
 import restify from 'restify'
 import bodyParser from 'body-parser'
 
-import UsuarioTranslator from './api/src/Usuario/Translator'
-import ConteudoTranslator from './api/src/Conteudo/Translator'
-import MenorTranslator from './api/src/Menor/Translator'
-import InteressadosTranslator from './api/src/Interessado/Translator'
+import UsuarioTranslator from './Usuario/Translator'
+import ConteudoTranslator from './Conteudo/Translator'
+import MenorTranslator from './Menor/Translator'
+import InteressadosTranslator from './Interessado/Translator'
 
-import AuthManager from './api/src/Auth/authManager'
-import Oauth2Manager from './api/src/Auth/oauth2Manager'
+import AuthManager from './Auth/authManager'
+import Oauth2Manager from './Auth/oauth2Manager'
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -17,8 +17,7 @@ require('./database.js')
 const server = restify.createServer()
 const port = process.env.PORT || 8888
 
-// @eduardo.arruda: sanitizar rotas
-
+server.pre(restify.pre.sanitizePath());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
     extended: true
@@ -83,14 +82,11 @@ server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
     usuarioTranslator.getPerfilByUsuarioId(request, response)
 })
 
-// RFU07: POST /usuarios/{id_usuario}/perfis
-server.post('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
+// RFU09: PUT /usuarios/{id_usuario}/perfis
+server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.updatePerfilUsuario(request, response)
 })
-
-// @rafael.companhoni: remove da lista de perfis todos os perfis informados?
-// RFU08: DELETE /usuarios/{id_usuario}/perfis/{id_perfil}
 
 //
 // Resource: perfil
@@ -124,11 +120,11 @@ server.get('/menores', AuthManager.isAuthenticated, (request, response, next) =>
 // RFM03: GET /menores/{id_menor}
 // RFM04: PUT /menores/{id_menor}
 // RFM05: DELETE /menores/{id_menor}
-// RFM06: GET /menores/ordenacao
+// RFM06: GET /menores?ordenacao={idade=-1~+1, sexo=-1~+1}
 // RFM07: POST /menores/{id_menor}/interessados
 // RFM08: GET /menores/{id_menor}/interessados
 // RFM09: DELETE /menores/{id_menor}/interessados/{id_interessado}
-// RFM10: POST /menores/{id_menor}/imagens
+// RFM10: POST /menores/{id_menor}/midias
 // RFM11: GET /menores/{id_menor}/imagens
 // RFM12: GET /menores/{id_menor}/imagens/{id_imagem}
 // RFM13: DELETE /menores/{id_menor}/imagens/{id_imagem}
