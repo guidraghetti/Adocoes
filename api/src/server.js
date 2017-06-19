@@ -31,7 +31,7 @@ server.get('/', function (req, res, next) {
         status: 200,
         now: now.toString(),
         unix_now: now.unix(),
-        'OK ;)'
+        'OK'
     })
 })
 
