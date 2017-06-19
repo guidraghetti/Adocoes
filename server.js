@@ -31,7 +31,8 @@ server.get('/', function (req, res, next) {
     res.json(200, {
         status: 200,
         now: now.toString(),
-        unix_now: now.unix()
+        unix_now: now.unix(),
+        'OK ;)'
     })
 })
 
