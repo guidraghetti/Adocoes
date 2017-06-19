@@ -308,5 +308,5 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 // RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}// Resource: conteudo
 
 server.listen(port, function () {
-    console.log('Adoções API running! Port: ' + port)
+    console.log('Adoções API executando na porta: ' + port)
 })
