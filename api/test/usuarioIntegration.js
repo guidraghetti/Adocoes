@@ -7,6 +7,7 @@ const Usuario = mongoose.model('Usuario');
 const Cliente = mongoose.model('Cliente');
 const Token = mongoose.model('Token');
 
+// TODO -- refatorar PUT; deve retornar 400 quando usuário não for encontrado
 // TODO -- criar usuário administrador uma vez antes de todos os testes
 // TODO -- limpar e criar um usuário antes de cada teste no contexto "O usuário informado existe"
 // TODO -- certificar-se antes de cada teste do contexto "O usuário informado não existe" que nenhum outro usuário além do administrador existe
@@ -52,8 +53,7 @@ describe('GET /usuarios/:id_usuario', () => {
             .then(() => done());
     });
 
-    context('O usuário informado existe', () => {        
-        // RFU01: POST /usuarios
+    context('O usuário informado existe', () => {
         it('POST /usuarios', done => {
             const newUser = {
                 _id: mongoose.Types.ObjectId(),
@@ -84,7 +84,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU02: GET /usuarios
         it('GET /usuarios', done => {
             request = supertest(server)
                 .get('/usuarios')
@@ -98,7 +97,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU03: GET /usuarios/{id_usuario}
         it('GET /usuarios/{id_usuario}', done => {
             request = supertest(server)
                 .get(`/usuarios/${testUser._id}`)
@@ -115,7 +113,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU04: PUT /usuarios/{id_usuario}
         it('PUT /usuarios/{id_usuario}', done => {
             const updatedTestUser = {
                 email: "updated_usuarioteste@teste.com",
@@ -141,7 +138,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU05: DELETE /usuarios/{id_usuario}
         it('DELETE /usuarios/{id_usuario}', done => {
             request = supertest(server)
                 .delete(`/usuarios/${testUser._id}`)
@@ -158,8 +154,7 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU06: GET /usuarios/{id_usuario}/perfis 
-         it('GET /usuarios/{id_usuario}/perfis', done => {
+        it('GET /usuarios/{id_usuario}/perfis', done => {
             request = supertest(server)
                 .get(`/usuarios/${testUser._id}/perfis`)
                 .set("Content-Type", "application/json")
@@ -171,7 +166,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // RFU07: PUT /usuarios/{id_usuario}/perfis
         it('PUT /usuarios/{id_usuario}/perfis', done => {
             const updatedPerfis = { "perfis": ["administrador", "interessado"] };
 
@@ -198,6 +192,64 @@ describe('GET /usuarios/:id_usuario', () => {
                 .set("Authorization", "Bearer " + tokenValue)
                 .end((err, res) => {
                     expect(res.status).to.equal(404);
+                    done();
+                });
+        });
+
+        // TODO -- refatorar, deveria retornar um bad request
+        it('PUT /usuarios/{id_usuario}', done => {
+            const updatedTestUser = {
+                email: "updated_usuarioteste@teste.com",
+                nome: "updated_Usuario Teste",
+                senha: "updated_123",
+                perfis: ["interessado"],
+                ativo: false,
+            }
+
+            request = supertest(server)
+                .put(`/usuarios/${nonExistingId}`)
+                .send(updatedTestUser)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .end((err, res) => {
+                    expect(res.status).to.equal(500);
+                    done();
+                });
+        });
+
+        it('DELETE /usuarios/{id_usuario}', done => {
+            request = supertest(server)
+                .delete(`/usuarios/${nonExistingId}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .end((err, res) => {
+                    expect(res.status).to.equal(400);
+                    done();
+                });
+        });
+
+        it('GET /usuarios/{id_usuario}/perfis', done => {
+            request = supertest(server)
+                .get(`/usuarios/${nonExistingId}/perfis`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .end((err, res) => {
+                    expect(res.status).to.equal(400);
+                    done();
+                });
+        });
+
+        // TODO -- refatorar, deveria retornar um bad request
+        it('PUT /usuarios/{id_usuario}/perfis', done => {
+            const updatedPerfis = { "perfis": ["administrador", "interessado"] };
+
+            request = supertest(server)
+                .put(`/usuarios/${nonExistingId}/perfis`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .send(updatedPerfis)
+                .end((err, res) => {
+                    expect(res.status).to.equal(500);
                     done();
                 });
         });

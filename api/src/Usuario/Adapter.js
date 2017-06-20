@@ -38,7 +38,6 @@ export default class Adapter {
 
 				if (body.refPerfilInteressado)
 					usuario.refPerfilInteressado = body.refPerfilInteressado;
-
 				
 				if (typeof body.ativo !== 'undefined') {
 					usuario.ativo = body.ativo;
