@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import mongoose from 'mongoose';
 import { expect } from 'chai';
-import server from '../../server';
+import server from '../src/server';
 
 const Usuario = mongoose.model('Usuario');
 const Cliente = mongoose.model('Cliente');
@@ -52,7 +52,7 @@ describe('GET /usuarios/:id_usuario', () => {
             .then(() => done());
     });
 
-    context('O usuário informado existe', () => {
+    context('O usuário informado existe', () => {        
         // RFU01: POST /usuarios
         it('POST /usuarios', done => {
             const newUser = {

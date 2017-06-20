@@ -138,7 +138,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores",
+			"url": "{{url-localhost}}/menores",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -167,7 +167,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/videos/{id_video}",
+			"url": "{{url-localhost}}/menores/{id_menor}/videos/{id_video}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -196,7 +196,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -225,7 +225,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/interessados/{id_interessado}",
+			"url": "{{url-localhost}}/interessados/{id_interessado}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -249,7 +249,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/imagens/{id_imagem}",
+			"url": "{{url-localhost}}/menores/{id_menor}/imagens/{id_imagem}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -278,7 +278,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/menores/{id_menor}",
+			"url": "{{url-localhost}}/menores/{id_menor}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -302,7 +302,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/conteudos",
+			"url": "{{url-localhost}}/conteudos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -331,7 +331,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/conteudos/{id_conteudo}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -355,7 +355,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/menores/{id_menor}/interessados",
+			"url": "{{url-localhost}}/menores/{id_menor}/interessados",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -460,7 +460,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/conteudos/{id_conteudo}/imagens",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/imagens",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -561,7 +561,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados/{id_interessado}/menores",
+			"url": "{{url-localhost}}/interessados/{id_interessado}/menores",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -626,7 +626,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos",
+			"url": "{{url-localhost}}/conteudos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -655,7 +655,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/menores",
+			"url": "{{url-localhost}}/menores",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -684,7 +684,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -713,7 +713,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados/{id_interessado}/menores/{id_menor}",
+			"url": "{{url-localhost}}/interessados/{id_interessado}/menores/{id_menor}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -742,7 +742,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/videos",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/videos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -771,7 +771,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/menores/{id_menor}/imagens",
+			"url": "{{url-localhost}}/menores/{id_menor}/imagens",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -800,7 +800,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}",
+			"url": "{{url-localhost}}/menores/{id_menor}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -829,7 +829,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/interessados/{id_interessado}/visualizacoes",
+			"url": "{{url-localhost}}/interessados/{id_interessado}/visualizacoes",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -858,7 +858,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/imagens/{id_imagem}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -887,7 +887,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/interessados",
+			"url": "{{url-localhost}}/interessados",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -916,7 +916,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/interessados",
+			"url": "{{url-localhost}}/menores/{id_menor}/interessados",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -945,7 +945,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -974,7 +974,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados/{id_interessado}",
+			"url": "{{url-localhost}}/interessados/{id_interessado}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1003,7 +1003,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/videos/{id_video}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/videos/{id_video}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1032,7 +1032,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/imagens/{id_imagem}",
+			"url": "{{url-localhost}}/menores/{id_menor}/imagens/{id_imagem}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1061,7 +1061,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/conteudos/{id_conteudo}/videos",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/videos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1090,7 +1090,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/interessados/{id_interessado}/menores",
+			"url": "{{url-localhost}}/interessados/{id_interessado}/menores",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1119,7 +1119,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/imagens",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/imagens",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1148,7 +1148,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores?inicio={ponto_inicio}",
+			"url": "{{url-localhost}}/menores?inicio={ponto_inicio}",
 			"responses": [],
 			"queryParams": [
 				{
@@ -1182,7 +1182,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/videos",
+			"url": "{{url-localhost}}/menores/{id_menor}/videos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1211,7 +1211,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}",
+			"url": "{{url-localhost}}/menores/{id_menor}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1240,7 +1240,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/interessados/{id_interessado}",
+			"url": "{{url-localhost}}/menores/{id_menor}/interessados/{id_interessado}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1269,7 +1269,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/conteudos/{id_conteudo}/videos/{id_video}",
+			"url": "{{url-localhost}}/conteudos/{id_conteudo}/videos/{id_video}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1298,7 +1298,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/imagens",
+			"url": "{{url-localhost}}/menores/{id_menor}/imagens",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1327,7 +1327,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{}",
-			"url": "{{url}}/menores/{id_menor}/videos",
+			"url": "{{url-localhost}}/menores/{id_menor}/videos",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1356,7 +1356,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados/{id_interessado}",
+			"url": "{{url-localhost}}/interessados/{id_interessado}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1421,7 +1421,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/menores/{id_menor}/videos/{id_video}",
+			"url": "{{url-localhost}}/menores/{id_menor}/videos/{id_video}",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1486,7 +1486,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados/{id_interessado}/visualizacoes",
+			"url": "{{url-localhost}}/interessados/{id_interessado}/visualizacoes",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [
@@ -1515,7 +1515,7 @@
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
-			"url": "{{url}}/interessados",
+			"url": "{{url-localhost}}/interessados",
 			"responses": [],
 			"queryParams": [],
 			"headerData": [

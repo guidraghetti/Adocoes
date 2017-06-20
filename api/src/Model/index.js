@@ -1,6 +1,5 @@
 import Abrigo from './abrigo.js'
 import Administrador from './administrador.js'
-import Base64 from './base64.js'
 import Cidade from './cidade.js'
 import Conteudo from './conteudo.js'
 import Endereco from './endereco.js'
@@ -10,6 +9,7 @@ import Familiar from './familiar.js'
 import Interessado from './interessado.js'
 import Interesse from './interesse.js'
 import Menor from './menor.js'
+import Midia from './midia.js'
 import Processo from './processo.js'
 import Rede from './rede.js'
 import Telefone from './telefone.js'
@@ -21,7 +21,6 @@ import Visualizacao from './visualizacao.js'
 export {
 	Abrigo,
 	Administrador,
-	Base64,
 	Cidade,
 	Conteudo,
 	Endereco,
@@ -31,6 +30,7 @@ export {
 	Interessado,
 	Interesse,
 	Menor,
+	Midia,
 	Processo,
 	Rede,
 	Telefone,
