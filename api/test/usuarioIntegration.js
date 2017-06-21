@@ -196,7 +196,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // TODO -- refatorar, deveria retornar um bad request
         it('PUT /usuarios/{id_usuario}', done => {
             const updatedTestUser = {
                 email: "updated_usuarioteste@teste.com",
@@ -212,7 +211,7 @@ describe('GET /usuarios/:id_usuario', () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
                 .end((err, res) => {
-                    expect(res.status).to.equal(500);
+                    expect(res.status).to.equal(400);
                     done();
                 });
         });
@@ -239,7 +238,6 @@ describe('GET /usuarios/:id_usuario', () => {
                 });
         });
 
-        // TODO -- refatorar, deveria retornar um bad request
         it('PUT /usuarios/{id_usuario}/perfis', done => {
             const updatedPerfis = { "perfis": ["administrador", "interessado"] };
 
@@ -249,7 +247,7 @@ describe('GET /usuarios/:id_usuario', () => {
                 .set("Authorization", "Bearer " + tokenValue)
                 .send(updatedPerfis)
                 .end((err, res) => {
-                    expect(res.status).to.equal(500);
+                    expect(res.status).to.equal(400);
                     done();
                 });
         });

@@ -47,7 +47,7 @@ export default class Translator {
         this.Interactor.update(request.params.id_usuario, body)
             .then(usuario => {
                 if (!usuario)
-                    response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, usuario)
             })
@@ -91,7 +91,7 @@ export default class Translator {
         this.Interactor.updatePerfilUsuario(request.params.id_usuario, body.perfis)
             .then(usuario => {
                 if (!usuario)
-                    response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, usuario)
             })
