@@ -25,7 +25,7 @@ db.clientes.save({
 
 db.interessados.save({
 	name: "blablabla",
-	cpf: "12345687901,
+	cpf: "12345687901",
 	nomeConjuge: "maria",
 	email: "teste@gmail.com",
 	dataNascimento: "21-12-1991",

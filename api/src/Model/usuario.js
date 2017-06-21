@@ -52,7 +52,7 @@ usuarioSchema.pre('save', function (callback) {
 	bcrypt.genSalt(5, function (err, salt) {
 		if (err) return callback(err)
 
-		bcrypt.hash(usuario.senha, salt, function (err, hash) {
+		bcrypt.hash(usuario.senha, salt, null, function (err, hash) {
 			if (err) return callback(err);
 
 			usuario.senha = hash;
@@ -61,4 +61,4 @@ usuarioSchema.pre('save', function (callback) {
 	})
 })
 
-mongoose.model('Usuario', usuarioSchema)
+mongoose.model('Usuario', usuarioSchema);

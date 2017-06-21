@@ -1,33 +1,32 @@
 import mongoose from 'mongoose'
-
 import { config } from './config'
-
 import * as models from './Model';
-
 import Cliente from './Model/Auth/cliente';
 import Token from './Model/Auth/token';
 
-const enviroment = process.env.NODE_ENV || 'development'
+const enviroment = process.env.NODE_ENV || 'development';
+const db = config[enviroment].databaseUri;
 
-const db = config[enviroment].databaseUri
-
-mongoose.connect(db)
+console.log("ENVIRONMENT: " + process.env.NODE_ENV + " DB: " + db);
+mongoose.connect(db);
 
 mongoose.connection.on('connected', () => {  
-  console.log('Mongoose default connection open to ' + db);
+	console.log('Mongoose default connection open to ' + db);
 }); 
 
 mongoose.connection.on('error', (error) => {  
-  console.log('Mongoose default connection error: ' + error);
+	console.log('Mongoose default connection error: ' + error);
 }); 
 
 mongoose.connection.on('disconnected', () => {  
-  console.log('Mongoose default connection disconnected'); 
+	console.log('Mongoose default connection disconnected'); 
 });
 
 process.on('SIGINT', () => {  
-  mongoose.connection.close(() => { 
-    console.log('Mongoose default connection disconnected through app termination'); 
-    process.exit(0); 
-  }); 
+	mongoose.connection.close(() => { 
+		console.log('Mongoose default connection disconnected through app termination'); 
+		process.exit(0); 
+	}); 
 });
+
+

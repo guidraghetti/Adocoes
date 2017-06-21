@@ -4,5 +4,8 @@ export const config = {
 	},
 	'development': {
 		databaseUri: 'mongodb://localhost:27017/Adocoes',
+	},
+	'test': {
+		databaseUri: 'mongodb://localhost:27017/AdocoesTest',
 	}
 }

@@ -1,25 +1,12 @@
 export default class Translator {
     constructor(deps = {}) {
-        this.Interactor = deps.Interactor || new (require('./Interactor').default)()
+        this.Interactor = deps.Interactor ? new deps.Interactor() : new (require('./Interactor').default)()
     }
 
-    post(request, response) {
-        const { body } = request
-
-        this.Interactor.criar(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao criar o usuário")
-            })
-    }
-
-    get(request, response) {
+    fetchAll(request, response) {
         this.Interactor.fetchAll()
-            .then(message => {
-                response.send(200, message)
+            .then(result => {
+                response.send(200, result)
             })
             .catch(error => {
                 console.log(error)
@@ -31,7 +18,7 @@ export default class Translator {
         this.Interactor.findById(request.params.id_usuario)
             .then(message => {
                 if (!message)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(404, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, message)
             })
@@ -41,13 +28,26 @@ export default class Translator {
             })
     }
 
+    post(request, response) {
+        const { body } = request
+
+        this.Interactor.save(body)
+            .then(message => {
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+                response.send(500, "Ocorreu um erro ao criar o usuário")
+            })
+    }
+
     put(request, response) {
         const { body } = request
 
         this.Interactor.update(request.params.id_usuario, body)
             .then(usuario => {
                 if (!usuario)
-                    response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, usuario)
             })
@@ -91,7 +91,7 @@ export default class Translator {
         this.Interactor.updatePerfilUsuario(request.params.id_usuario, body.perfis)
             .then(usuario => {
                 if (!usuario)
-                    response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
                 response.send(200, usuario)
             })

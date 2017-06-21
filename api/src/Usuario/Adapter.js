@@ -5,12 +5,10 @@ export default class Adapter {
 		this.Usuario = mongoose.model('Usuario')
 	}
 
-	save(body) {
-		console.log(body)
-		const usuario = new this.usuario(body)
-
-		return usuario.save()
-	}	
+	save(usuario) {
+		const usr = new this.Usuario(usuario)
+		return usr.save()
+	}
 
 	fetchAll() {
 		return this.Usuario.find()
@@ -21,31 +19,7 @@ export default class Adapter {
 	}
 
 	update(id, body) {
-		return this.Usuario.findById(id)
-			.then(usuario => {
-				if (body.email)
-					usuario.email = body.email;
-
-				if (body.senha)
-					usuario.senha = body.senha;
-
-				if (body.nome)
-					usuario.nome = body.nome;
-
-				if (body.perfis)
-					usuario.perfis = body.perfis;
-
-				if (body.refPerfilAdministrador)
-					usuario.refPerfilAdministrador = body.refPerfilAdministrador;
-
-				if (body.refPerfilInteressado)
-					usuario.refPerfilInteressado = body.refPerfilInteressado;
-
-				if (body.ativo)
-					usuario.ativo = body.ativo;
-
-				return usuario.save();
-			})
+		return this.Usuario.findOneAndUpdate({_id: id}, body, { upsert: false, new: true });
 	}
 
 	delete(_id) {
@@ -63,11 +37,6 @@ export default class Adapter {
 	}
 
 	updatePerfilUsuario(id, perfis) {
-		return this.Usuario.findById(id)
-			.then(usuario => {
-				usuario.perfis = perfis;
-
-				return usuario.save();
-			})
+		return this.Usuario.findOneAndUpdate({_id: id}, { perfis }, { upsert: false, new: true });
 	}
 }

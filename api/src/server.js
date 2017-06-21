@@ -54,7 +54,7 @@ server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) 
 // RFU02: GET /usuarios
 server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.get(request, response)
+    usuarioTranslator.fetchAll(request, response)
 })
 
 // RFU03: GET /usuarios/{id_usuario}
@@ -310,3 +310,5 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 server.listen(port, function () {
     console.log('Adoções API executando na porta: ' + port)
 })
+
+module.exports = server;

@@ -3,11 +3,9 @@ export default class Entity {
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
 	}
-	
-	create(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.save(body)
+
+	save(usuario) {
+		return this.Adapter.save(usuario)
 	}
 
 	fetchAll() {
