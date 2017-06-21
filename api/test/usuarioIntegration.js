@@ -7,13 +7,8 @@ const Usuario = mongoose.model('Usuario');
 const Cliente = mongoose.model('Cliente');
 const Token = mongoose.model('Token');
 
-// TODO -- refatorar PUT; deve retornar 400 quando usuário não for encontrado
-// TODO -- criar usuário administrador uma vez antes de todos os testes
-// TODO -- limpar e criar um usuário antes de cada teste no contexto "O usuário informado existe"
-// TODO -- certificar-se antes de cada teste do contexto "O usuário informado não existe" que nenhum outro usuário além do administrador existe
-
 describe('GET /usuarios/:id_usuario', () => {
-    let request;
+    const request = supertest(server);
     const clienteId = mongoose.Types.ObjectId();
     const tokenValue = "m4m8rF7B8aYsFX2cq0qqg2xzL5jMtxkRu6gSA9sdUGUuganR9rWMQTHGeUSc0rgYaQVom1Z67NW7WXbTkKZfF5W7tBzJ0qsYfmzwrclDjUUtwmcuSBhdkMG1iPPoo4VdryCRxNMhmwRMF2n3aZBWOI1X5kqSoYr0XlgpL7rPMfyDQfZD6g0sN2PvPAq2i6djiwgI72zwQ7yaYEg13esYEXzalhqCTQlIw7MlyiFNI7p8HpZLf8eM1CflQi4APOA8";
     const testUser = {
@@ -64,7 +59,7 @@ describe('GET /usuarios/:id_usuario', () => {
                 ativo: true
             }
 
-            request = supertest(server)
+            request
                 .post('/usuarios')
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -85,7 +80,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('GET /usuarios', done => {
-            request = supertest(server)
+            request
                 .get('/usuarios')
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -98,7 +93,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('GET /usuarios/{id_usuario}', done => {
-            request = supertest(server)
+            request
                 .get(`/usuarios/${testUser._id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -114,7 +109,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('PUT /usuarios/{id_usuario}', done => {
-            const updatedTestUser = {
+            const updatedUserInfo = {
                 email: "updated_usuarioteste@teste.com",
                 nome: "updated_Usuario Teste",
                 senha: "updated_123",
@@ -122,24 +117,24 @@ describe('GET /usuarios/:id_usuario', () => {
                 ativo: false,
             }
 
-            request = supertest(server)
+            request
                 .put(`/usuarios/${testUser._id}`)
-                .send(updatedTestUser)
+                .send(updatedUserInfo)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
                     expect(res.body._id).to.equal(testUser._id.toString());
-                    expect(res.body.email).to.equal(updatedTestUser.email);
-                    expect(res.body.nome).to.equal(updatedTestUser.nome);
-                    expect(res.body.perfis).to.have.same.members(updatedTestUser.perfis);
-                    expect(res.body.ativo).to.equal(updatedTestUser.ativo);
+                    expect(res.body.email).to.equal(updatedUserInfo.email);
+                    expect(res.body.nome).to.equal(updatedUserInfo.nome);
+                    expect(res.body.perfis).to.have.same.members(updatedUserInfo.perfis);
+                    expect(res.body.ativo).to.equal(updatedUserInfo.ativo);
                     done();
                 });
         });
 
         it('DELETE /usuarios/{id_usuario}', done => {
-            request = supertest(server)
+            request
                 .delete(`/usuarios/${testUser._id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -155,7 +150,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('GET /usuarios/{id_usuario}/perfis', done => {
-            request = supertest(server)
+            request
                 .get(`/usuarios/${testUser._id}/perfis`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -169,7 +164,7 @@ describe('GET /usuarios/:id_usuario', () => {
         it('PUT /usuarios/{id_usuario}/perfis', done => {
             const updatedPerfis = { "perfis": ["administrador", "interessado"] };
 
-            request = supertest(server)
+            request
                 .put(`/usuarios/${testUser._id}/perfis`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -184,9 +179,9 @@ describe('GET /usuarios/:id_usuario', () => {
 
     context('O usuário informado não existe', () => {
         const nonExistingId = mongoose.Types.ObjectId();
-
+        
         it('GET /usuarios/{id_usuario}', done => {
-            request = supertest(server)
+            request
                 .get(`/usuarios/${nonExistingId}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -205,7 +200,7 @@ describe('GET /usuarios/:id_usuario', () => {
                 ativo: false,
             }
 
-            request = supertest(server)
+            request
                 .put(`/usuarios/${nonExistingId}`)
                 .send(updatedTestUser)
                 .set("Content-Type", "application/json")
@@ -217,7 +212,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('DELETE /usuarios/{id_usuario}', done => {
-            request = supertest(server)
+            request
                 .delete(`/usuarios/${nonExistingId}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -228,7 +223,7 @@ describe('GET /usuarios/:id_usuario', () => {
         });
 
         it('GET /usuarios/{id_usuario}/perfis', done => {
-            request = supertest(server)
+            request
                 .get(`/usuarios/${nonExistingId}/perfis`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
@@ -241,7 +236,7 @@ describe('GET /usuarios/:id_usuario', () => {
         it('PUT /usuarios/{id_usuario}/perfis', done => {
             const updatedPerfis = { "perfis": ["administrador", "interessado"] };
 
-            request = supertest(server)
+            request
                 .put(`/usuarios/${nonExistingId}/perfis`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", "Bearer " + tokenValue)
