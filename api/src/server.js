@@ -134,8 +134,8 @@ server.del('/menores/:id_menor', AuthManager.isAuthenticated, (request, response
     menorTranslator.deleteMenor(request, response)
 })
 
-// RFM06: GET /menores?ordenacao={idade=-1~+1, sexo=-1~+1}
-server.get('/menores?ordenacao={idade=-1~+1, sexo=-1~+1}', AuthManager.isAuthenticated, (request, response, next) => {
+// RFM06: GET /menores?ordenacao={idade=0~1, sexo=0~1}
+server.get('/menores?idade=:idade, sexo=:sexo', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getMenoresByOrder(request, response)
 })
