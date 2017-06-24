@@ -20,8 +20,10 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-		return this.Interessado.find((err, doc) => {
-			console.log(doc)
+		return this.Interessado.find((err,doc) => {
+			return new Promise((resolve, reject) => {
+				resolve(doc)
+			})
 		})
 	}	
 	

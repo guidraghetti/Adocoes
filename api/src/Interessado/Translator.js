@@ -22,7 +22,7 @@ export default class Translator {
 	
 		const interactor = new this.Interactor()
 
-		interactor.fetchAll(request.header.accessToken)
+		interactor.fetchAll()
 			.then(message => {
                 response.send(200, message)
             })
