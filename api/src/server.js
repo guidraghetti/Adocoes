@@ -107,30 +107,104 @@ server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
 // RFM01: POST /menores
 server.post('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
-    menorTranslator.post(request, response)
+    menorTranslator.postMenor(request, response)
 })
 
 // RFM02: GET /menores
 server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
-    menorTranslator.get(request, response)
+    menorTranslator.getAllMenores(request, response)
 })
 
 // RFM03: GET /menores/{id_menor}
+server.get('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getMenor(request, response)
+})
+
 // RFM04: PUT /menores/{id_menor}
+server.put('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.updateMenor(request, response)
+})
+
 // RFM05: DELETE /menores/{id_menor}
+server.del('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.deleteMenor(request, response)
+})
+
 // RFM06: GET /menores?ordenacao={idade=-1~+1, sexo=-1~+1}
+server.get('/menores?ordenacao={idade=-1~+1, sexo=-1~+1}', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getMenoresByOrder(request, response)
+})
+
 // RFM07: POST /menores/{id_menor}/interessados
+server.post('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.postInteressado(request, response)
+})
+
 // RFM08: GET /menores/{id_menor}/interessados
+server.get('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getInteressado(request, response)
+})
+
 // RFM09: DELETE /menores/{id_menor}/interessados/{id_interessado}
+server.del('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.deleteInteressado(request, response)
+})
+
 // RFM10: POST /menores/{id_menor}/midias
+server.post('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.postMidia(request, response)
+})
+
 // RFM11: GET /menores/{id_menor}/imagens
+server.get('/menores/:id_menor/imagens', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getAllImagens(request, response)
+})
+
 // RFM12: GET /menores/{id_menor}/imagens/{id_imagem}
+server.get('/menores/:id_menor/imagens/:id_imagem', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getImagemById(request, response)
+})
+
 // RFM13: DELETE /menores/{id_menor}/imagens/{id_imagem}
+server.del('/menores/:id_menor/imagens/:id_imagem', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.deleteImagem(request, response)
+})
+
 // RFM14: POST /menores/{id_menor}/videos
+server.post('/menores/:id_menor/videos', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.postVideo(request, response)
+})
+
 // RFM15: GET /menores/{id_menor}/videos
+server.get('/menores/:id_menor/videos', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getAllVideos(request, response)
+})
+
 // RFM16: GET /menores/{id_menor}/videos/{id_video}
+server.get('/menores/:id_menor/videos/:id_video', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.getVideoById(request, response)
+})
+
 // RFM17: DELETE /menores/{id_menor}/videos/{id_video}
+server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.deleteVideo(request, response)
+})
 
 // RFM18 (2017-2): PUT /menores/{id_menor} (seta o id_abrigo)
 // RFM09 (2017-2): POST /menores/{id_menor}/processos
@@ -138,67 +212,116 @@ server.get('/menores', AuthManager.isAuthenticated, (request, response, next) =>
 // RFM21 (2017-2): GET /menores/{id_menor}/processos/{id_processo}
 // RFM22 (2017-2): DELETE /menores/{id_menor}/processos/{id_processo}
 
+//    
 // Resource: interessado
+//
 
 // RFI01: POST /interessados
 server.post('/interessados', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.post(request, response)
+    interessadosTranslator.postInteressado(request, response)
 })
 
 // RFI02: GET /interessados
 server.get('/interessados', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.get(request, response)
+    interessadosTranslator.getAllInteressados(request, response)
 })
 
 // RFI12: GET /interessados?query=id_menor={id_menor}
+//verificar este metodo
+server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getInteressadosMenor(request, response)
+})
 
 // RFI03: GET /interessados/{id_interessado}
-server.get('/interessados/:id', (request, response, next) => {
+server.get('/interessados/:id_interessado', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.getInteressado(request, response)
 })
 
 // RFI04: PUT /interessados/{id_interessado}
-server.put('/interessados/:id', (request, response, next) => {
+server.put('/interessados/:id_interessado', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.put(request, response)
+    interessadosTranslator.updateInteressado(request, response)
 })
 
 // RFI05: DELETE /interessados/{id_interessado}
-server.del('/interessados/:id', (request, response, next) => {
+server.del('/interessados/:id_interessado', (request, response, next) => {
     let interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.delete(request, response)
+    interessadosTranslator.deleteInteressado(request, response)
 })
 
 // RFI07: GET /interessados/{id_interessado}/ordenacao
+//verificar este metodo
+server.get('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getInteressadoByOrder(request, response)
+})
+
 // RFI08: PUT /interessados/{id_interessado}/ordenacao
+// verificar este metodo
+server.put('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.updateInteressadoByOrder(request, response)
+})
 
 // RFI09: POST /interessados/{id_interessado}/visualizacoes
-server.post('/interessados/:id/visualizacoes', (request, response, next) => {
+server.post('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.post(request, response)
+    interessadosTranslator.postVisualizacao(request, response)
 })
 
 // RFI10: GET /interessados/{id_interessado}/visualizacoes
+server.get('/conteudos/:id_interessado/visualizacoes', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getVisualizacoes(request, response)
+})
 
 // RFI11: PUT /interessados/{id_interessado}/visualizacoes
+server.put('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.updateVisualizacoes(request, response)
+})
 
 // RFI13: POST /interessados/{id_interessado}/menores
+server.post('/conteudos/:id_interessado/menores', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.postMenor(request, response)
+})
+
 // RFI14: GET /interessados/{id_interessado}/menores
+server.get('/conteudos/:id_interessado/menores', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.getMenor(request, response)
+})
+
 // RFI15: DELETE /interessados/{id_interessado}/menores/{id_menor}
+server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.deleteVideo(request, response)
+})
 
 // RFI16 (2017-2): POST /interessados/{id_interessado}/menores/{id_menor}/compartilhamentos
+
 // RFI17 (2017-2): GET /interessados/{id_interessado}/mensagens
+
 // RFI18 (2017-2): PUT /usuarios/{id_usuario}/mensagens
+
 // RFI19 (2017-2): POST /interessados/{id_interessado}/documentos
+
 // RFI20 (2017-2): GET /interessados/{id_interessado}/documentos
+
 // RFI21 (2017-2): GET /interessados/{id_interessado}/documentos/{id_documento}
+
+//
+//resource: Conteudos
+//
 
 // RFC01: POST /conteudos
 server.post('/conteudos', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
+    const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.post(request, response)
 })
 
@@ -210,34 +333,38 @@ server.get('/conteudos', (request, response, next) => {
 
 // RFC03: PUT /conteudos/{id_conteudo}
 // @eduardo.arruda: a rota correta é /conteudos/:id
-server.put('/conteudos', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
+server.put('/conteudos/:id_conteudo', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.put(request, response)
 })
 
 // RFC04: DELETE /conteudos/{id_conteudo}
 server.del('/conteudos/:id', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
+    const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.delete(request, response)
 })
 
 // RFC05: POST /conteudos/{id_conteudo}/imagens
-server.post('/conteudos/:id/imagens', (request, response, next) => {
+server.post('/conteudos/:id_conteudo/imagens', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.postImages(request, response)
 })
 
 // RFC06: GET /conteudos/{id_conteudo}/imagens
-server.get('/conteudos/:id/imagens', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
+server.get('/conteudos/:id_conteudo/imagens', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.fetchImages(request, response)
 })
 
 // RFC07: GET /conteudos/{id_conteudo}/imagens/{id_imagem}
+server.get('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.delete(request, response)
+})
 
 // RFC08: DELETE /conteudos/{id_conteudo}/imagens/{id_imagem}
-server.del('/conteudos/:id/imagens/:imageId', (request, response, next) => {
-    let conteudoTranslator = new ConteudoTranslator()
+server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.delete(request, response)
 })
 
@@ -308,7 +435,7 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 // RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}// Resource: conteudo
 
 server.listen(port, function () {
-    console.log('Adoções API running! Port: ' + port)
+    console.log('Adoções API executando na porta: ' + port)
 })
 
 module.exports = server;

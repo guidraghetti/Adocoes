@@ -1,0 +1,564 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"wait",
+				"waitForSelector"
+			],
+			[
+				"wair",
+				"waitForSelector"
+			],
+			[
+				"quer",
+				"querystring.stringify"
+			],
+			[
+				"set",
+				"setTimeout"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "randomizar requisições de fotos de 1-5 reqs/segundo\nparametrizar os valores min/max das reqs\n\n[{\n\tname: 'Brazil',\n\turl: '/explore/locations/br/brazil'\n}]\n\n[{\n\tname:'Porto Alegre',\n\turl:'/explore/locations/br/brazil'\n}]\n\n[{\n\tname:'TECNOPUC',\n\turl:'/explore/locations/br/brazil'\n}]\n\n[{\n\tUser:'Gabriel',\n\tphoto: 'url',\n\tlikes: 234,\n\tcomments: 512,\n\tdescription: 'foto legal #daora',\n\thashtags: [#daora, #legal]\n}]",
+			"settings":
+			{
+				"buffer_size": 410,
+				"line_ending": "Unix",
+				"name": "randomizar requisições de fotos de 1-5 reqs/segund"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "past",
+		"selected_items":
+		[
+			[
+				"past",
+				"Text Pastry: From 1 To X"
+			],
+			[
+				"pastry",
+				"Text Pastry: From 1 To X"
+			],
+			[
+				"text",
+				"Text Pastry: Range (numeric)"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"pack in",
+				"Package Control: Install Package"
+			],
+			[
+				"objec",
+				"Set Syntax: Objective-C"
+			],
+			[
+				"PACK INST",
+				"Package Control: Install Package"
+			],
+			[
+				"jsx",
+				"Set Syntax: JSX"
+			],
+			[
+				"pack insta",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sinon",
+				"Snippet: JSON.parse"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jasva",
+				"Project: Save As"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"pack i",
+				"Package Control: Install Package"
+			],
+			[
+				"pack ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes"
+	],
+	"file_history":
+	[
+		"/Users/gabrielmachado/Downloads/1498256218_star.svg",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/TP2.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/SSTF.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/SCAN.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/LOOK.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/DiskScheduler.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/FCFS.java",
+		"/Users/gabrielmachado/Downloads/sisopt2-master/src/CSCAN.java",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/instagram-scrapping/scrapping.js",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/instagram-scrapping/teste.txt",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/instagram-scrapping/server.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Menor/Interactor.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/package.json",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/server.js",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/instagram-scrapping/package.json",
+		"/Users/gabrielmachado/Documents/Projects/Instagram Scrapping/package.json",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/package.json",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Menor/Entity.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/config.js",
+		"/Users/gabrielmachado/Documents/Darkshine/PUCRSRenovator/server.js",
+		"/Users/gabrielmachado/Documents/Darkshine/parking/.gitignore",
+		"/Users/gabrielmachado/Documents/Darkshine/parking/README.md",
+		"/Users/gabrielmachado/Documents/Projects/Project Zeus/Project Zeus.xcodeproj/project.pbxproj",
+		"/Users/gabrielmachado/Documents/Darkshine/PUCRSRenovator/Procfile",
+		"/Users/gabrielmachado/Documents/Darkshine/PUCRSRenovator/package.json",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Usuario/Adapter.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Interessado/Translator.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Interessado/Entity.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/server.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/rede.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/vinculo.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/menor.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/processo.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/interesse.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/base64.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/interessado.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/documento.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/Conteudo.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Conteudo/Translator.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Conteudo/Interactor.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Conteudo/Entity.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Conteudo/Adapter.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Users/index.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/server.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Users/Translator.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Users/Interactor.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Users/Entity.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Users/Adapter.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Database/Mongo.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Interessado/Adapter.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Interessado/Interactor.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/index.js",
+		"/Users/gabrielmachado/Documents/Projects/Project Zeus/Project Zeus/Base.lproj/Main.storyboard",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/Users/CreateUser.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/Users/UsersList.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/Users/EditUser.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/css/index.css",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/README.md",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/Login/Login.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/style.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/frontend-teialab/public/js/Views/App/SideBar/SideBar.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/package.json",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/deep_face_server/defaults.py",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/services.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/deep_face_server/main.py",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/child_process.execFile()",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/config.default.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/config.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Database/index.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/src/Database/Database.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/test/Users/Translator.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/test/Users/Adapter.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/test/Users/Entity.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/test/Users/Interactor.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/package.json",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/db/build.sh",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/db/start.sh",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/db/createAdmin.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/db/ep.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/start.sh",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/ep.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/createAdmin.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/build.sh",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend/frontend-teialab/public/js/constants.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend/frontend-teialab/server.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/deep_face_server/static/socket.io.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/deep_face_server/static/app.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend/frontend-teialab/public/js/Views/App/Header.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend/frontend-teialab/public/js/Views/App/App.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend/frontend-teialab/public/js/Views/Camera/CameraFeed.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend-teialab/public/js/Views/Root.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend-teialab/public/js/Views/Admin/Admin.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend-teialab/public/js/constants.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend-teialab/public/js/index.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/frontend-teialab/public/view/index.html",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/main.js",
+		"/Users/gabrielmachado/Desktop/example.js",
+		"/Users/gabrielmachado/Desktop/electron-quick-start-master/renderer.js",
+		"/Users/gabrielmachado/Desktop/untitled",
+		"/Users/gabrielmachado/Documents/Writings/mindfulness",
+		"/Users/gabrielmachado/Desktop/targettrust",
+		"/Users/gabrielmachado/Documents/Writings/my thoughts on life",
+		"/Users/gabrielmachado/Documents/Projects/MusicTransferApp/server.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/database.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Menor/Adapter.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Menor/Translator.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Menor/temp.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Users/Adapter.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Users/Entity.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Users/index.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Users/Interactor.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Users/Translator.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/Menor.js",
+		"/Users/gabrielmachado/Desktop/tarefas.txt",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Model/import mongoose from 'mongoose'",
+		"/Users/gabrielmachado/Downloads/Adocoes-fabio.almeida-fcd1775831e6b1f83ce7e99b047473f5be4c58b0/server.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/Database/Database.js",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/.gitignore",
+		"/Users/gabrielmachado/Documents/Projects/AGESII/Adocoes/api/src/Interessados/Translator.js",
+		"/Users/gabrielmachado/Documents/Darkshine/TeiaLabs/teialab/api/src/server.js",
+		"/Users/gabrielmachado/Downloads/PUCRS/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPClient/src/tcpclient/TCPClient.java",
+		"/Users/gabrielmachado/Downloads/PUCRS/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPServer/src/tcpserver/ServerThread.java",
+		"/Users/gabrielmachado/Downloads/PUCRS/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPServer/arquivo",
+		"/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/etc/netbeans.conf",
+		"/Users/gabrielmachado/Downloads/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPClient/src/tcpclient/TCPClient.java",
+		"/Users/gabrielmachado/Downloads/PUCRS/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPClient/arquivo2",
+		"/Users/gabrielmachado/Downloads/PUCRS/JantarFilosofos/src/jantarfilosofos/JantarFilosofos.java",
+		"/Users/gabrielmachado/Downloads/PUCRS/Cliente-Server-TCP (2)/Cliente-Server-TCP/Cliente-Server-TCP/TCPServer/src/tcpserver/TCPServer.java"
+	],
+	"find":
+	{
+		"height": 48.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" 0)",
+			"0)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"alerta(1)",
+			"Alerta(1)",
+			"[",
+			"\n[",
+			":\t",
+			"resetAlerta(",
+			"truee",
+			".alerta(",
+			"Alerta(",
+			"alerta(",
+			"Sencontrole",
+			"controle",
+			"Sensor sensor = new Sensor(nil, 0);",
+			"nil",
+			"Sensor()",
+			".alerta(2);",
+			"Controle =",
+			"1()",
+			"1",
+			"[",
+			"result =",
+			"sensor.",
+			"{",
+			"result = result =",
+			"sensor.",
+			"{",
+			";",
+			"@Test",
+			"\\n\\n",
+			"();",
+			";",
+			",",
+			":",
+			"PostsLinks",
+			"postsLinks",
+			"PostsLinks",
+			"postsLinks",
+			"+=",
+			"+++",
+			"]",
+			"docs",
+			"_7wgck",
+			"\"/explore/locations/?page=2",
+			"\"/explore/locations/?page=3",
+			"\"/explore/locations/?page=",
+			"\"/explore/locations/?page=\"",
+			"\"/explore/locations/?page=3\"",
+			"href=\"/explore/locations/",
+			"href=\"/explore/locations/?page=3\"",
+			"href=\"/explore/locations/?page=2\"",
+			";",
+			"(BOOL)",
+			"{}",
+			";",
+			"//",
+			"@",
+			"]",
+			"@",
+			"res",
+			":",
+			"_id",
+			":",
+			" =",
+			"interessadosTranslator.put",
+			"=",
+			"renda",
+			"=",
+			"===",
+			"HEAD",
+			"10vh",
+			"5000",
+			"|",
+			",",
+			"\t",
+			" ",
+			":",
+			"initWithI",
+			"[GVBDriver alloc]",
+			"[self addDriver:",
+			"body",
+			"echo",
+			"mapa",
+			"[GVBDriver alloc]",
+			"]",
+			"[initWithIdentifier:"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"true"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								280,
+								280
+							]
+						],
+						"settings":
+						{
+							"auto_name": "randomizar requisições de fotos de 1-5 reqs/segund",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 40.0
+	},
+	"input":
+	{
+		"height": 48.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 184.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "adocoes.sublime-project",
+	"replace":
+	{
+		"height": 90.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

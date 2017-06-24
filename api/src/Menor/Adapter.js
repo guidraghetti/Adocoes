@@ -12,7 +12,11 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-		return this.Menor.find()
+		return this.Menor.find((err,doc) => {
+			return new Promise((resolve, reject) => {
+				resolve(doc)
+			})
+		})
 	}
 
 		

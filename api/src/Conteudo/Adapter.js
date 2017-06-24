@@ -17,7 +17,11 @@ export default class Adapter {
 	}
 
 	fetchAll() {
-        return this.Conteudo.find({})
+        return this.Conteudo.find((err,doc) => {
+			return new Promise((resolve, reject) => {
+				resolve(doc)
+			})
+		})
     }
 	
 	fetchAndAddImage(body) {

@@ -18,10 +18,7 @@ export default class Interactor {
 	fetchAll(body) {
 		const entity = new this.Entity()
 
-		return entity.validateToken(body)
-			.then(body => {
-				entity.fetchAll()
-			})
+		return entity.fetchAll()
 	}
 
 	delete(id) {
