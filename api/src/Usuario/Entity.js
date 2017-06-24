@@ -1,4 +1,4 @@
-import Joi from 'Joi'
+//import Joi from 'Joi'
 export default class Entity {
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
