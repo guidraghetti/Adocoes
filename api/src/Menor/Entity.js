@@ -1,3 +1,5 @@
+import Joi from 'Joi'
+
 export default class Entity {
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || require('./Adapter').default
@@ -121,12 +123,12 @@ export default class Entity {
 	validate(body) {
 
 		const schema = Joi.object({
-			nome: Joi.string().require(),
-			sexo: Joi.string().require().regex(/M|F/),
-	        dataNascimento: Joi.date().require().max('now').min('now'), //somar data atual + 18 anos
+			nome: Joi.string().required(),
+			sexo: Joi.string().required().regex(/M|F/),
+	        dataNascimento: Joi.date().required().max('now').min('now'), //somar data atual + 18 anos
 	        
 	        refEtnia: Joi.object().required(),
-	        certidaoNascimento: Joi.string().require(),
+	        certidaoNascimento: Joi.string().required(),
 	        familyReferences: Joi.object(),
 	        menoresVinculados: Joi.object().required(),
 	        adocoesConjuntas: Joi.object().required(),
@@ -138,7 +140,7 @@ export default class Entity {
 	        guiaAcolhimento: Joi.string().required(),
 	        refCidade: Joi.string().required(),
 	        refAbrigo: Joi.string().required(),
-	        processoPoderFamiliar: Joi.string().require(),
+	        processoPoderFamiliar: Joi.string().required(),
 	        interesses: Joi.string().required(),
 	        visualizacoes: Joi.string().required(),
 	        ativo: Joi.boolean().required()

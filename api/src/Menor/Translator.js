@@ -13,7 +13,7 @@ export default class Translator {
                 response.send(200, message)
             })
             .catch(error => {
-                console.log(error)
+                response.send(error)
             })
 	}
 
