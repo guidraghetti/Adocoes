@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "babel api/src -d build",
+    "build": "babel api/src -d build && node ./build/Auth/inicializacaoMongo.js",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --timeout 120000",
-    "start-dev": "nodemon --exec babel-node api/src/server.js",
+    "start-dev": "node ./api/src/Auth/inicializacaoMongo.js && nodemon --exec babel-node ./api/src/server.js",
     "start-hml": "npm run build && node ./build/server.js NODE_ENV=hml",
     "start-prd": "npm run build && node ./build/server.js NODE_ENV=prd"
   },
