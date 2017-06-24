@@ -5,6 +5,9 @@
   "main": "server.js",
   "scripts": {
     "build": "babel api/src -d build",
+    "init-mongo-dev": "node ./build/Auth/inicializacaoMongo.js",
+    "init-mongo-hml": "node ./build/Auth/inicializacaoMongo.js NODE_ENV=hml",
+    "init-mongo-prd": "node ./build/Auth/inicializacaoMongo.js NODE_ENV=prd",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --timeout 120000",
     "start-dev": "nodemon --exec babel-node api/src/server.js",
     "start-hml": "npm run build && node ./build/server.js NODE_ENV=hml",
