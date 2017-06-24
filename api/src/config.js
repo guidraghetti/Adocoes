@@ -1,8 +1,11 @@
 export const config = {
-	'production': {
+	'prd': {
 		databaseUri: 'mongodb://administrador:adocoesages2017@123@ds119302.mlab.com:19302/adocoes',
 	},
-	'development': {
+	'develop': {
+		databaseUri: 'mongodb://localhost:27017/Adocoes',
+	},
+	'hml': {
 		databaseUri: 'mongodb://localhost:27017/Adocoes',
 	},
 	'test': {

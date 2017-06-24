@@ -4,8 +4,8 @@ import * as models from './Model';
 import Cliente from './Model/Auth/cliente';
 import Token from './Model/Auth/token';
 
-const enviroment = process.env.NODE_ENV || 'development';
-const db = config[enviroment].databaseUri;
+const enviroment = process.env.NODE_ENV || 'develop'
+const db = config[enviroment].databaseUri
 
 console.log("ENVIRONMENT: " + process.env.NODE_ENV + " DB: " + db);
 mongoose.connect(db);

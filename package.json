@@ -4,11 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build-server": "babel api/src -d build",
+    "build": "babel api/src -d build",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --timeout 120000",
     "start-dev": "nodemon --exec babel-node api/src/server.js",
-    "start-hml": "npm run build-server && nodemon --exec babel-node api/src/server.js NODE_ENV=hml",
-    "start-prd": "npm run build-server && nodemon --exec babel-node api/src/server.js NODE_ENV=prd"
+    "start-hml": "npm run build && nodemon --exec babel-node api/src/server.js NODE_ENV=hml",
+    "start-prd": "npm run build && node ./build/src/server.js NODE_ENV=prd"
   },
   "repository": {
     "type": "git",
