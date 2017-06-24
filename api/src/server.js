@@ -233,6 +233,7 @@ server.get('/interessados', (request, response, next) => {
 server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.getInteressadosMenor(request, response)
+})
 
 // RFI03: GET /interessados/{id_interessado}
 server.get('/interessados/:id_interessado', (request, response, next) => {
@@ -253,45 +254,47 @@ server.del('/interessados/:id_interessado', (request, response, next) => {
 })
 
 // RFI07: GET /interessados/{id_interessado}/ordenacao
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+//verificar este metodo
+server.get('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.get(request, response)
+    conteudoTranslator.getInteressadoByOrder(request, response)
 })
 
 // RFI08: PUT /interessados/{id_interessado}/ordenacao
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+// verificar este metodo
+server.put('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+    conteudoTranslator.updateInteressadoByOrder(request, response)
 })
 
 // RFI09: POST /interessados/{id_interessado}/visualizacoes
-server.post('/interessados/:id/visualizacoes', (request, response, next) => {
+server.post('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.post(request, response)
+    interessadosTranslator.postVisualizacao(request, response)
 })
 
 // RFI10: GET /interessados/{id_interessado}/visualizacoes
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+server.get('/conteudos/:id_interessado/visualizacoes', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+    conteudoTranslator.getVisualizacoes(request, response)
 })
 
 // RFI11: PUT /interessados/{id_interessado}/visualizacoes
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+server.put('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+    conteudoTranslator.updateVisualizacoes(request, response)
 })
 
 // RFI13: POST /interessados/{id_interessado}/menores
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+server.post('/conteudos/:id_interessado/menores', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+    conteudoTranslator.postMenor(request, response)
 })
 
 // RFI14: GET /interessados/{id_interessado}/menores
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+server.get('/conteudos/:id_interessado/menores', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+    conteudoTranslator.getMenor(request, response)
 })
 
 // RFI15: DELETE /interessados/{id_interessado}/menores/{id_menor}
