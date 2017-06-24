@@ -107,7 +107,7 @@ server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
 // RFM01: POST /menores
 server.post('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
-    menorTranslator.postMenor(request, response)
+    menorTranslator.post(request, response)
 })
 
 // RFM02: GET /menores
@@ -427,7 +427,8 @@ server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next)
 // RFO05 (2017-2): POST /processos/{id_processo}/movimentos
 // RFO06 (2017-2): GET /processos/{id_processo}/movimentos
 // RFO07 (2017-2): PUT /processos/{id_processo}/movimentos/{id_movimento}
-// RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}// Resource: conteudo
+// RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}
+// Resource: conteudo
 
 server.listen(port, function () {
     console.log('Adoções API executando na porta: ' + port)

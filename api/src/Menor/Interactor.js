@@ -7,7 +7,8 @@ export default class Interactor {
 		const entity = new this.Entity()
 		
 		return entity.validate(body).then(body => {
-			create(body) })
+			return create(body) 
+		})
 
 	}
 
