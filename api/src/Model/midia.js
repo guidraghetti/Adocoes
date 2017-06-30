@@ -10,6 +10,10 @@ export const midiaSchema = new Schema({
 	conteudo: {
 		type: String,
 		required: true
+	},
+	principal: {
+		type: Boolean,
+		required: false
 	}
 })
 
