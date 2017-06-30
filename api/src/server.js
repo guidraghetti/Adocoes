@@ -46,7 +46,7 @@ server.post('/oauth', AuthManager.isClientAuthenticated, Oauth2Manager.token);
 // Resource: usuario
 //
 
-// P1
+// P0
 // RFU01: POST /usuarios
 server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => { 
     const usuarioTranslator = new UsuarioTranslator()
@@ -61,35 +61,35 @@ server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) =
 })
 
 // P0
-// RFU03: GET /usuarios/{id_usuario}
+// RFU03: GET /usuarios/:id_usuario
 server.get('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getById(request, response)
 })
 
 // P1
-// RFU04: PUT /usuarios/{id_usuario}
+// RFU04: PUT /usuarios/:id_usuario
 server.put('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.put(request, response)
 })
 
 // P1
-// RFU05: DELETE /usuarios/{id_usuario}
+// RFU05: DELETE /usuarios/:id_usuario
 server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.delete(request, response)
 })
 
 // P1
-// RFU06: GET /usuarios/{id_usuario}/perfis 
+// RFU06: GET /usuarios/:id_usuario/perfis 
 server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.getPerfilByUsuarioId(request, response)
 })
 
 // P1
-// RFU09: PUT /usuarios/{id_usuario}/perfis
+// RFU09: PUT /usuarios/:id_usuario/perfis
 server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
     const usuarioTranslator = new UsuarioTranslator()
     usuarioTranslator.updatePerfilUsuario(request, response)
@@ -101,12 +101,12 @@ server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
 
 // RFP01 (2017-2): POST /perfis
 // RFP02 (2017-2): GET /perfis
-// RFP03 (2017-2): GET /perfis/{id_perfil}
-// RFP04 (2017-2): PUT /perfis/{id_perfil}
-// RFP05 (2017-2): DELETE /perfis/{id_perfil}
-// RFP06 (2017-2): GET /perfis/{id_perfil}/usuarios
-// RFP07 (2017-2): POST /perfis/{id_perfil}/usuarios
-// RFP08 (2017-2): DELETE /perfis/{id_perfil}/usuarios/{id_usuario}
+// RFP03 (2017-2): GET /perfis/:id_perfil
+// RFP04 (2017-2): PUT /perfis/:id_perfil
+// RFP05 (2017-2): DELETE /perfis/:id_perfil
+// RFP06 (2017-2): GET /perfis/:id_perfil/usuarios
+// RFP07 (2017-2): POST /perfis/:id_perfil/usuarios
+// RFP08 (2017-2): DELETE /perfis/:id_perfil/usuarios/:id_usuario
 
 //
 // Resource: menor
@@ -121,93 +121,87 @@ server.post('/menores', AuthManager.isAuthenticated, (request, response, next) =
 
 // P0
 // RFM02: GET /menores
+// RFM06: GET /menores?idade=:idade,sexo=:sexo
 server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getAllMenores(request, response)
 })
 
 // P0
-// RFM03: GET /menores/{id_menor}
+// RFM03: GET /menores/:id_menor
 server.get('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getMenor(request, response)
 })
 
 // P1
-// RFM04: PUT /menores/{id_menor}
+// RFM04: PUT /menores/:id_menor
 server.put('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.updateMenor(request, response)
 })
 
 // P1
-// RFM05: DELETE /menores/{id_menor}
+// RFM05: DELETE /menores/:id_menor
 server.del('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.deleteMenor(request, response)
 })
 
 // P0
-// RFM06: GET /menores?ordenacao={idade=0~1, sexo=0~1}
-server.get('/menores?idade=:idade, sexo=:sexo', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.getMenoresByOrder(request, response)
-})
-
-// P0
-// RFM07: POST /menores/{id_menor}/interessados
+// RFM07: POST /menores/:id_menor/interessados
 server.post('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.postInteressado(request, response)
 })
 
 // P1
-// RFM08: GET /menores/{id_menor}/interessados
+// RFM08: GET /menores/:id_menor/interessados
 server.get('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getInteressado(request, response)
 })
 
 // P1
-// RFM09: DELETE /menores/{id_menor}/interessados/{id_interessado}
-server.del('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
+// RFM09: DELETE /menores/:id_menor/interessados/:id_interessado
+server.del('/menores/:id_menor/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.deleteInteressado(request, response)
 })
 
 // P1
-// RFM10: POST /menores/{id_menor}/midias
+// RFM10: POST /menores/:id_menor/midias
 server.post('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.postMidia(request, response)
 })
 
 // P0
-// RFM11: GET /menores/{id_menor}/midias
+// RFM11: GET /menores/:id_menor/midias
 server.get('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getAllImagens(request, response)
 })
 
 // P0
-// RFM12: GET /menores/{id_menor}/midias/{id_imagem}
-server.get('/menores/:id_menor/midias/:id_imagem', AuthManager.isAuthenticated, (request, response, next) => {
+// RFM12: GET /menores/:id_menor/midias/:id_midia
+server.get('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.getImagemById(request, response)
 })
 
 // P1
-// RFM13: DELETE /menores/{id_menor}/midias/{id_imagem}
-server.del('/menores/:id_menor/midias/:id_imagem', AuthManager.isAuthenticated, (request, response, next) => {
+// RFM13: DELETE /menores/:id_menor/midias/:id_midia
+server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
     menorTranslator.deleteImagem(request, response)
 })
 
-// RFM18 (2017-2): PUT /menores/{id_menor} (seta o id_abrigo)
-// RFM09 (2017-2): POST /menores/{id_menor}/processos
-// RFM20 (2017-2): GET /menores/{id_menor}/processos
-// RFM21 (2017-2): GET /menores/{id_menor}/processos/{id_processo}
-// RFM22 (2017-2): DELETE /menores/{id_menor}/processos/{id_processo}
+// RFM18 (2017-2): PUT /menores/:id_menor (seta o id_abrigo)
+// RFM09 (2017-2): POST /menores/:id_menor/processos
+// RFM20 (2017-2): GET /menores/:id_menor/processos
+// RFM21 (2017-2): GET /menores/:id_menor/processos/:id_processo
+// RFM22 (2017-2): DELETE /menores/:id_menor/processos/:id_processo
 
 //    
 // Resource: interessado
@@ -227,97 +221,75 @@ server.get('/interessados', (request, response, next) => {
     interessadosTranslator.getAllInteressados(request, response)
 })
 
-// P1
-// RFI12: GET /interessados?query=id_menor={id_menor}
-//verificar este metodo
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getInteressadosMenor(request, response)
-})
-
 // P0
-// RFI03: GET /interessados/{id_interessado}
+// RFI03: GET /interessados/:id_interessado
 server.get('/interessados/:id_interessado', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.getInteressado(request, response)
 })
 
 // P0
-// RFI04: PUT /interessados/{id_interessado}
+// RFI04: PUT /interessados/:id_interessado
 server.put('/interessados/:id_interessado', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.updateInteressado(request, response)
 })
 
 // P1
-// RFI05: DELETE /interessados/{id_interessado}
+// RFI05: DELETE /interessados/:id_interessado
 server.del('/interessados/:id_interessado', (request, response, next) => {
     let interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.deleteInteressado(request, response)
 })
 
-// DEPRECATED - EXCLUIR
-// RFI07: GET /interessados/{id_interessado}/ordenacao
-server.get('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getInteressadoByOrder(request, response)
-})
-
-// DEPRECATED - EXCLUIR
-// RFI08: PUT /interessados/{id_interessado}/ordenacao
-server.put('/conteudos/:id_interessado/ordenacao', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.updateInteressadoByOrder(request, response)
-})
-
 // P0
-// RFI09: POST /interessados/{id_interessado}/visualizacoes
+// RFI09: POST /interessados/:id_interessado/visualizacoes
 server.post('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.postVisualizacao(request, response)
 })
 
-// P0
-// RFI10: GET /interessados/{id_interessado}/visualizacoes
-server.get('/conteudos/:id_interessado/visualizacoes', (request, response, next) => {
+// P1
+// RFI10: GET /interessados/:id_interessado/visualizacoes
+server.get('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.getVisualizacoes(request, response)
 })
 
 // P0
-// RFI11: PUT /interessados/{id_interessado}/visualizacoes
+// RFI11: PUT /interessados/:id_interessado/visualizacoes
 server.put('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.updateVisualizacoes(request, response)
 })
 
 // P0
-// RFI13: POST /interessados/{id_interessado}/menores
-server.post('/conteudos/:id_interessado/menores', (request, response, next) => {
+// RFI13: POST /interessados/:id_interessado}/menores
+server.post('/interessados/:id_interessado/menores', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.postMenor(request, response)
 })
 
 // P0
-// RFI14: GET /interessados/{id_interessado}/menores
-server.get('/conteudos/:id_interessado/menores', (request, response, next) => {
+// RFI14: GET /interessados/:id_interessado/menores
+server.get('/interessados/:id_interessado/menores', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.getMenor(request, response)
 })
 
 // P0
-// RFI15: DELETE /interessados/{id_interessado}/menores/{id_menor}
-server.del('/conteudos/:id_conteudo/videos/:id_video', (request, response, next) => {
+// RFI15: DELETE /interessados/:id_interessado/menores/:id_menor
+server.del('/interessados/:id_interessado/menores/:id_menor', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.deleteVideo(request, response)
 })
 
-// RFI16 (2017-2): POST /interessados/{id_interessado}/menores/{id_menor}/compartilhamentos
-// RFI17 (2017-2): GET /interessados/{id_interessado}/mensagens
-// RFI18 (2017-2): PUT /usuarios/{id_usuario}/mensagens
-// RFI19 (2017-2): POST /interessados/{id_interessado}/documentos
-// RFI20 (2017-2): GET /interessados/{id_interessado}/documentos
-// RFI21 (2017-2): GET /interessados/{id_interessado}/documentos/{id_documento}
+// RFI16 (2017-2): POST /interessados/:id_interessado/menores/:id_menor/compartilhamentos
+// RFI17 (2017-2): GET /interessados/:id_interessado/mensagens
+// RFI18 (2017-2): PUT /usuarios/:id_usuario/mensagens
+// RFI19 (2017-2): POST /interessados/:id_interessado/documentos
+// RFI20 (2017-2): GET /interessados/:id_interessado/documentos
+// RFI21 (2017-2): GET /interessados/:id_interessado/documentos/:id_documento
 
 //
 //resource: Conteudos
@@ -338,44 +310,43 @@ server.get('/conteudos', (request, response, next) => {
 })
 
 // P1
-// RFC03: PUT /conteudos/{id_conteudo}
-// @eduardo.arruda: a rota correta é /conteudos/:id
+// RFC03: PUT /conteudos/:id_conteudo
 server.put('/conteudos/:id_conteudo', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.put(request, response)
 })
 
 // P1
-// RFC04: DELETE /conteudos/{id_conteudo}
-server.del('/conteudos/:id', (request, response, next) => {
+// RFC04: DELETE /conteudos/:id_conteudo
+server.del('/conteudos/:id_conteudo', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.delete(request, response)
 })
 
 // P1
-// RFC05: POST /conteudos/{id_conteudo}/midias
-server.post('/conteudos/:id_conteudo/imagens', (request, response, next) => {
+// RFC05: POST /conteudos/:id_conteudo/midias
+server.post('/conteudos/:id_conteudo/midias', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.postImages(request, response)
 })
 
 // P0
-// RFC06: GET /conteudos/{id_conteudo}/midias
-server.get('/conteudos/:id_conteudo/imagens', (request, response, next) => {
+// RFC06: GET /conteudos/:id_conteudo/midias
+server.get('/conteudos/:id_conteudo/midias', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.fetchImages(request, response)
 })
 
 // P0
-// RFC07: GET /conteudos/{id_conteudo}/midias/{id_midia}
-server.get('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, next) => {
+// RFC07: GET /conteudos/:id_conteudo/midias/:id_midia
+server.get('/conteudos/:id_conteudo/midias/:id_midia', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.delete(request, response)
 })
 
 // P1
-// RFC08: DELETE /conteudos/{id_conteudo}/midias/{id_midia}
-server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, next) => {
+// RFC08: DELETE /conteudos/:id_conteudo/midias/:id_midia
+server.del('/conteudos/:id_conteudo/midias/:id_midia', (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
     conteudoTranslator.delete(request, response)
 })
@@ -386,10 +357,10 @@ server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, nex
 
 // RFM01 (2017-2): POST /mensagens
 // RFM02 (2017-2): GET /mensagens
-// RFM03 (2017-2): GET /mensagens?query=data_inicial={data_inicial}&data_final={data_final}
-// RFM04 (2017-2): PUT /mensagens/{id_mensagem}
-// RFM05 (2017-2): POST /mensagens/{id_mensagem}/resposta
-// RFM06 (2017-2): DELETE /mensagens/{id_mensagem}
+// RFM03 (2017-2): GET /mensagens?query=data_inicial=:data_inicial&data_final=:data_final
+// RFM04 (2017-2): PUT /mensagens/:id_mensagem
+// RFM05 (2017-2): POST /mensagens/:id_mensagem/resposta
+// RFM06 (2017-2): DELETE /mensagens/:id_mensagem
 
 //
 // Resource: abrigo
@@ -397,8 +368,8 @@ server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, nex
 
 // RFA01 (2017-2): POST /abrigos
 // RFA02 (2017-2): GET /abrigos
-// RFA03 (2017-2): PUT /abrigos/{id_abrigo}
-// RFA04 (2017-2): DELETE /abrigos/{id_abrigo}
+// RFA03 (2017-2): PUT /abrigos/:id_abrigo
+// RFA04 (2017-2): DELETE /abrigos/:id_abrigo
 
 //
 // Resource: familia
@@ -406,8 +377,8 @@ server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, nex
 
 // RFF01 (2017-2): POST /familias
 // RFF02 (2017-2): GET /familias
-// RFF03 (2017-2): PUT /familias/{id_familia}
-// RFF04 (2017-2): DELETE /familias/{id_familia}
+// RFF03 (2017-2): PUT /familias/:id_familia
+// RFF04 (2017-2): DELETE /familias/:id_familia
 
 //
 // Resource: processo
@@ -415,12 +386,12 @@ server.del('/conteudos/:id_conteudo/imagens/:id_imagem', (request, response, nex
 
 // RFO01 (2017-2): POST /processos
 // RFO02 (2017-2): GET /processos
-// RFO03 (2017-2): PUT /processos/{id_processo}
-// RFO04 (2017-2): DELETE /processos/{id_processo}
-// RFO05 (2017-2): POST /processos/{id_processo}/movimentos
-// RFO06 (2017-2): GET /processos/{id_processo}/movimentos
-// RFO07 (2017-2): PUT /processos/{id_processo}/movimentos/{id_movimento}
-// RFO08 (2017-2): DELETE /processos/{id_processo}/movimentos/{id_movimento}
+// RFO03 (2017-2): PUT /processos/:id_processo
+// RFO04 (2017-2): DELETE /processos/:id_processo
+// RFO05 (2017-2): POST /processos/:id_processo/movimentos
+// RFO06 (2017-2): GET /processos/:id_processo/movimentos
+// RFO07 (2017-2): PUT /processos/:id_processo/movimentos/:id_movimento
+// RFO08 (2017-2): DELETE /processos/:id_processo/movimentos/:id_movimento
 // Resource: conteudo
 
 server.listen(port, function () {
