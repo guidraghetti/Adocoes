@@ -4,18 +4,19 @@ export default class Translator {
 	}
 
 	post(request, response) {
-		const { body } = request
+        const { body } = request;
 
-        const interactor = new this.Interactor()
+        const interactor = new this.Interactor();
 
         interactor.create(body)
             .then(message => {
                 response.send(200, message)
             })
             .catch(error => {
-                response.send(error)
+                console.log(error)
+                response.send(500, "Ocorreu um erro ao criar o menor")
             })
-	}
+    }
 
 	get(request, response) {
 		const { body } = request

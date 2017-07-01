@@ -3,13 +3,9 @@ export default class Interactor {
 		this.Entity = deps.Entity || require('./Entity').default
 	}
 
-	create(body) {
-		const entity = new this.Entity()
-		
-		return entity.validate(body).then(body => {
-			return create(body) 
-		})
-
+	create(menor) {
+		const entity = new this.Entity();
+		return entity.create(menor);
 	}
 
 	fetchAll(body) {

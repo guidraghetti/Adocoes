@@ -5,10 +5,9 @@ export default class Adapter {
 		this.Menor = mongoose.model('Menor')
 	}
 
-	save(body) {
-		const menor = new this.Menor(body)
-
-		return menor.save()
+	save(menor) {
+		const Menor = new this.Menor(menor)
+		return Menor.save()
 	}
 
 	fetchAll() {
@@ -18,7 +17,6 @@ export default class Adapter {
 			})
 		})
 	}
-
 		
 	fetchAndUpdate() {
 		return this.Menor.findOneAndUpdate({_id: body.id },{new: true}, body, (err, menor) => {

@@ -5,10 +5,10 @@ export default class Entity {
 		this.Adapter = deps.Adapter || require('./Adapter').default
 	}
 
-	create(body) {
+	create(menor) {
 		const adapter = new this.Adapter()
 		
-		return adapter.save(body)
+		return adapter.save(menor)
 	}
 
 	fetchAll() {

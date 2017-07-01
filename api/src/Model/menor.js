@@ -83,6 +83,6 @@ const menorSchema = new Schema({
 		required: true,
 		default: true
 	}
-})
+}, { collection: 'menores' })
 
 mongoose.model('Menor', menorSchema)
