@@ -179,6 +179,10 @@ server.post('/menores/:id_menor/midias/:id_midia/midia', AuthManager.isAuthentic
 	const menorTranslator = new MenorTranslator()
 	menorTranslator.postMidiaConteudo(request, response)
 })
+server.post('/menores/:id_menor/midias/:id_midia/midia', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.postMidiaConteudo(request, response)
+})
 
 // P0
 // RFM11: GET /menores/:id_menor/midias
