@@ -42,8 +42,8 @@ export default class Entity {
 			renda: Joi.number().precision(2),
 			comprovantesRenda: Joi.object().required(),
 			outrosDocumentos: Joi.object().required(),
-			enderecos: Joi.object().required(),
-			telefones: Joi.object().required(),
+			enderecos: Joi.string().required(),
+			telefones: Joi.string().required(),
 			interesses: Joi.object().required(),
 			visualizacoes: Joi.object().required()
 

@@ -214,78 +214,78 @@ server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (
 // P1
 // RFI01: POST /interessados
 server.post('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.post(request, response)
+    const interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.post(request, response)
 })
 
 // P0
 // RFI02: GET /interessados
 server.get('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.getInteressados(request, response)
+    const interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.getInteressados(request, response)
 })
 
 // P0
 // RFI03: GET /interessados/:id_interessado
 server.get('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.getInteressado(request, response)
+    const interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.getInteressado(request, response)
 })
 
 // P0
 // RFI04: PUT /interessados/:id_interessado
 server.put('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.updateInteressado(request, response)
+    const interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.updateInteressado(request, response)
 })
 
 // P1
 // RFI05: DELETE /interessados/:id_interessado
 server.del('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    let interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.deleteInteressado(request, response)
+    let interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.deleteInteressado(request, response)
 })
 
 // P0
 // RFI09: POST /interessados/:id_interessado/visualizacoes
 server.post('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.postVisualizacao(request, response)
+    const interessadoTranslator = new InteressadoTranslator()
+    interessadoTranslator.postVisualizacao(request, response)
 })
 
 // P1
 // RFI10: GET /interessados/:id_interessado/visualizacoes
 server.get('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new interessadosTranslator()
-    interessadosTranslator.getVisualizacoes(request, response)
+    const interessadoTranslator = new interessadoTranslator()
+    interessadoTranslator.getVisualizacoes(request, response)
 })
 
 // P0
 // RFI11: PUT /interessados/:id_interessado/visualizacoes
 server.put('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new interessadosTranslator()
-    interessadosTranslator.updateVisualizacao(request, response)
+    const interessadoTranslator = new interessadoTranslator()
+    interessadoTranslator.updateVisualizacao(request, response)
 })
 
 // P0
 // RFI13: POST /interessados/:id_interessado}/menores
 server.post('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new interessadosTranslator()
-    interessadosTranslator.postMenor(request, response)
+    const interessadoTranslator = new interessadoTranslator()
+    interessadoTranslator.postMenor(request, response)
 })
 
 // P0
 // RFI14: GET /interessados/:id_interessado/menores
 server.get('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new interessadosTranslator()
-    interessadosTranslator.getMenores(request, response)
+    const interessadoTranslator = new interessadoTranslator()
+    interessadoTranslator.getMenores(request, response)
 })
 
 // P0
 // RFI15: DELETE /interessados/:id_interessado/menores/:id_menor
 server.del('/interessados/:id_interessado/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadosTranslator = new interessadosTranslator()
-    interessadosTranslator.deleteMenor(request, response)
+    const interessadoTranslator = new interessadoTranslator()
+    interessadoTranslator.deleteMenor(request, response)
 })
 
 // RFI16 (2017-2): POST /interessados/:id_interessado/menores/:id_menor/compartilhamentos
