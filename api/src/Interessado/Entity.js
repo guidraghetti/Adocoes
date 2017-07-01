@@ -10,10 +10,10 @@ export default class Entity {
 		return this.Adapter.post(body)
 	}
 	
-	get() {
+	getInteressados() {
 		
 		
-		return this.Adapter.get()
+		return this.Adapter.getInteressados()
 	}
 
 	getInteressado(id) {

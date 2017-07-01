@@ -10,9 +10,9 @@ export default class Interactor {
 	}
 
 	
-	get(body) {
+	getInteressados(body) {
 		
-		return this.Entity.get()
+		return this.Entity.getInteressados()
 	}
 
 	getInteressado(body) {

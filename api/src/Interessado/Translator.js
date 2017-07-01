@@ -17,12 +17,12 @@ export default class Translator {
             })
 	}
 
-	get(request, response) {
+	getInteressados(request, response) {
 		const { body } = request
 	
 		const interactor = new this.Interactor()
 
-		interactor.get()
+		interactor.getInteressados()
 			.then(message => {
                 response.send(200, message)
             })

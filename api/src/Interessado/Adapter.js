@@ -19,7 +19,7 @@ export default class Adapter {
         })
 	}
 
-	get() {
+	getInteressados() {
 		return this.Interessado.find((err,doc) => {
 			return new Promise((resolve, reject) => {
 				resolve(doc)
