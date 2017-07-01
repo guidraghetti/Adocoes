@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import UsuarioTranslator from './Usuario/Translator'
 import ConteudoTranslator from './Conteudo/Translator'
 import MenorTranslator from './Menor/Translator'
-import InteressadosTranslator from './Interessado/Translator'
+import InteressadoTranslator from './Interessado/Translator'
 
 import AuthManager from './Auth/authManager'
 import Oauth2Manager from './Auth/oauth2Manager'
@@ -222,11 +222,7 @@ server.post('/interessados', AuthManager.isAuthenticated, (request, response, ne
 // RFI02: GET /interessados
 server.get('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-<<<<<<< Updated upstream
-    interessadosTranslator.get(request, response)
-=======
     interessadosTranslator.getInteressados(request, response)
->>>>>>> Stashed changes
 })
 
 // P0
