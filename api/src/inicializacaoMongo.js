@@ -20,7 +20,6 @@ testUsuario = {
 
 db.usuarios.update(testUsuario, testUsuario, {upsert:true});
 
-
 testInteressado ={
 	name: "blablabla",
 	cpf: "12345687901",
@@ -37,6 +36,4 @@ testInteressado ={
 	ativo: true
 };
 
-
 db.interessados.update(testInteressado,testInteressado, {upsert:true});
-
