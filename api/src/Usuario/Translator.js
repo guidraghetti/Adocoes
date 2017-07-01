@@ -1,103 +1,111 @@
 export default class Translator {
-    constructor(deps = {}) {
-        this.Interactor = deps.Interactor ? new deps.Interactor() : new (require('./Interactor').default)()
-    }
 
-    fetchAll(request, response) {
-        this.Interactor.fetchAll()
-            .then(result => {
-                response.send(200, result)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao obter os usuários")
-            })
-    }
+	constructor(deps = {}) {
+		this.Interactor = deps.Interactor ? new deps.Interactor() : new(require('./Interactor').default)()
+	}
 
-    getById(request, response) {
-        this.Interactor.findById(request.params.id_usuario)
-            .then(message => {
-                if (!message)
-                    return response.send(404, "Nenhum usuário com o ID informado foi encontrado")
+	post(request, response) {
+		const {
+			body
+		} = request
 
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao obter o usuário")
-            })
-    }
+		this.Interactor.save(body)
+			.then(message => {
+				response.send(200, message)
+			})
+			.catch(error => {
+				console.log(error)
+				response.send(500, "Ocorreu um erro ao criar o usuário")
+			})
+	}
 
-    post(request, response) {
-        const { body } = request
+	get(request, response) {
+		this.Interactor.fetchAll()
+			.then(result => {
+				response.send(200, result)
+			})
+			.catch(error => {
+				console.log(error)
+				response.send(500, "Ocorreu um erro ao obter os usuários")
+			})
+	}
 
-        this.Interactor.save(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao criar o usuário")
-            })
-    }
+	getById(request, response) {
+		this.Interactor.findById(request.params.id_usuario)
+			.then(message => {
+				if (!message)
+					return response.send(404, "Nenhum usuário com o ID informado foi encontrado")
 
-    put(request, response) {
-        const { body } = request
+				response.send(200, message)
+			})
+			.catch(error => {
+				console.log(error)
+				response.send(500, "Ocorreu um erro ao obter o usuário")
+			})
+	}
 
-        this.Interactor.update(request.params.id_usuario, body)
-            .then(usuario => {
-                if (!usuario)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+	put(request, response) {
+		const {
+			body
+		} = request
 
-                response.send(200, usuario)
-            })
-            .catch(error => {
-                console.log(error);
-                response.send(500, "Ocorreu um erro ao atualizar o usuário")
-            })
-    }
+		this.Interactor.update(request.params.id_usuario, body)
+			.then(usuario => {
+				if (!usuario)
+					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
-    delete(request, response) {
-        this.Interactor.delete(request.params.id_usuario)
-            .then(sucesso => {
-                if (!sucesso)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+				response.send(200, usuario)
+			})
+			.catch(error => {
+				console.log(error);
+				response.send(500, "Ocorreu um erro ao atualizar o usuário")
+			})
+	}
 
-                response.send(200, "Usuário deletado com sucesso")
-            })
-            .catch(error => {
-                console.log(error);
-                response.send(500, "Ocorreu um erro ao deletar o usuário")
-            })
-    }
+	delete(request, response) {
+		this.Interactor.delete(request.params.id_usuario)
+			.then(sucesso => {
+				if (!sucesso)
+					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
-    getPerfilByUsuarioId(request, response) {
-        this.Interactor.getPerfilByUsuarioId(request.params.id_usuario)
-            .then(message => {
-                if (!message)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+				response.send(200, "Usuário deletado com sucesso")
+			})
+			.catch(error => {
+				console.log(error);
+				response.send(500, "Ocorreu um erro ao deletar o usuário")
+			})
+	}
 
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-                response.send(500, "Ocorreu um erro ao obter o perfil do usuário")
-            })
-    }
+	getPerfisById(request, response) {
+		this.Interactor.findPerfisById(request.params.id_usuario)
+			.then(message => {
+				if (!message)
+					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
 
-    updatePerfilUsuario(request, response) {
-        const { body } = request
+				response.send(200, message)
+			})
+			.catch(error => {
+				console.log(error)
+				response.send(500, "Ocorreu um erro ao obter o perfil do usuário")
+			})
+	}
 
-        this.Interactor.updatePerfilUsuario(request.params.id_usuario, body.perfis)
-            .then(usuario => {
-                if (!usuario)
-                    return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+	updatePerfis(request, response) {
+		const {
+			body
+		} = request
 
-                response.send(200, usuario)
-            })
-            .catch(error => {
-                console.log(error);
-                response.send(500, "Ocorreu um erro ao atualizar o perfil do usuário")
-            })
-    }
+		this.Interactor.updatePerfisUsuario(request.params.id_usuario, body.perfis)
+			.then(usuario => {
+				if (!usuario)
+					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
+
+				response.send(200, usuario)
+			})
+			.catch(error => {
+				console.log(error);
+				response.send(500, "Ocorreu um erro ao atualizar o perfil do usuário")
+			})
+	}
+
 }

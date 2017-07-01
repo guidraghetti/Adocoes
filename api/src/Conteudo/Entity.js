@@ -1,12 +1,13 @@
 import Joi from 'Joi'
+
 export default class Entity {
+
 	constructor(deps = {}) {
 		this.Adapter = deps.Adapter || require('./Adapter').default
 	}
-	
+
 	create(body) {
 		const adapter = new this.Adapter()
-
 		return adapter.save(body)
 	}
 
@@ -18,7 +19,6 @@ export default class Entity {
 
 	validate(body) {
 		const schema = Joi.object({
-			
 			nome: Joi.string().required(),
 			pagina: Joi.object().required(),
 			midia: Joi.object().required(),
@@ -28,70 +28,64 @@ export default class Entity {
 			timeStampFim: Joi.date().default().required()
 		})
 
-		const {error, value} = Joi.validate(body, schema)
+		const {
+			error,
+			value
+		} = Joi.validate(body, schema)
 
 		return new Promise((resolve, reject) => {
-            
-            if(error) {
-                let messages = error.details.map(e => e.message)
-                reject({
-                    status: 400,
-                    messages
-                })
+			if (error) {
+				let messages = error.details.map(e => e.message)
+				reject({
+					status: 400,
+					messages
+				})
 
-            } else if(value) {
-                resolve(value)
-            }
-        })
+			} else if (value) {
+				resolve(value)
+			}
+		})
 	}
-		
+
 	update(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.fetchAndUpdate(body)
 	}
 
 	remove(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.delete(body.id)
 	}
 
 	getImage(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.getImagem(body.id)
 	}
 
 	addImage(body) {
 		const adapter = new this.Adapter()
-
 		return adapter.fetchAndAddImage(body)
 	}
 
 	find(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.fetch(body.id)
 	}
 
 	deleteVideo(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.deleteVideo(body.id)
 	}
 
 	createVideo(body) {
 		const adapter = new this.Adapter()
-
 		return adapter.addVideo(body)
 	}
 
 	fetchAll() {
-        let adapter = new this.Adapter()
-
-        return adapter.fetchAll()
-    }
+		let adapter = new this.Adapter()
+		return adapter.fetchAll()
+	}
 
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
@@ -101,49 +95,41 @@ export default class Entity {
 
 	update(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.fetchAndUpdate(body)
 	}
 
 	remove(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.delete(body.id)
 	}
 
 	getImage(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.getImagem(body.id)
 	}
 
 	addImage(body) {
 		const adapter = new this.Adapter()
-
 		return adapter.fetchAndAddImage(body)
 	}
 
 	find(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.fetch(body.id)
 	}
 
 	deleteVideo(body) {
 		const adapter = new this.Adapter()
-		
 		return adapter.deleteVideo(body.id)
 	}
 
 	createVideo(body) {
 		const adapter = new this.Adapter()
-
 		return adapter.addVideo(body)
 	}
 
 	fetchAllVideos(id) {
 		const adapter = new this.Adapter()
-
 		return adapter.fetchAllVideos(id)
 	}
 }

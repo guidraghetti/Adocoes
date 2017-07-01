@@ -1,6 +1,7 @@
 export default class Interactor {
+
 	constructor(deps = {}) {
-		this.Entity = deps.Entity || new (require('./Entity').default)()
+		this.Entity = deps.Entity || new(require('./Entity').default)()
 	}
 
 	save(usuario) {
@@ -23,11 +24,12 @@ export default class Interactor {
 		return this.Entity.delete(id)
 	}
 
-	getPerfilByUsuarioId(id) {
-		return this.Entity.getPerfilByUsuarioId(id)
+	findPerfisById(id) {
+		return this.Entity.findPerfisById(id)
 	}
 
-	updatePerfilUsuario(id, perfis) {
-		return this.Entity.updatePerfilUsuario(id, perfis)
+	updatePerfis(id, perfis) {
+		return this.Entity.updatePerfis(id, perfis)
 	}
+
 }

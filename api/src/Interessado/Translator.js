@@ -1,4 +1,5 @@
 export default class Translator {
+    
 	constructor(deps = {}) {
 		this.Interactor = deps.Interactor || require('./Interactor').default
 	}
@@ -217,7 +218,5 @@ export default class Translator {
                 console.log(error)
             })
 	}
-	
-	
 	
 }
