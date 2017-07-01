@@ -8,8 +8,16 @@ export const midiaSchema = new Schema({
 		required: true
 	},
 	conteudo: {
-		type: String,
+		type: String, // base64 do binário da midia
 		required: true
+	},
+	descricao: {
+		type: String,
+		required: false
+	},
+	principal: {
+		type: Boolean,
+		required: false
 	}
 })
 

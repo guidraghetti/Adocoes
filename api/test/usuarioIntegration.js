@@ -7,7 +7,7 @@ const Usuario = mongoose.model('Usuario');
 const Cliente = mongoose.model('Cliente');
 const Token = mongoose.model('Token');
 
-describe('GET /usuarios/:id_usuario', () => {
+describe('Testes integrados do resource usuario', () => {
     const request = supertest(server);
     const clienteId = mongoose.Types.ObjectId();
     const tokenValue = "m4m8rF7B8aYsFX2cq0qqg2xzL5jMtxkRu6gSA9sdUGUuganR9rWMQTHGeUSc0rgYaQVom1Z67NW7WXbTkKZfF5W7tBzJ0qsYfmzwrclDjUUtwmcuSBhdkMG1iPPoo4VdryCRxNMhmwRMF2n3aZBWOI1X5kqSoYr0XlgpL7rPMfyDQfZD6g0sN2PvPAq2i6djiwgI72zwQ7yaYEg13esYEXzalhqCTQlIw7MlyiFNI7p8HpZLf8eM1CflQi4APOA8";
