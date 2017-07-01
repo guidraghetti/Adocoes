@@ -19,3 +19,24 @@ testUsuario = {
 };
 
 db.usuarios.update(testUsuario, testUsuario, {upsert:true});
+
+
+testInteressado ={
+	name: "blablabla",
+	cpf: "12345687901",
+	nomeConjuge: "maria",
+	email: "teste@gmail.com",
+	dataNascimento: "1991-12-12",
+	renda: "10000",
+	comprovantesRenda: null,
+	outrosDocumentos: null,
+	enderecos: "rua das carmelias, 435",
+	telefones: "30257345",
+	interesses: null,
+	visualizacoes: null,
+	ativo: true
+};
+
+
+db.interessados.update(testInteressado,testInteressado, {upsert:true});
+
