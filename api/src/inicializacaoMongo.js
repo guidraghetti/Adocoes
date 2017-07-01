@@ -1,7 +1,7 @@
 use Adocoes
 
 // Cria aplicação cliente oauth inicial
-db.clientes.count()
+
 testCliente = {
     nome: "adocoes.app",
     secret: "$2a$05$rK1K/Vy0z/Kj5INVusw4eeA3M0UJTHmEx.U5w1k2WTWT78NeeAnrK" // "407a4d80fce791751cd83ab1af3d9b26"

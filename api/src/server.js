@@ -222,11 +222,8 @@ server.post('/interessados', AuthManager.isAuthenticated, (request, response, ne
 // RFI02: GET /interessados
 server.get('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-<<<<<<< Updated upstream
-    interessadosTranslator.get(request, response)
-=======
     interessadosTranslator.getInteressados(request, response)
->>>>>>> Stashed changes
+
 })
 
 // P0
