@@ -24,7 +24,7 @@ export default class Interactor {
 		return this.Entity.delete(id)
 	}
 
-	findPerfisById(id) {
+	findPerfis(id) {
 		return this.Entity.findPerfisById(id)
 	}
 

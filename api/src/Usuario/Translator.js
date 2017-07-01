@@ -19,7 +19,7 @@ export default class Translator {
 			})
 	}
 
-	get(request, response) {
+	getAll(request, response) {
 		this.Interactor.fetchAll()
 			.then(result => {
 				response.send(200, result)
@@ -76,8 +76,8 @@ export default class Translator {
 			})
 	}
 
-	getPerfisById(request, response) {
-		this.Interactor.findPerfisById(request.params.id_usuario)
+	getPerfis(request, response) {
+		this.Interactor.findPerfis(request.params.id_usuario)
 			.then(message => {
 				if (!message)
 					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")
@@ -95,7 +95,7 @@ export default class Translator {
 			body
 		} = request
 
-		this.Interactor.updatePerfisUsuario(request.params.id_usuario, body.perfis)
+		this.Interactor.updatePerfis(request.params.id_usuario, body.perfis)
 			.then(usuario => {
 				if (!usuario)
 					return response.send(400, "Nenhum usuário com o ID informado foi encontrado")

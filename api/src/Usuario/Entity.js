@@ -10,22 +10,6 @@ export default class Entity {
 		return this.Adapter.save(usuario)
 	}
 
-	fetchAll() {
-		return this.Adapter.fetchAll()
-	}
-
-	findById(id) {
-		return this.Adapter.findById(id)
-	}
-
-	update(id, body) {
-		return this.Adapter.update(id, body)
-	}
-
-	delete(id) {
-		return this.Adapter.delete(id)
-	}
-
 	validate(body) {
 		const schema = Joi.object({
 			email: Joi.string().required().email(),
@@ -51,6 +35,22 @@ export default class Entity {
 				resolve(value)
 			}
 		})
+	}
+
+	fetchAll() {
+		return this.Adapter.fetchAll()
+	}
+
+	findById(id) {
+		return this.Adapter.findById(id)
+	}
+
+	update(id, body) {
+		return this.Adapter.update(id, body)
+	}
+
+	delete(id) {
+		return this.Adapter.delete(id)
 	}
 
 	findPerfisById(id) {

@@ -37,7 +37,7 @@ export default class Adapter {
 			})
 	}
 
-	findPerfisById(id) {
+	findPerfis(id) {
 		const projection = {
 			_id: 0,
 			perfis: 1
