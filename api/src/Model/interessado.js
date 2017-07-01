@@ -14,10 +14,6 @@ const interessadoSchema = new Schema({
 	name: {
 		type: String
 	},
-	cpf: {
-		type: documentoSchema,
-		required: true
-	},
 	nomeConjuge: {
 		type: String
 	},

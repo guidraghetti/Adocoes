@@ -20,10 +20,12 @@ const conteudoSchema = new Schema({
 		required: true
 	},
 	timestampInicio: {
-		type: Date
+		type: Date,
+		required: false
 	},
 	timestampFim: {
-		type: Date
+		type: Date,
+		required: false
 	},
 	ativo: {
 		type: Boolean,
