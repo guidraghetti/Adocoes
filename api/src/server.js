@@ -211,14 +211,14 @@ server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (
 // RFI01: POST /interessados
 server.post('/interessados', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.postInteressado(request, response)
+    interessadosTranslator.post(request, response)
 })
 
 // P0
 // RFI02: GET /interessados
 server.get('/interessados', (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
-    interessadosTranslator.getAllInteressados(request, response)
+    interessadosTranslator.get(request, response)
 })
 
 // P0

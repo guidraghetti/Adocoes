@@ -1131,7 +1131,7 @@
 			}],
 			"body": {
 				"mode": "raw",
-				"raw": "{\n\"grant_type\":\"password\",\n\"username\":\"eduardo.arruda@doc.space\",\n\"password\":\"123\"\n}"
+				"raw": "{\n\"grant_type\":\"password\",\n\"username\":\"admin@adocoes.ages.pucrs.br\",\n\"password\":\"123\"\n}"
 			},
 			"description": ""
 		},

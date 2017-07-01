@@ -1,25 +1,27 @@
 import Joi from 'Joi'
 export default class Entity {
 	constructor(deps = {}) {
-		this.Adapter = deps.Adapter || require('./Adapter').default
+		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
 	}
 
-	create(body) {
-		const adapter = new this.Adapter()
+	post(body) {
 		
-		return adapter.save(body)
+		
+		return this.Adapter.post(body)
 	}
 	
-	fetchOne(id) {
-		const adapter = new this.Adapter()
-		return adapter.fetchOne(id)
+	get() {
+		
+		
+		return this.Adapter.get()
 	}
 
-	fetchAll() {
+	getInteressado(id) {
 		const adapter = new this.Adapter()
-		return adapter.fetchAll()
+		return adapter.getInteressado(id)
 	}
 
+	
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
 			resolve(body)
@@ -64,15 +66,15 @@ export default class Entity {
 	}
 
 
-	delete(id) {
+	deleteInteressado(id) {
 		const adapter = new this.Adapter()
-		return adapter.delete(id)
+		return adapter.deleteInteressado(id)
 	}
 	
-	update(body) {
+	updateInteressado(body) {
 		const adapter = new this.Adapter()
 
-		return adapter.fetchOneAndUpdate(body)
+		return adapter.updateInteressado(body)
 	}
 	
 	
@@ -81,24 +83,24 @@ export default class Entity {
 		return adapter.addInterest()
 	}
 	
-	fetchAllMenores() {
+	getMenores() {
 		const adapter = new this.Adapter()
-		return adapter.fetchAllMenores()
+		return adapter.getMenores()
 	}
 	
-	putMenores() {
+	updateMenores() {
 		const adapter = new this.Adapter()
-		return adapter.putMenores()
+		return adapter.updateMenores()
 	}
 	
-	addVisualizacao(body) {
+	postVisualizacao(body) {
 		const adapter = new this.Adapter()
-		return adapter.fetchAndAddVisualizacao(body)
+		return adapter.postVisualizacao(body)
 	}
 	
-	fetchAllViews() {
+	getVisualizacoes() {
 		const adapter = new this.Adapter()
-		return adapter.fetchAllViews()
+		return adapter.getVisualizacoes()
 	}
 	
 	insertInterest() {

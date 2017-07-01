@@ -8,7 +8,7 @@ export default class Translator {
 
         const interactor = new this.Interactor()
 
-        interactor.create(body)
+        interactor.post(body)
             .then(message => {
                 response.send(201, message)
             })
@@ -22,7 +22,7 @@ export default class Translator {
 	
 		const interactor = new this.Interactor()
 
-		interactor.fetchAll()
+		interactor.get()
 			.then(message => {
                 response.send(200, message)
             })
@@ -48,7 +48,7 @@ export default class Translator {
 			})
 	}
 
-	put(request, response) {
+	updateInteressado(request, response) {
 		const body = {
 			id: request.params.id,
 			...request.body
@@ -58,7 +58,7 @@ export default class Translator {
 		
         const interactor = new this.Interactor()
 
-        interactor.update(body)
+        interactor.updateInteressado(body)
             .then(message => {
                 response.send(200, message)
             })
@@ -68,7 +68,7 @@ export default class Translator {
 	}
 	
 	
-	delete(request, response) {
+	deleteInteressado(request, response) {
 		const { body } = request
 		
         const interactor = new this.Interactor()
@@ -137,7 +137,7 @@ export default class Translator {
 
         const interactor = new this.Interactor()
 
-        interactor.addVisualizacao(body)
+        interactor.postVisualizacao(body)
             .then(message => {
                 response.send(201, message)
             })
@@ -152,7 +152,7 @@ export default class Translator {
 	
 		const interactor = new this.Interactor()
 
-		interactor.fetchAllViews(request.header.accessToken)
+		interactor.getVisualizacao(request.header.accessToken)
 			.then(message => {
                 response.send(200, message)
             })
@@ -162,12 +162,12 @@ export default class Translator {
 	}
 	
     // RFI11: PUT /interessados/{id_interessado}/visualizacoes
-	putVisualizacao(request, response) {
+	updateVisualizacao(request, response) {
 		const { body } = request
 
         const interactor = new this.Interactor()
 
-        interactor.insertView(body)
+        interactor.updateVisualizacao(body)
             .then(message => {
                 response.send(200, message)
             })
