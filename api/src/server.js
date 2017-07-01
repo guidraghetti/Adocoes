@@ -175,6 +175,10 @@ server.post('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, 
     const menorTranslator = new MenorTranslator()
     menorTranslator.postMidia(request, response)
 })
+server.post('/menores/:id_menor/midias/:id_midia/midia', AuthManager.isAuthenticated, (request, response, next) => {
+    const menorTranslator = new MenorTranslator()
+    menorTranslator.postMidiaConteudo(request, response)
+})
 
 // P0
 // RFM11: GET /menores/:id_menor/midias
@@ -187,14 +191,14 @@ server.get('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, r
 // RFM12: GET /menores/:id_menor/midias/:id_midia
 server.get('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
-    menorTranslator.getImagemById(request, response)
+    menorTranslator.getMidiaById(request, response)
 })
 
 // P1
 // RFM13: DELETE /menores/:id_menor/midias/:id_midia
 server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const menorTranslator = new MenorTranslator()
-    menorTranslator.deleteImagem(request, response)
+    menorTranslator.deleteMidia(request, response)
 })
 
 // RFM18 (2017-2): PUT /menores/:id_menor (seta o id_abrigo)
@@ -209,79 +213,83 @@ server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (
 
 // P1
 // RFI01: POST /interessados
-server.post('/interessados', (request, response, next) => {
+server.post('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.post(request, response)
 })
 
 // P0
 // RFI02: GET /interessados
-server.get('/interessados', (request, response, next) => {
+server.get('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
+<<<<<<< Updated upstream
     interessadosTranslator.get(request, response)
+=======
+    interessadosTranslator.getInteressados(request, response)
+>>>>>>> Stashed changes
 })
 
 // P0
 // RFI03: GET /interessados/:id_interessado
-server.get('/interessados/:id_interessado', (request, response, next) => {
+server.get('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.getInteressado(request, response)
 })
 
 // P0
 // RFI04: PUT /interessados/:id_interessado
-server.put('/interessados/:id_interessado', (request, response, next) => {
+server.put('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.updateInteressado(request, response)
 })
 
 // P1
 // RFI05: DELETE /interessados/:id_interessado
-server.del('/interessados/:id_interessado', (request, response, next) => {
+server.del('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
     let interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.deleteInteressado(request, response)
 })
 
 // P0
 // RFI09: POST /interessados/:id_interessado/visualizacoes
-server.post('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
+server.post('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
     const interessadosTranslator = new InteressadosTranslator()
     interessadosTranslator.postVisualizacao(request, response)
 })
 
 // P1
 // RFI10: GET /interessados/:id_interessado/visualizacoes
-server.get('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getVisualizacoes(request, response)
+server.get('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
+    const interessadosTranslator = new interessadosTranslator()
+    interessadosTranslator.getVisualizacoes(request, response)
 })
 
 // P0
 // RFI11: PUT /interessados/:id_interessado/visualizacoes
-server.put('/interessados/:id_interessado/visualizacoes', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.updateVisualizacoes(request, response)
+server.put('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
+    const interessadosTranslator = new interessadosTranslator()
+    interessadosTranslator.updateVisualizacao(request, response)
 })
 
 // P0
 // RFI13: POST /interessados/:id_interessado}/menores
-server.post('/interessados/:id_interessado/menores', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postMenor(request, response)
+server.post('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
+    const interessadosTranslator = new interessadosTranslator()
+    interessadosTranslator.postMenor(request, response)
 })
 
 // P0
 // RFI14: GET /interessados/:id_interessado/menores
-server.get('/interessados/:id_interessado/menores', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getMenor(request, response)
+server.get('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
+    const interessadosTranslator = new interessadosTranslator()
+    interessadosTranslator.getMenores(request, response)
 })
 
 // P0
 // RFI15: DELETE /interessados/:id_interessado/menores/:id_menor
-server.del('/interessados/:id_interessado/menores/:id_menor', (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteVideo(request, response)
+server.del('/interessados/:id_interessado/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
+    const interessadosTranslator = new interessadosTranslator()
+    interessadosTranslator.deleteMenor(request, response)
 })
 
 // RFI16 (2017-2): POST /interessados/:id_interessado/menores/:id_menor/compartilhamentos
@@ -297,58 +305,67 @@ server.del('/interessados/:id_interessado/menores/:id_menor', (request, response
 
 // P1
 // RFC01: POST /conteudos
-server.post('/conteudos', (request, response, next) => {
+server.post('/conteudos', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.post(request, response)
+    conteudoTranslator.postConteudo(request, response)
+})
+server.post('/conteudos/:id_conteudo/pagina', AuthManager.isAuthenticated, (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.postConteudoPagina(request, response)
 })
 
 // P0
 // RFC02: GET /conteudos
-server.get('/conteudos', (request, response, next) => {
+server.get('/conteudos', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.get(request, response)
+    conteudoTranslator.getConteudos(request, response)
 })
 
 // P1
 // RFC03: PUT /conteudos/:id_conteudo
-server.put('/conteudos/:id_conteudo', (request, response, next) => {
+server.put('/conteudos/:id_conteudo', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.put(request, response)
+    conteudoTranslator.updateConteudo(request, response)
 })
 
 // P1
 // RFC04: DELETE /conteudos/:id_conteudo
-server.del('/conteudos/:id_conteudo', (request, response, next) => {
+server.del('/conteudos/:id_conteudo', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.delete(request, response)
+    conteudoTranslator.deleteConteudo(request, response)
 })
 
 // P1
 // RFC05: POST /conteudos/:id_conteudo/midias
-server.post('/conteudos/:id_conteudo/midias', (request, response, next) => {
+server.post('/conteudos/:id_conteudo/midias', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postImages(request, response)
+    conteudoTranslator.postConteudoMidia(request, response)
+})
+// Post com multipart-form-data
+server.post('/conteudos/:id_conteudo/midias/:id_midia/midia', AuthManager.isAuthenticated, (request, response, next) => {
+    const conteudoTranslator = new ConteudoTranslator()
+    conteudoTranslator.postConteudoMidiaConteudo(request, response)
 })
 
 // P0
 // RFC06: GET /conteudos/:id_conteudo/midias
-server.get('/conteudos/:id_conteudo/midias', (request, response, next) => {
+server.get('/conteudos/:id_conteudo/midias', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.fetchImages(request, response)
+    conteudoTranslator.getConteudoMidias(request, response)
 })
 
 // P0
 // RFC07: GET /conteudos/:id_conteudo/midias/:id_midia
-server.get('/conteudos/:id_conteudo/midias/:id_midia', (request, response, next) => {
+server.get('/conteudos/:id_conteudo/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.delete(request, response)
+    conteudoTranslator.deleteConteudoMidia(request, response)
 })
 
 // P1
-// RFC08: DELETE /conteudos/:id_conteudo/midias/:id_midia
-server.del('/conteudos/:id_conteudo/midias/:id_midia', (request, response, next) => {
+// RFC08: DELETE /conteudos/:id_conteudo
+server.del('/conteudos/:id_conteudo/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
     const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.delete(request, response)
+    conteudoTranslator.deleteConteudo(request, response)
 })
 
 //
