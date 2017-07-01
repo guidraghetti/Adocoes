@@ -21,6 +21,31 @@ describe('Testes integrados do resource menor', () => {
         ativo: true
     }
 
+    const menor = {
+        _id: mongoose.Types.ObjectId(),
+        nome: "Menor",
+        sexo: "Masculino",
+        certidaoNascimento: "Certidão Nasc.",
+        dataNascimento: "01/01/2017",
+        refEtnia: null,
+        familiares: null,
+        menoresVinculados: null,
+        adocoesConjuntas: null,
+        saudavel: true,
+        descricaoSaude: null,
+        curavel: null,
+        deficienciaFisica: false,
+        deficienciaMental: false,
+        guiaAcolhimento: null,
+        refCidade: null,
+        refAbrigo: null,
+        processoPoderFamiliar: null,
+        interesses: null,
+        midias: null,
+        visualizacoes: null,
+        ativo: true
+    }
+
     before(done => {
         Token
             .remove({})
@@ -46,6 +71,10 @@ describe('Testes integrados do resource menor', () => {
 
                 return token.save();
             })
+            .then(() => { 
+                var mnr = new Menor(menor);
+                return mnr.save();
+            })
             .then(() => done());
     });
 
@@ -53,6 +82,7 @@ describe('Testes integrados do resource menor', () => {
         // P1
         it('POST /menores', done => {
             const newMenor = {
+                _id: mongoose.Types.ObjectId(),
                 nome: "Nome do Menor",
                 sexo: "Masculino",
                 certidaoNascimento: "Certidão Nasc.",
@@ -83,7 +113,9 @@ describe('Testes integrados do resource menor', () => {
                 .send(newMenor)
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
-                   
+                    // TODO - demais assertions
+
+
                     // remove menor criado para este teste
                     Menor
                         .remove({ _id: newMenor._id })
@@ -95,7 +127,19 @@ describe('Testes integrados do resource menor', () => {
         it('GET /menores'); 
 
         // P0
-        it('GET /menores/{id_menor}'); 
+        xit('GET /menores/{id_menor}', done => {
+            request
+                .get(`/menores/${menor._id}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + tokenValue)
+                .end((err, res) => {
+                    expect(res.status).to.equal(200);
+                    
+                    // TODO - demais assertions
+
+                    done();
+                });
+        }); 
 
         // P1
         it('PUT /menores/{id_menor}'); 

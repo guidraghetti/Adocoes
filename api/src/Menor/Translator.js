@@ -32,7 +32,7 @@ export default class Translator {
             })
 	}
 
-	get(request, response) {
+	getById(request, response) {
 		const { body } = request
 	
 		const interactor = new this.Interactor()
