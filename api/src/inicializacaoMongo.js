@@ -15,7 +15,8 @@ testUsuario = {
     nome: "Administrador",
     perfis: "administrador",
 	matricula: "1",
-    ativo: true
+    ativo: true,
+    cpf: "12345678900"
 };
 
 db.usuarios.update(testUsuario, testUsuario, {upsert:true});
