@@ -19,7 +19,11 @@ export default class Adapter {
 		})
 	}
 
-		
+	fetchById(id) {
+
+		return this.Menor.findById(id)
+	}
+
 	fetchAndUpdate() {
 		return this.Menor.findOneAndUpdate({_id: body.id },{new: true}, body, (err, menor) => {
 			return menor

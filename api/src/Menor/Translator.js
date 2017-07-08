@@ -13,21 +13,7 @@ export default class Translator {
                 response.send(200, message)
             })
             .catch(error => {
-                response.send(error)
-            })
-	}
-
-	get(request, response) {
-		const { body } = request
-	
-		const interactor = new this.Interactor()
-
-		interactor.fetchAll(request.header.accessToken)
-			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
+                response.send(500, error)
             })
 	}
 
@@ -37,6 +23,20 @@ export default class Translator {
 		const interactor = new this.Interactor()
 
 		interactor.fetchAll()
+			.then(message => {
+                response.send(200, message)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+	}
+
+	getMenor(request, response) {
+		const { id } = request.params
+	
+		const interactor = new this.Interactor()
+
+		interactor.fetchById(id)
 			.then(message => {
                 response.send(200, message)
             })
