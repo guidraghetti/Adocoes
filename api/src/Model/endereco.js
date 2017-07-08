@@ -7,7 +7,7 @@ export const enderecoSchema = new Schema({
 		required: true
 	},
 	numero: {
-		type: String,
+		type: Number,
 		required: true
 	},
 	complemento: {
@@ -17,7 +17,7 @@ export const enderecoSchema = new Schema({
 		type: String
 	},
 	cep: {
-		type: String
+		type: Number
 	},
 	refCidade: {
 		type: mongoose.Schema.Types.ObjectId,

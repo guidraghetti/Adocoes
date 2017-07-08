@@ -34,12 +34,15 @@ const interessadoSchema = new Schema({
 	outrosDocumentos: [
 		documentoSchema
 	],
-	enderecos: [
-		enderecoSchema
+	enderecos: [{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'enderecos'
+	}
 	],
-	telefones: [
-		telefoneSchema
-	],
+	telefones: [{
+		type:mongoose.Schema.Types.ObjectId,
+		ref: 'telefones'
+	}],
 	interesses: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'interesses'

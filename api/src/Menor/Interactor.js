@@ -12,10 +12,17 @@ export default class Interactor {
 
 	}
 
-	fetchAll(body) {
+	fetchAll() {
 		const entity = new this.Entity()
 		return entity.fetchAll();
 	}
+
+	fetchById(id) {
+		const entity = new this.Entity()
+
+		return entity.findById(id)
+	}
+
 	find(body) {
 		const entity = new this.Entity()
 		return entity.fetch();

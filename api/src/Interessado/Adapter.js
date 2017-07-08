@@ -5,21 +5,21 @@ export default class Adapter {
 		this.Interessado = mongoose.model('Interessado')
 	}
 
-	save(body) {
+	post(body) {
 		console.log(body)
 		const interessado = new this.Interessado(body)
 
 		return interessado.save()
 	}	
 
-	fetchOne(id) {
+	getInteressado(id) {
 		console.log(id)
         return this.Interessado.findById(id, (err, result) => {
         	console.log(result)
         })
 	}
 
-	fetchAll() {
+	getInteressados() {
 		return this.Interessado.find((err,doc) => {
 			return new Promise((resolve, reject) => {
 				resolve(doc)
@@ -27,11 +27,13 @@ export default class Adapter {
 		})
 	}	
 	
-	delete(id){
+	
+	
+	deleteInterassado(id){
 		return this.Interessado.remove({_id: id})
 	}
 	
-	fetchOneAndUpdate(body) {
+	updateInteressado(body) {
 		return this.Interessado.findOneAndUpdate({_id: body.id }, {upsert: true, new: true}, body)
 	}
 
@@ -49,7 +51,7 @@ export default class Adapter {
 	//
 
 	// RFI09: POST /interessados/{id_interessado}/visualizacoes
-	fetchAndAddVisualizacao(body) {
+	updateVisualizacao(body) {
 		return this.Interessado.findOneAndUpdate({_id: body.id}, 
 			{$pushAll: {'visualizacoes': body.visualizacoes}}, {upsert: true, new: true})
 	}

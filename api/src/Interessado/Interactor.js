@@ -1,36 +1,37 @@
 export default class Interactor {
 	constructor(deps = {}) {
-		this.Entity = deps.Entity || require('./Entity').default
+		this.Entity = deps.Entity || new (require('./Entity').default)()
 	}
 
-	create(body) {
-		const entity = new this.Entity()
+	post(body) {
+		
 
-		return entity.create(body)
+		return this.Entity.post(body)
 	}
 
-	findOneInteressado(body) {
-		const entity = new this.Entity()
-
-		return entity.fetchOne(body.id)
+	
+	getInteressados(body) {
+		
+		return this.Entity.getInteressados()
 	}
 
-	fetchAll(body) {
+	getInteressado(body) {
 		const entity = new this.Entity()
 
-		return entity.fetchAll()
+		return entity.getInteressado(body.id)
 	}
 
-	delete(id) {
+
+	deleteInteressado(id) {
 		const entity = new this.Entity()
 
-		return entity.delete(id)
+		return entity.deleteInteressado(id)
 	}
 
-	update(body) {
+	updateInteressado(body) {
 		const entity = new this.Entity()
 
-		return entity.update(body)
+		return entity.updateInteressado(body)
 	}
 
 	addInterest(body) {
@@ -42,21 +43,21 @@ export default class Interactor {
 			})
 	}
 
-	fetchAllMenores(body) {
+	getMenores(body) {
 		const entity = new this.Entity()
 
 		return entity.validateToken(body)
 			.then(body => {
-				entity.fetchAllMenores()
+				entity.getMenores()
 			})
 	}
 
-	putMenores(body) {
+	updateMenores(body) {
 		const entity = new this.Entity()
 
 		return entity.validateToken(body)
 			.then(body => {
-				entity.putMenores()
+				entity.updateMenores()
 			})
 	}
 
@@ -66,17 +67,17 @@ export default class Interactor {
 	//
 
 	// RFI09: POST /interessados/{id_interessado}/visualizacoes
-	addVisualizacao(body) {
+	postVisualizacao(body) {
 		const entity = new this.Entity()
-		return entity.addVisualizacao(body)
+		return entity.postVisualizacao(body)
 	}
 
-	fetchAllViews(body) {
+	getVisualizacao(body) {
 		const entity = new this.Entity()
 
 		return entity.validateToken(body)
 			.then(body => {
-				entity.fetchAllViews()
+				entity.getVisualizacao()
 			})
 	}
 

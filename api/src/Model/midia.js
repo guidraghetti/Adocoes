@@ -9,7 +9,7 @@ export const midiaSchema = new Schema({
 	},
 	conteudo: {
 		type: String, // base64 do binário da midia
-		required: true
+		required: false
 	},
 	descricao: {
 		type: String,

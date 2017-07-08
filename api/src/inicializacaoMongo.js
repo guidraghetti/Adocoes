@@ -1,7 +1,7 @@
 use Adocoes
 
 // Cria aplicação cliente oauth inicial
-db.clientes.count()
+
 testCliente = {
     nome: "adocoes.app",
     secret: "$2a$05$rK1K/Vy0z/Kj5INVusw4eeA3M0UJTHmEx.U5w1k2WTWT78NeeAnrK" // "407a4d80fce791751cd83ab1af3d9b26"
@@ -15,7 +15,26 @@ testUsuario = {
     nome: "Administrador",
     perfis: "administrador",
 	matricula: "1",
-    ativo: true
+    ativo: true,
+    cpf: "12345678900"
 };
 
 db.usuarios.update(testUsuario, testUsuario, {upsert:true});
+
+testInteressado ={
+	name: "blablabla",
+	cpf: "12345687901",
+	nomeConjuge: "maria",
+	email: "teste@gmail.com",
+	dataNascimento: "1991-12-12",
+	renda: "10000",
+	comprovantesRenda: null,
+	outrosDocumentos: null,
+	enderecos: "rua das carmelias, 435",
+	telefones: "30257345",
+	interesses: null,
+	visualizacoes: null,
+	ativo: true
+};
+
+db.interessados.update(testInteressado,testInteressado, {upsert:true});

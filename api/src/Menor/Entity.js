@@ -16,6 +16,12 @@ export default class Entity {
 		return adapter.fetchAll()
 	}
 	
+	fetchById(id) {
+		const adapter = new this.Adapter()
+		
+		return adapter.fetchById(id)
+	}
+
 	find(body) {
 		const adapter = new this.Adapter()
 		

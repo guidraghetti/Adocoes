@@ -17,7 +17,8 @@ describe('Testes integrados do resource usuario', () => {
         nome: "Usuario Teste",
         senha: "123",
         perfis: ["administrador"],
-        ativo: true
+        ativo: true,
+        cpf: "09285733700"
     }
 
     beforeEach(done => {
@@ -56,7 +57,8 @@ describe('Testes integrados do resource usuario', () => {
                 nome: "New User",
                 senha: "123",
                 perfis: ["administrador"],
-                ativo: true
+                ativo: true,
+                cpf: "81556694326"
             }
 
             request
