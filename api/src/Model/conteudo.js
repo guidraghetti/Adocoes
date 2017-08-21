@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
 
-const midiaSchema = require('./midia')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const midiaSchema = require("./midia");
 
 const conteudoSchema = new Schema({
 	nome: {
@@ -32,6 +34,6 @@ const conteudoSchema = new Schema({
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Conteudo', conteudoSchema)
+mongoose.model("Conteudo", conteudoSchema);

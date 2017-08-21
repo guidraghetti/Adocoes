@@ -1,26 +1,28 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const interesseSchema = new Schema({
 	refInteressado: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'interessados',
+		ref: "interessados",
 		required: true
 	},
 	refMenor: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'menores',
+		ref: "menores",
 		required: true
 	},
 	tipoInteresse: {
 		type: String,
-		enum: [ 'favoritar', 'apadrinhar', 'adotar'],
+		enum: ["favoritar", "apadrinhar", "adotar"],
 		required: true
 	},
 	timeStamp: {
 		type: Date,
 		required: true
 	}
-})
+});
 
-const interesse = mongoose.model('interesse', interesseSchema)
+mongoose.model("interesse", interesseSchema);

@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 export const enderecoSchema = new Schema({
 	logradouro: {
@@ -21,9 +23,9 @@ export const enderecoSchema = new Schema({
 	},
 	refCidade: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'cidades',
+		ref: "cidades",
 		required: true
 	}
-})
+});
 
-mongoose.model('Endereco', enderecoSchema)
+mongoose.model("Endereco", enderecoSchema);

@@ -1,86 +1,88 @@
-import mongoose from 'mongoose'
+"use strict";
+
+import mongoose from "mongoose";
 
 export default class Adapter {
+
 	constructor(deps = {}) {
-		this.Menor = mongoose.model('Menor')
+		this.Menor = mongoose.model("Menor");
 	}
 
 	save(body) {
-		const menor = new this.Menor(body)
-
-		return menor.save()
+		const menor = new this.Menor(body);
+		return menor.save();
 	}
 
 	fetchAll() {
-		return this.Menor.find((err,doc) => {
+		return this.Menor.find((err, doc) => {
 			return new Promise((resolve, reject) => {
-				resolve(doc)
-			})
-		})
+				resolve(doc);
+			});
+		});
 	}
 
 	fetchById(id) {
-
-		return this.Menor.findById(id)
+		return this.Menor.findById(id);
 	}
 
 	fetchAndUpdate() {
-		return this.Menor.findOneAndUpdate({_id: body.id },{new: true}, body, (err, menor) => {
-			return menor
-		})
-	}	
-	
-	fetchOrdination() {		
+		return this.Menor.findOneAndUpdate({
+			_id: body.id
+		}, {
+			new: true
+		}, body, (err, menor) => {
+			return menor;
+		});
 	}
-	
+
+	fetchOrdination() {
+
+	}
+
 	addIntersting() {
-		return this.Menor.findOneAndUpdate({_id: body.id})
+		return this.Menor.findOneAndUpdate({
+			_id: body.id
+		});
 	}
-	
+
 	fetchAllIntersting() {
-		
+
 	}
-	
+
 	removeIntersting() {
-		
+
 	}
-	
+
 	createImage() {
-		
+
 	}
-	
+
 	fetchAllImage() {
-		
+
 	}
-		
+
 	fetchImage() {
-		
+
 	}
-	
+
 	removeImage() {
-		
+
 	}
-	
-	createImage() {
-		
-	}
-	
+
 	createVideo() {
-		
+
 	}
-	
+
 	fetchAllVideo() {
-		
+
 	}
 
 	fetchVideo() {
-		
+
 	}
-	
+
 	removeVideo() {
-		
+
 	}
-	
-	
-	
+
 }

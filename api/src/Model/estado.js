@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const estadoSchema = Schema({
 	sigla: {
@@ -11,6 +13,6 @@ const estadoSchema = Schema({
 		type: String,
 		required: true
 	}
-})
+});
 
-mongoose.model('Estado', estadoSchema)
+mongoose.model("Estado", estadoSchema);

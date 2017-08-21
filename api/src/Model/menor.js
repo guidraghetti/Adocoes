@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
 
-const familiarSchema = require('./familiar.js')
-const vinculoSchema = require('./vinculo.js')
-const processoSchema = require('./processo.js')
-const midiaSchema = require('./midia.js')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const familiarSchema = require("./familiar.js");
+const vinculoSchema = require("./vinculo.js");
+const processoSchema = require("./processo.js");
+const midiaSchema = require("./midia.js");
 
 const menorSchema = new Schema({
 	nome: {
@@ -13,7 +15,7 @@ const menorSchema = new Schema({
 	},
 	sexo: {
 		type: String,
-		enum: [ 'Feminino', 'Masculino' ],
+		enum: ["Feminino", "Masculino"],
 		required: true
 	},
 	certidaoNascimento: {
@@ -25,7 +27,7 @@ const menorSchema = new Schema({
 	},
 	refEtnia: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'etnias'
+		ref: "etnias"
 	},
 	familiares: [
 		familiarSchema
@@ -35,7 +37,7 @@ const menorSchema = new Schema({
 	],
 	adocoesConjuntas: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'menores'
+		ref: "menores"
 	}],
 	saudavel: {
 		type: Boolean,
@@ -58,31 +60,31 @@ const menorSchema = new Schema({
 	},
 	refCidade: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'cidades'
+		ref: "cidades"
 	},
 	refAbrigo: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'abrigos'
+		ref: "abrigos"
 	},
 	processoPoderFamiliar: {
 		type: processoSchema
 	},
 	interesses: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'interesses'
+		ref: "interesses"
 	}],
 	midias: [
 		midiaSchema
 	],
 	visualizacoes: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'visualizacoes'
+		ref: "visualizacoes"
 	}],
 	ativo: {
 		type: Boolean,
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Menor', menorSchema)
+mongoose.model("Menor", menorSchema);

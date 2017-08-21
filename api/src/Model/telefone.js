@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 export const telefoneSchema = new Schema({
 	ddd: {
@@ -10,6 +12,6 @@ export const telefoneSchema = new Schema({
 		type: Number,
 		required: true
 	}
-})
+});
 
-mongoose.model('Telefone', telefoneSchema)
+mongoose.model("Telefone", telefoneSchema);

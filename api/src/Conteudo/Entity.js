@@ -1,24 +1,25 @@
-import Joi from 'Joi'
+"use strict";
+
+import Joi from "Joi";
+
 export default class Entity {
 	constructor(deps = {}) {
-		this.Adapter = deps.Adapter || require('./Adapter').default
+		this.Adapter = deps.Adapter || require("./Adapter").default;
 	}
-	
-	create(body) {
-		const adapter = new this.Adapter()
 
-		return adapter.save(body)
+	create(body) {
+		const adapter = new this.Adapter();
+		return adapter.save(body);
 	}
 
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
-			resolve(body)
-		})
+			resolve(body);
+		});
 	}
 
 	validate(body) {
 		const schema = Joi.object({
-			
 			nome: Joi.string().required(),
 			pagina: Joi.object().required(),
 			midia: Joi.object().required(),
@@ -26,124 +27,69 @@ export default class Entity {
 			timeStampCriacao: Joi.date().default().required(),
 			timeStampInicio: Joi.date().default().required(),
 			timeStampFim: Joi.date().default().required()
-		})
+		});
 
-		const {error, value} = Joi.validate(body, schema)
+		const {
+			error,
+			value
+		} = Joi.validate(body, schema);
 
 		return new Promise((resolve, reject) => {
-            
-            if(error) {
-                let messages = error.details.map(e => e.message)
-                reject({
-                    status: 400,
-                    messages
-                })
-
-            } else if(value) {
-                resolve(value)
-            }
-        })
-	}
-		
-	update(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.fetchAndUpdate(body)
-	}
-
-	remove(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.delete(body.id)
-	}
-
-	getImage(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.getImagem(body.id)
-	}
-
-	addImage(body) {
-		const adapter = new this.Adapter()
-
-		return adapter.fetchAndAddImage(body)
-	}
-
-	find(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.fetch(body.id)
-	}
-
-	deleteVideo(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.deleteVideo(body.id)
-	}
-
-	createVideo(body) {
-		const adapter = new this.Adapter()
-
-		return adapter.addVideo(body)
+			if (error) {
+				let messages = error.details.map(e => e.message);
+				reject({
+					status: 400,
+					messages
+				});
+			} else if (value) {
+				resolve(value);
+			}
+		});
 	}
 
 	fetchAll() {
-        let adapter = new this.Adapter()
-
-        return adapter.fetchAll()
-    }
-
-	validateToken(body) {
-		return new Promise((resolve, reject) => {
-			resolve(body)
-		})
-	}
-
-	update(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.fetchAndUpdate(body)
-	}
-
-	remove(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.delete(body.id)
-	}
-
-	getImage(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.getImagem(body.id)
-	}
-
-	addImage(body) {
-		const adapter = new this.Adapter()
-
-		return adapter.fetchAndAddImage(body)
+		let adapter = new this.Adapter();
+		return adapter.fetchAll();
 	}
 
 	find(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.fetch(body.id)
+		const adapter = new this.Adapter();
+		return adapter.fetch(body.id);
 	}
 
-	deleteVideo(body) {
-		const adapter = new this.Adapter()
-		
-		return adapter.deleteVideo(body.id)
+	update(body) {
+		const adapter = new this.Adapter();
+		return adapter.fetchAndUpdate(body);
+	}
+
+	remove(body) {
+		const adapter = new this.Adapter();
+		return adapter.delete(body.id);
+	}
+
+	addImage(body) {
+		const adapter = new this.Adapter();
+		return adapter.fetchAndAddImage(body);
+	}
+
+	getImage(body) {
+		const adapter = new this.Adapter();
+		return adapter.getImagem(body.id);
 	}
 
 	createVideo(body) {
-		const adapter = new this.Adapter()
+		const adapter = new this.Adapter();
+		return adapter.addVideo(body);
+	}
 
-		return adapter.addVideo(body)
+	deleteVideo(body) {
+		const adapter = new this.Adapter();
+		return adapter.deleteVideo(body.id);
 	}
 
 	fetchAllVideos(id) {
-		const adapter = new this.Adapter()
-
-		return adapter.fetchAllVideos(id)
+		const adapter = new this.Adapter();
+		return adapter.fetchAllVideos(id);
 	}
+
 }

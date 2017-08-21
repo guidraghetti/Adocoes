@@ -1,34 +1,41 @@
+"use strict";
+
 export default class Translator {
+
 	constructor(deps = {}) {
-		this.Interactor = deps.Interactor || require('./Interactor').default
+		this.Interactor = deps.Interactor || require("./Interactor").default;
 	}
 
 	post(request, response) {
-		const { body } = request
+		const {
+			body
+		} = request;
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.post(body)
-            .then(message => {
-                response.send(201, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.post(body)
+			.then(message => {
+				response.send(201, message)
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 	getInteressados(request, response) {
-		const { body } = request
-	
-		const interactor = new this.Interactor()
+		const {
+			body
+		} = request;
+
+		const interactor = new this.Interactor();
 
 		interactor.getInteressados()
 			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 	getInteressado(request, response) {
@@ -37,15 +44,15 @@ export default class Translator {
 			...request.body
 		}
 
-		const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
 		interactor.findOneInteressado(body)
 			.then(message => {
-				response.json(200, message)
+				response.json(200, message);
 			})
 			.catch(error => {
-				console.log(error)
-			})
+				console.log(error);
+			});
 	}
 
 	updateInteressado(request, response) {
@@ -54,170 +61,185 @@ export default class Translator {
 			...request.body
 		}
 
-		delete body._id
-		
-        const interactor = new this.Interactor()
+		delete body._id;
 
-        interactor.updateInteressado(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		const interactor = new this.Interactor();
+
+		interactor.updateInteressado(body)
+			.then(message => {
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
-	
+
 	deleteInteressado(request, response) {
-		const { body } = request
-		
-        const interactor = new this.Interactor()
-		
-        interactor.delete(request.params.id)
-            .then(message => {
-                response.send(204, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-	}	
-	
-	putInterest(request, response) {
-		const { body } = request
+		const {
+			body
+		} = request;
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.addInterest(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.delete(request.params.id)
+			.then(message => {
+				response.send(204, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
+
+	putInterest(request, response) {
+		const {
+			body
+		} = request;
+
+		const interactor = new this.Interactor();
+
+		interactor.addInterest(body)
+			.then(message => {
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	}
+
 	getOrdenacao(request, response) {
-		const { body } = request
-	
-		const interactor = new this.Interactor()
+		const {
+			body
+		} = request;
+
+		const interactor = new this.Interactor();
 
 		interactor.fetchAllMenores(request.header.accessToken)
 			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })	
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
+
 	putOrdenacao(request, response) {
-		const { body } = request
-	
-		const interactor = new this.Interactor()
+		const {
+			body
+		} = request;
+
+		const interactor = new this.Interactor();
 
 		interactor.putMenores(body)
 			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })	
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
-    //
-    // Visualizacoes
-    //
 
-    // RFI09: POST /interessados/{id_interessado}/visualizacoes
+	//
+	// Visualizacoes
+	//
+
+	// RFI09: POST /interessados/{id_interessado}/visualizacoes
 	postVisualizacao(request, response) {
-		const body = { 
-            id: request.params.id,
-            ...request.body
-        }
+		const body = {
+			id: request.params.id,
+			...request.body
+		}
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.postVisualizacao(body)
-            .then(message => {
-                response.send(201, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.postVisualizacao(body)
+			.then(message => {
+				response.send(201, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 	// RFI10: GET /interessados/{id_interessado}/visualizacoes
-    getVisualizacao(request, response) {
-		const { body } = request
-	
+	getVisualizacao(request, response) {
+		const {
+			body
+		} = request;
+
 		const interactor = new this.Interactor()
 
 		interactor.getVisualizacao(request.header.accessToken)
 			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
-    // RFI11: PUT /interessados/{id_interessado}/visualizacoes
+
+	// RFI11: PUT /interessados/{id_interessado}/visualizacoes
 	updateVisualizacao(request, response) {
-		const { body } = request
+		const {
+			body
+		} = request;
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.updateVisualizacao(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.updateVisualizacao(body)
+			.then(message => {
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
+
 	putInterest(request, response) {
-		const { body } = request
+		const {
+			body
+		} = request;
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.insertInterest(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.insertInterest(body)
+			.then(message => {
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
+
 	getInterest(request, response) {
-		const { body } = request
-	
-		const interactor = new this.Interactor()
+		const {
+			body
+		} = request;
+
+		const interactor = new this.Interactor();
 
 		interactor.fetchAllInterest(request.header.accessToken)
 			.then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
+
 	deleteInterest(request, response) {
-		const { body } = request
+		const {
+			body
+		} = request;
 
-        const interactor = new this.Interactor()
+		const interactor = new this.Interactor();
 
-        interactor.deleteInterest(body)
-            .then(message => {
-                response.send(200, message)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+		interactor.deleteInterest(body)
+			.then(message => {
+				response.send(200, message);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
-	
-	
-	
+
 }
