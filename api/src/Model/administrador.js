@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const administradorSchema = new Schema({
 	matricula: {
@@ -8,7 +10,7 @@ const administradorSchema = new Schema({
 	},
 	organizacao: {
 		type: String,
-		enum: [ 'poder judiciário', 'ministério público' ],
+		enum: ["poder judiciário", "ministério público"],
 		required: true
 	},
 	ativo: {
@@ -16,6 +18,6 @@ const administradorSchema = new Schema({
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Administrador', administradorSchema)
+mongoose.model("Administrador", administradorSchema);

@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
 
-const midiaSchema = require('./midia')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const midiaSchema = require("./midia");
 
 const documentoSchema = new Schema({
 	numero: {
@@ -16,12 +18,12 @@ const documentoSchema = new Schema({
 	},
 	tipoDocumento: {
 		type: String,
-		enum: [ 'rg', 'cnh' ],
+		enum: ["rg", "cnh"],
 		required: true
 	},
 	imagem: {
 		type: midiaSchema
 	}
-})
+});
 
-mongoose.model('Documento', documentoSchema)
+mongoose.model("Documento", documentoSchema);

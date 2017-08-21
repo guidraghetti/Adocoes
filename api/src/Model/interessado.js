@@ -1,15 +1,17 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
 
-const enderecoSchema = require('./endereco')
-const telefoneSchema = require('./telefone')
-const midiaSchema = require('./midia')
-const documentoSchema = require('./documento')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const enderecoSchema = require("./endereco");
+const telefoneSchema = require("./telefone");
+const midiaSchema = require("./midia");
+const documentoSchema = require("./documento");
 
 const interessadoSchema = new Schema({
 	refUsuario: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'usuarios'
+		ref: "usuarios"
 	},
 	name: {
 		type: String
@@ -35,27 +37,26 @@ const interessadoSchema = new Schema({
 		documentoSchema
 	],
 	enderecos: [{
-		type:mongoose.Schema.Types.ObjectId,
-		ref:'enderecos'
-	}
-	],
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "enderecos"
+	}],
 	telefones: [{
-		type:mongoose.Schema.Types.ObjectId,
-		ref: 'telefones'
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "telefones"
 	}],
 	interesses: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'interesses'
+		ref: "interesses"
 	}],
 	visualizacoes: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'visualizacoes'
+		ref: "visualizacoes"
 	}],
 	ativo: {
 		type: Boolean,
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Interessado', interessadoSchema)
+mongoose.model("Interessado", interessadoSchema);

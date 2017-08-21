@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const redeSchema = new Schema({
 	nome: {
@@ -9,13 +11,13 @@ const redeSchema = new Schema({
 	},
 	refTipoRede: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'tiposRedes'
+		ref: "tiposRedes"
 	},
 	ativo: {
 		type: Boolean,
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Rede', redeSchema)
+mongoose.model("Rede", redeSchema);

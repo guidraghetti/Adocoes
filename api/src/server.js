@@ -1,38 +1,53 @@
-import restify from 'restify'
-import bodyParser from 'body-parser'
+"use strict";
 
-import UsuarioTranslator from './Usuario/Translator'
-import ConteudoTranslator from './Conteudo/Translator'
-import MenorTranslator from './Menor/Translator'
-import InteressadoTranslator from './Interessado/Translator'
+import { config } from './config';
 
-import AuthManager from './Auth/authManager'
-import Oauth2Manager from './Auth/oauth2Manager'
-
-var mongoose = require('mongoose');
+// Conexão com o MondoDB via Mongoose
+// http://mongoosejs.com/
+// An elegant mongodb object modeling for Node.js.
+// Mongoose provides a straight-forward, schema-based solution to model your application data.
+// It includes built-in type casting, validation, query building, business logic hooks and more,
+// out of the box.
+var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
+require("./database.js");
 
-require('./database.js')
+// Criação do HTTP server usando o framework Restify
+// http://restify.com/
+// A Node.js web service framework optimized for building semantically correct RESTful web services
+// ready for production use at scale. restify optimizes for introspection and perfromance, and is
+// used in some of the largest Node.js deployments on Earth.
+import restify from "restify";
+const server = restify.createServer({
+    name: "adocoes",
+    version: "0.1.0"
+});
+const port = process.env.PORT || 8888;
 
-const server = restify.createServer()
-const port = process.env.PORT || 8888
-
+import bodyParser from "body-parser";
 server.pre(restify.pre.sanitizePath());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
     extended: true
 }));
+const charSet = config.charSet;
 
-server.get('/', function (req, res, next) {
-    const moment = require('moment')
-    let now = moment()
-    console.log(req.headers)
+server.get("/", function (req, res) {
+    const moment = require("moment");
+    var now = moment();
+    console.log("Adoções API em execução: " + req.headers);
+    res.charSet(charSet);
     res.json(200, {
-        status: 200,
-        now: now.toString(),
-        unix_now: now.unix()
-    })
-})
+        estado: "Adoções API em execução há " + process.uptime() + " segundos",
+        momento: now.toString()
+    });
+});
+
+// Módulos do OAuth2
+import AuthManager from "./Auth/authManager";
+import Oauth2Manager from "./Auth/oauth2Manager";
+import Cliente from './Model/Auth/cliente';
+import Token from './Model/Auth/token';
 
 //
 // Resource: token
@@ -40,7 +55,13 @@ server.get('/', function (req, res, next) {
 
 // P0
 // RFS01: POST /oauth
-server.post('/oauth', AuthManager.isClientAuthenticated, Oauth2Manager.token);
+server.post("/oauth", AuthManager.isClientAuthenticated, Oauth2Manager.token);
+
+// Módulos de negócio da API Adoções
+import UsuarioTranslator from "./Usuario/Translator";
+import ConteudoTranslator from "./Conteudo/Translator";
+import MenorTranslator from "./Menor/Translator";
+import InteressadoTranslator from "./Interessado/Translator";
 
 //
 // Resource: usuario
@@ -48,52 +69,52 @@ server.post('/oauth', AuthManager.isClientAuthenticated, Oauth2Manager.token);
 
 // P0
 // RFU01: POST /usuarios
-server.post('/usuarios', AuthManager.isAuthenticated, (request, response, next) => { 
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.post(request, response)
-})
+server.post("/usuarios", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.post(req, res);
+});
 
 // P1
 // RFU02: GET /usuarios
-server.get('/usuarios', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.fetchAll(request, response)
-})
+server.get("/usuarios", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.fetchAll(req, res);
+});
 
 // P0
 // RFU03: GET /usuarios/:id_usuario
-server.get('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.getById(request, response)
-})
+server.get("/usuarios/:id_usuario", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.getById(req, res);
+});
 
 // P1
 // RFU04: PUT /usuarios/:id_usuario
-server.put('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.put(request, response)
-})
+server.put("/usuarios/:id_usuario", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.put(req, res);
+});
 
 // P1
 // RFU05: DELETE /usuarios/:id_usuario
-server.del('/usuarios/:id_usuario', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.delete(request, response)
-})
+server.del("/usuarios/:id_usuario", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.delete(req, res);
+});
 
 // P1
 // RFU06: GET /usuarios/:id_usuario/perfis 
-server.get('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.getPerfilByUsuarioId(request, response)
-})
+server.get("/usuarios/:id_usuario/perfis", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.getPerfilByUsuarioId(req, res);
+});
 
 // P1
 // RFU09: PUT /usuarios/:id_usuario/perfis
-server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request, response, next) => {
-    const usuarioTranslator = new UsuarioTranslator()
-    usuarioTranslator.updatePerfilUsuario(request, response)
-})
+server.put("/usuarios/:id_usuario/perfis", AuthManager.isAuthenticated, function (req, res) {
+    const usuarioTranslator = new UsuarioTranslator();
+    usuarioTranslator.updatePerfilUsuario(req, res);
+});
 
 //
 // Resource: perfil
@@ -114,92 +135,92 @@ server.put('/usuarios/:id_usuario/perfis', AuthManager.isAuthenticated, (request
 
 // P1
 // RFM01: POST /menores
-server.post('/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.post(request, response)
-})
+server.post("/menores", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.post(req, res);
+});
 
 // P0
 // RFM02: GET /menores
 // RFM06: GET /menores?idade=:idade,sexo=:sexo
-server.get('/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.get(request, response)
-})
+server.get("/menores", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.get(req, res);
+});
 
 // P0
 // RFM03: GET /menores/:id_menor
-server.get('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.getMenor(request, response)
-})
+server.get("/menores/:id_menor", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.getMenor(req, res);
+});
 
 // P1
 // RFM04: PUT /menores/:id_menor
-server.put('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.updateMenor(request, response)
-})
+server.put("/menores/:id_menor", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.updateMenor(req, res);
+});
 
 // P1
 // RFM05: DELETE /menores/:id_menor
-server.del('/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.deleteMenor(request, response)
-})
+server.del("/menores/:id_menor", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.deleteMenor(req, res);
+});
 
 // P0
 // RFM07: POST /menores/:id_menor/interessados
-server.post('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.postInteressado(request, response)
-})
+server.post("/menores/:id_menor/interessados", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.postInteressado(req, res);
+});
 
 // P1
 // RFM08: GET /menores/:id_menor/interessados
-server.get('/menores/:id_menor/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.getInteressado(request, response)
-})
+server.get("/menores/:id_menor/interessados", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.getInteressado(req, res);
+});
 
 // P1
 // RFM09: DELETE /menores/:id_menor/interessados/:id_interessado
-server.del('/menores/:id_menor/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.deleteInteressado(request, response)
-})
+server.del("/menores/:id_menor/interessados/:id_interessado", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.deleteInteressado(req, res);
+});
 
 // P1
 // RFM10: POST /menores/:id_menor/midias
-server.post('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.postMidia(request, response)
-})
-server.post('/menores/:id_menor/midias/:id_midia/midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.postMidiaConteudo(request, response)
-})
+server.post("/menores/:id_menor/midias", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.postMidia(req, res);
+});
+server.post("/menores/:id_menor/midias/:id_midia/midia", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.postMidiaConteudo(req, res);
+});
 
 // P0
 // RFM11: GET /menores/:id_menor/midias
-server.get('/menores/:id_menor/midias', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.getAllImagens(request, response)
-})
+server.get("/menores/:id_menor/midias", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.getAllImagens(req, res);
+});
 
 // P0
 // RFM12: GET /menores/:id_menor/midias/:id_midia
-server.get('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.getMidiaById(request, response)
-})
+server.get("/menores/:id_menor/midias/:id_midia", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.getMidiaById(req, res);
+});
 
 // P1
 // RFM13: DELETE /menores/:id_menor/midias/:id_midia
-server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const menorTranslator = new MenorTranslator()
-    menorTranslator.deleteMidia(request, response)
-})
+server.del("/menores/:id_menor/midias/:id_midia", AuthManager.isAuthenticated, function (req, res) {
+    const menorTranslator = new MenorTranslator();
+    menorTranslator.deleteMidia(req, res);
+});
 
 // RFM18 (2017-2): PUT /menores/:id_menor (seta o id_abrigo)
 // RFM09 (2017-2): POST /menores/:id_menor/processos
@@ -213,80 +234,80 @@ server.del('/menores/:id_menor/midias/:id_midia', AuthManager.isAuthenticated, (
 
 // P1
 // RFI01: POST /interessados
-server.post('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.post(request, response)
-})
+server.post("/interessados", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.post(req, res);
+});
 
 // P0
 // RFI02: GET /interessados
-server.get('/interessados', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.getInteressados(request, response)
-})
+server.get("/interessados", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.getInteressados(req, res);
+});
 
 // P0
 // RFI03: GET /interessados/:id_interessado
-server.get('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.getInteressado(request, response)
-})
+server.get("/interessados/:id_interessado", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.getInteressado(req, res);
+});
 
 // P0
 // RFI04: PUT /interessados/:id_interessado
-server.put('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.updateInteressado(request, response)
-})
+server.put("/interessados/:id_interessado", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.updateInteressado(req, res);
+});
 
 // P1
 // RFI05: DELETE /interessados/:id_interessado
-server.del('/interessados/:id_interessado', AuthManager.isAuthenticated, (request, response, next) => {
-    let interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.deleteInteressado(request, response)
-})
+server.del("/interessados/:id_interessado", AuthManager.isAuthenticated, function (req, res) {
+    let interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.deleteInteressado(req, res);
+});
 
 // P0
 // RFI09: POST /interessados/:id_interessado/visualizacoes
-server.post('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new InteressadoTranslator()
-    interessadoTranslator.postVisualizacao(request, response)
-})
+server.post("/interessados/:id_interessado/visualizacoes", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.postVisualizacao(req, res);
+});
 
 // P1
 // RFI10: GET /interessados/:id_interessado/visualizacoes
-server.get('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new interessadoTranslator()
-    interessadoTranslator.getVisualizacoes(request, response)
-})
+server.get("/interessados/:id_interessado/visualizacoes", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.getVisualizacoes(req, res);
+});
 
 // P0
 // RFI11: PUT /interessados/:id_interessado/visualizacoes
-server.put('/interessados/:id_interessado/visualizacoes', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new interessadoTranslator()
-    interessadoTranslator.updateVisualizacao(request, response)
-})
+server.put("/interessados/:id_interessado/visualizacoes", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.updateVisualizacao(req, res);
+});
 
 // P0
 // RFI13: POST /interessados/:id_interessado}/menores
-server.post('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new interessadoTranslator()
-    interessadoTranslator.postMenor(request, response)
-})
+server.post("/interessados/:id_interessado/menores", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.postMenor(req, res);
+});
 
 // P0
 // RFI14: GET /interessados/:id_interessado/menores
-server.get('/interessados/:id_interessado/menores', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new interessadoTranslator()
-    interessadoTranslator.getMenores(request, response)
-})
+server.get("/interessados/:id_interessado/menores", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.getMenores(req, res);
+});
 
 // P0
 // RFI15: DELETE /interessados/:id_interessado/menores/:id_menor
-server.del('/interessados/:id_interessado/menores/:id_menor', AuthManager.isAuthenticated, (request, response, next) => {
-    const interessadoTranslator = new interessadoTranslator()
-    interessadoTranslator.deleteMenor(request, response)
-})
+server.del("/interessados/:id_interessado/menores/:id_menor", AuthManager.isAuthenticated, function (req, res) {
+    const interessadoTranslator = new InteressadoTranslator();
+    interessadoTranslator.deleteMenor(req, res);
+});
 
 // RFI16 (2017-2): POST /interessados/:id_interessado/menores/:id_menor/compartilhamentos
 // RFI17 (2017-2): GET /interessados/:id_interessado/mensagens
@@ -301,68 +322,68 @@ server.del('/interessados/:id_interessado/menores/:id_menor', AuthManager.isAuth
 
 // P1
 // RFC01: POST /conteudos
-server.post('/conteudos', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postConteudo(request, response)
-})
-server.post('/conteudos/:id_conteudo/pagina', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postConteudoPagina(request, response)
-})
+server.post("/conteudos", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.postConteudo(req, res);
+});
+server.post("/conteudos/:id_conteudo/pagina", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.postConteudoPagina(req, res);
+});
 
 // P0
 // RFC02: GET /conteudos
-server.get('/conteudos', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getConteudos(request, response)
-})
+server.get("/conteudos", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.getConteudos(req, res);
+});
 
 // P1
 // RFC03: PUT /conteudos/:id_conteudo
-server.put('/conteudos/:id_conteudo', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.updateConteudo(request, response)
-})
+server.put("/conteudos/:id_conteudo", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.updateConteudo(req, res);
+});
 
 // P1
 // RFC04: DELETE /conteudos/:id_conteudo
-server.del('/conteudos/:id_conteudo', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteConteudo(request, response)
-})
+server.del("/conteudos/:id_conteudo", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.deleteConteudo(req, res);
+});
 
 // P1
 // RFC05: POST /conteudos/:id_conteudo/midias
-server.post('/conteudos/:id_conteudo/midias', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postConteudoMidia(request, response)
-})
+server.post("/conteudos/:id_conteudo/midias", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.postConteudoMidia(req, res);
+});
 // Post com multipart-form-data
-server.post('/conteudos/:id_conteudo/midias/:id_midia/midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.postConteudoMidiaConteudo(request, response)
-})
+server.post("/conteudos/:id_conteudo/midias/:id_midia/midia", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.postConteudoMidiaConteudo(req, res);
+});
 
 // P0
 // RFC06: GET /conteudos/:id_conteudo/midias
-server.get('/conteudos/:id_conteudo/midias', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.getConteudoMidias(request, response)
-})
+server.get("/conteudos/:id_conteudo/midias", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.getConteudoMidias(req, res);
+});
 
 // P0
 // RFC07: GET /conteudos/:id_conteudo/midias/:id_midia
-server.get('/conteudos/:id_conteudo/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteConteudoMidia(request, response)
-})
+server.get("/conteudos/:id_conteudo/midias/:id_midia", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.deleteConteudoMidia(req, res);
+});
 
 // P1
 // RFC08: DELETE /conteudos/:id_conteudo
-server.del('/conteudos/:id_conteudo/midias/:id_midia', AuthManager.isAuthenticated, (request, response, next) => {
-    const conteudoTranslator = new ConteudoTranslator()
-    conteudoTranslator.deleteConteudo(request, response)
-})
+server.del("/conteudos/:id_conteudo/midias/:id_midia", AuthManager.isAuthenticated, function (req, res) {
+    const conteudoTranslator = new ConteudoTranslator();
+    conteudoTranslator.deleteConteudo(req, res);
+});
 
 //
 // Resource: mensagem
@@ -407,8 +428,7 @@ server.del('/conteudos/:id_conteudo/midias/:id_midia', AuthManager.isAuthenticat
 // RFO08 (2017-2): DELETE /processos/:id_processo/movimentos/:id_movimento
 // Resource: conteudo
 
-server.listen(port, function () {
-    console.log('Adoções API executando na porta: ' + port)
-})
+server.listen(port);
+console.log("Adoções API URI: " + server.url);
 
 module.exports = server;

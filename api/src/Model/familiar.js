@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const familiarSchema = new Schema({
 	nome: {
@@ -8,9 +10,9 @@ const familiarSchema = new Schema({
 	},
 	parentesco: {
 		type: String,
-		enum: [ 'pai', 'mãe', 'irmão', 'irmã', 'tio', 'tia', 'primo', 'prima', 'avô', 'avó', 'tio-avô', 'tia-avó', 'bisavô', 'bisavó', 'filho', 'filha' ],
+		enum: ["pai", "mãe", "irmão", "irmã", "tio", "tia", "primo", "prima", "avô", "avó", "tio-avô", "tia-avó", "bisavô", "bisavó", "filho", "filha"],
 		required: true
 	}
-})
+});
 
-mongoose.model('Familiar', familiarSchema)
+mongoose.model("Familiar", familiarSchema);

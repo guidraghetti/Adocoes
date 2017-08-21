@@ -1,35 +1,33 @@
-import Joi from 'Joi'
+"use strict";
+
+import Joi from "Joi";
+
 export default class Entity {
 	constructor(deps = {}) {
-		this.Adapter = deps.Adapter || new (require('./Adapter').default)()
+		this.Adapter = deps.Adapter || new(require("./Adapter").default)();
 	}
 
 	post(body) {
-		
-		
-		return this.Adapter.post(body)
+		return this.Adapter.post(body);
 	}
-	
+
 	getInteressados() {
-		
-		
-		return this.Adapter.getInteressados()
+		return this.Adapter.getInteressados();
 	}
 
 	getInteressado(id) {
-		const adapter = new this.Adapter()
-		return adapter.getInteressado(id)
+		const adapter = new this.Adapter();
+		return adapter.getInteressado(id);
 	}
 
-	
+
 	validateToken(body) {
 		return new Promise((resolve, reject) => {
-			resolve(body)
-		})
+			resolve(body);
+		});
 	}
 
 	validate(body) {
-
 		const schema = Joi.object({
 			refUsuario: Joi.object().required(),
 			name: Joi.string().required(),
@@ -46,76 +44,74 @@ export default class Entity {
 			telefones: Joi.string().required(),
 			interesses: Joi.object().required(),
 			visualizacoes: Joi.object().required()
+		});
 
-		})
-		
-		const {error, value} = Joi.validate(body, schema)
-		
+		const {
+			error,
+			value
+		} = Joi.validate(body, schema);
+
 		return new Promise((resolve, reject) => {
-            
-            if(error) {
-                let messages = error.details.map(e => e.message)
-                reject({
-                    status: 400,
-                    messages
-                })
-            } else if(value) {
-                resolve(value)
-            }
-        })
+			if (error) {
+				let messages = error.details.map(e => e.message);
+				reject({
+					status: 400,
+					messages
+				});
+			} else if (value) {
+				resolve(value);
+			}
+		});
 	}
-
 
 	deleteInteressado(id) {
-		const adapter = new this.Adapter()
-		return adapter.deleteInteressado(id)
+		const adapter = new this.Adapter();
+		return adapter.deleteInteressado(id);
 	}
-	
-	updateInteressado(body) {
-		const adapter = new this.Adapter()
 
-		return adapter.updateInteressado(body)
+	updateInteressado(body) {
+		const adapter = new this.Adapter();
+		return adapter.updateInteressado(body);
 	}
-	
-	
+
 	addInterest() {
-		const adapter = new this.Adapter()
-		return adapter.addInterest()
+		const adapter = new this.Adapter();
+		return adapter.addInterest();
 	}
-	
+
 	getMenores() {
-		const adapter = new this.Adapter()
-		return adapter.getMenores()
+		const adapter = new this.Adapter();
+		return adapter.getMenores();
 	}
-	
+
 	updateMenores() {
-		const adapter = new this.Adapter()
-		return adapter.updateMenores()
+		const adapter = new this.Adapter();
+		return adapter.updateMenores();
 	}
-	
+
 	postVisualizacao(body) {
-		const adapter = new this.Adapter()
-		return adapter.postVisualizacao(body)
+		const adapter = new this.Adapter();
+		return adapter.postVisualizacao(body);
 	}
-	
+
 	getVisualizacoes() {
-		const adapter = new this.Adapter()
-		return adapter.getVisualizacoes()
+		const adapter = new this.Adapter();
+		return adapter.getVisualizacoes();
 	}
-	
+
 	insertInterest() {
-		const adapter = new this.Adapter()
-		return adapter.insertInterest()
+		const adapter = new this.Adapter();
+		return adapter.insertInterest();
 	}
-	
+
 	fetchAllInterest() {
-		const adapter = new this.Adapter()
-		return adapter.fetchAllInterest()
+		const adapter = new this.Adapter();
+		return adapter.fetchAllInterest();
 	}
-	
+
 	deleteInterest() {
-		const adapter = new this.Adapter()
-		return adapter.deleteInterest()
+		const adapter = new this.Adapter();
+		return adapter.deleteInterest();
 	}
-	
+
 }

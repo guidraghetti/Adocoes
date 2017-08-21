@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 export const midiaSchema = new Schema({
 	type: {
 		type: String,
-    enum: [ 'foto', 'video', 'carta', 'html' ],
+		enum: ["foto", "video", "carta", "html"],
 		required: true
 	},
 	conteudo: {
@@ -19,6 +21,6 @@ export const midiaSchema = new Schema({
 		type: Boolean,
 		required: false
 	}
-})
+});
 
-mongoose.model('Midia', midiaSchema)
+mongoose.model("Midia", midiaSchema);

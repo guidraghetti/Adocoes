@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
 
-const enderecoSchema = require('./endereco.js')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const enderecoSchema = require("./endereco.js");
 
 const abrigoSchema = new Schema({
 	nome: {
@@ -9,8 +11,8 @@ const abrigoSchema = new Schema({
 		required: true
 	},
 	refRede: {
-		type:  mongoose.Schema.Types.ObjectId,
-		ref: 'redes'
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "redes"
 	},
 	endereco: {
 		type: enderecoSchema,
@@ -21,6 +23,6 @@ const abrigoSchema = new Schema({
 		required: true,
 		default: true
 	}
-})
+});
 
-mongoose.model('Abrigo', abrigoSchema)
+mongoose.model("Abrigo", abrigoSchema);

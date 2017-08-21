@@ -1,15 +1,17 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+"use strict";
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const visualizacaoSchema = new Schema({
 	refInteressado: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'interessados',
+		ref: "interessados",
 		required: true
 	},
 	refMenor: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'menores',
+		ref: "menores",
 		required: true
 	},
 	timestampInicio: {
@@ -20,6 +22,6 @@ const visualizacaoSchema = new Schema({
 		type: Date,
 		required: true
 	}
-})
+});
 
-mongoose.model('Visualizacao', visualizacaoSchema)
+mongoose.model("Visualizacao", visualizacaoSchema);

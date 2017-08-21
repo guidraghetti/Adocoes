@@ -1,0 +1,49 @@
+{
+  // Use IntelliSense to learn about possible Node.js debug attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}\\api\\src\\server.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}\\api\\src",
+      "preLaunchTask": null,
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+      "runtimeArgs": [
+          "--nolazy"
+      ],
+      "env": {
+          "NODE_ENV": "develop"
+      },
+      "console": "internalConsole",
+      "sourceMaps": true,
+      "outFiles": []
+  },
+  {
+      "name": "Attach",
+      "type": "node",
+      "request": "attach",
+      "port": 8888,
+      "address": "localhost",
+      "restart": false,
+      "sourceMaps": true,
+      "outFiles": [],
+      "localRoot": "${workspaceRoot}\\api\\src",
+      "remoteRoot": null
+  },
+  {
+      "name": "Attach to Process",
+      "type": "node",
+      "request": "attach",
+      "processId": "${command.PickProcess}",
+      "port": 8888,
+      "sourceMaps": true,
+      "outFiles": []
+  }
+]
+}
